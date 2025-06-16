@@ -1,0 +1,28 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Función auxiliar para verificar si el usuario es administrador
+    function isAdmin() {
+      return request.auth != null && request.auth.token.role == 'admin';
+    }
+
+    // Colección de Publicaciones
+    // - Cualquiera puede leer (get, list).
+    // - Solo los administradores pueden crear, actualizar o eliminar.
+    match /publicaciones/{publicacionId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Colección de Contactos
+    // - Cualquiera puede crear (enviar el formulario de contacto).
+    // - Solo los administradores pueden leer, actualizar o eliminar.
+    match /contactos/{contactoId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}

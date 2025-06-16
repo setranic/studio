@@ -1,0 +1,11 @@
+
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Por defecto, denegar todas las lecturas y escrituras a menos que se especifique lo contrario.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
