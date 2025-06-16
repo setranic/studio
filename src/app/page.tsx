@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -6,19 +7,37 @@ import { Package, Cloud, Target, TrendingUp, Lightbulb, Users } from 'lucide-rea
 export default function HomePage() {
   return (
     <div className="flex flex-col items-center">
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-background via-rose-50 to-peach-100 dark:from-background dark:via-rose-900/10 dark:to-peach-900/20 rounded-xl shadow-inner">
-        <div className="container px-4 md:px-6 text-center">
+      {/* Hero Section con Video de Fondo */}
+      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        >
+          {/* Asumiendo que el video se llama VIDEO.mp4 en la carpeta public. Ajusta el nombre y tipo si es diferente. */}
+          <source src="/VIDEO.mp4" type="video/mp4" />
+          {/* Puedes agregar más <source> para otros formatos como webm para mayor compatibilidad */}
+          {/* <source src="/VIDEO.webm" type="video/webm" /> */}
+          Tu navegador no soporta el tag de video.
+        </video>
+        {/* Overlay semitransparente para mejorar legibilidad del texto */}
+        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+        
+        {/* Contenido del Hero Section */}
+        <div className="relative z-20 container px-4 md:px-6 text-center py-12 md:py-24 lg:py-32">
           <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent mb-6">
             Innovación y Estrategia Digital
           </h1>
-          <p className="mx-auto max-w-[700px] text-foreground/80 md:text-xl font-body mb-10">
+          <p className="mx-auto max-w-[700px] text-primary-foreground/90 md:text-xl font-body mb-10"> {/* Cambiado text-foreground/80 a text-primary-foreground/90 para mejor contraste sobre video */}
             En Setranic, transformamos tus ideas en realidades digitales. Soluciones creativas y tecnológicas para impulsar tu negocio al siguiente nivel.
           </p>
           <div className="space-x-4">
             <Button asChild size="lg" className="font-body shadow-md hover:shadow-lg transition-shadow duration-300">
               <Link href="/servicios">Nuestros Servicios</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="font-body border-primary text-primary hover:bg-primary/10 hover:shadow-lg transition-shadow duration-300 shadow-md">
+            <Button asChild variant="outline" size="lg" className="font-body border-primary text-primary-foreground hover:bg-primary/10 hover:shadow-lg transition-shadow duration-300 shadow-md hover:text-primary">
               <Link href="/contactanos">Contáctanos</Link>
             </Button>
           </div>
