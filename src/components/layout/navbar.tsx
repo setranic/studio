@@ -77,7 +77,7 @@ export default function Navbar() {
       className: cn(
         'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 font-body flex items-center gap-2',
         pathname === href
-          ? 'bg-accent text-accent-foreground shadow-sm'
+          ? 'bg-primary text-primary-foreground shadow-sm' // Changed from bg-accent to bg-primary
           : 'text-foreground hover:bg-primary/10 hover:text-primary',
         'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2'
       ),
@@ -128,7 +128,7 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-1 items-center">
             {navLinksBase.map((link) => (
-              <NavLinkItem key={link.href} href={link.href} label={link.label} icon={link.icon} />
+              <NavLinkItem key={link.href} href={link.href} label={link.label} />
             ))}
             {user ? (
                <DropdownMenu>
