@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Playfair_Display, PT_Sans } from 'next/font/google';
 import './globals.css';
@@ -5,6 +6,7 @@ import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
+import { AuthProvider } from '@/contexts/AuthContext'; // Import AuthProvider
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -40,12 +42,14 @@ export default function RootLayout({
           ptSans.variable
         )}
       >
-        <Navbar />
-        <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {children}
-        </main>
-        <Footer />
-        <Toaster />
+        <AuthProvider> {/* Wrap content with AuthProvider */}
+          <Navbar />
+          <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            {children}
+          </main>
+          <Footer />
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );

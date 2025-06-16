@@ -1,3 +1,4 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,7 +24,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm } from "@/app/contactanos/actions";
-import { Send } from "lucide-react";
+import { Send, Loader2 } from "lucide-react";
 import { useState } from "react";
 
 const formSchema = z.object({
@@ -64,11 +65,28 @@ export default function ContactForm() {
         });
         form.reset();
       } else {
-        toast({
-          variant: "destructive",
-          title: "Error al Enviar",
-          description: result.error || "Hubo un problema al enviar tu mensaje. Inténtalo de nuevo.",
-        });
+        // Handle Zod validation errors specifically for field display if needed
+        if (typeof result.error !== 'string' && result.error) {
+           Object.entries(result.error).forEach(([fieldName, errors]) => {
+            if (errors) {
+              form.setError(fieldName as keyof ContactFormValues, {
+                type: "server",
+                message: errors.join(', '),
+              });
+            }
+          });
+          toast({
+            variant: "destructive",
+            title: "Error de Validación",
+            description: "Por favor, revisa los campos del formulario.",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Error al Enviar",
+            description: result.error as string || "Hubo un problema al enviar tu mensaje. Inténtalo de nuevo.",
+          });
+        }
       }
     } catch (error) {
       toast({
@@ -165,7 +183,12 @@ export default function ContactForm() {
           )}
         />
         <Button type="submit" className="w-full font-body shadow-md hover:shadow-lg transition-shadow duration-300" disabled={isSubmitting}>
-          {isSubmitting ? "Enviando..." : (
+          {isSubmitting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Enviando...
+            </>
+          ) : (
             <>
               Enviar Mensaje <Send className="ml-2 h-4 w-4" />
             </>

@@ -1,20 +1,26 @@
+
 "use server";
 
 import * as z from "zod";
+import { db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import type { Contacto } from "@/types";
 
 const formSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
+  name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
+  email: z.string().email("Por favor, introduce un email válido."),
   phone: z.string().optional(),
-  service: z.enum(["consultoria", "desarrollo_web", "marketing_digital", "otro"]),
-  message: z.string().min(10).max(500),
+  service: z.enum(["consultoria", "desarrollo_web", "marketing_digital", "otro"], {
+    errorMap: () => ({ message: "Por favor, selecciona un tipo de servicio." }),
+  }),
+  message: z.string().min(10, "El mensaje debe tener al menos 10 caracteres.").max(500, "El mensaje no puede exceder los 500 caracteres."),
 });
 
 type ContactFormValues = z.infer<typeof formSchema>;
 
 interface SubmitResult {
   success: boolean;
-  error?: string;
+  error?: string | z.ZodError<ContactFormValues>["formErrors"]["fieldErrors"];
   data?: ContactFormValues;
 }
 
@@ -25,20 +31,25 @@ export async function submitContactForm(values: ContactFormValues): Promise<Subm
     console.error("Validation errors:", validatedFields.error.flatten().fieldErrors);
     return {
       success: false,
-      error: "Datos de formulario inválidos. Por favor, revisa los campos.",
+      error: validatedFields.error.flatten().fieldErrors,
     };
   }
 
-  // Simulate API call or database interaction
-  console.log("Form data received:", validatedFields.data);
-  
-  // Simulate potential server-side error
-  // if (Math.random() > 0.7) {
-  //   return { success: false, error: "Error simulado del servidor." };
-  // }
+  try {
+    const contactData: Omit<Contacto, "id" | "submittedAt"> = {
+      ...validatedFields.data,
+      phone: validatedFields.data.phone || "", // Ensure phone is string or empty string
+    };
+    
+    await addDoc(collection(db, "contactos"), {
+      ...contactData,
+      submittedAt: serverTimestamp(),
+    });
+    console.log("Form data saved to Firestore:", validatedFields.data);
+    return { success: true, data: validatedFields.data };
 
-  // Simulate a delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
-
-  return { success: true, data: validatedFields.data };
+  } catch (error) {
+    console.error("Error saving contact form to Firestore:", error);
+    return { success: false, error: "Error interno del servidor al guardar el mensaje." };
+  }
 }
