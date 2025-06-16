@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Users, Cloud, Target, TrendingUp, Lightbulb, Package, LayoutGrid } from 'lucide-react';
+import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Users, Cloud, Target, TrendingUp, Lightbulb, Package } from 'lucide-react'; // Removed LayoutGrid
 
 export default function HomePage() {
   const featuresNew = [
@@ -114,8 +114,14 @@ export default function HomePage() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-bold text-primary mb-4">
                 SERVICIOS
               </h2>
-              <div className="flex justify-center mt-4 mb-6"> {/* Icon moved below title, added mt-4 */}
-                <LayoutGrid className="h-16 w-16 md:h-20 md:w-20 text-primary" strokeWidth={1.5} />
+              <div className="flex justify-center mt-4 mb-6">
+                <Image 
+                  src="/SETRANIC%20SERVICIOS.SVG" 
+                  alt="Icono de Servicios Setranic" 
+                  width={80} 
+                  height={80} 
+                  className="h-16 w-16 md:h-20 md:w-20" 
+                />
               </div>
               <p className="text-lg text-foreground/80 font-body mb-8 max-w-xl mx-auto">
                 Explora la gama de soluciones que ofrecemos para impulsar tu negocio al siguiente nivel.
