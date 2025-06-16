@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Users, Cloud, Target, TrendingUp, Lightbulb, Package } from 'lucide-react'; // Removed LayoutGrid
+import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Users, Cloud, Target, TrendingUp, Lightbulb, Package } from 'lucide-react'; 
 
 export default function HomePage() {
   const featuresNew = [
@@ -74,7 +74,6 @@ export default function HomePage() {
               {/* Title Block */}
               <div className="flex flex-col sm:flex-row justify-center items-start mb-6 sm:mb-8 text-center sm:text-left">
                   <div className="mr-0 sm:mr-6 mb-4 sm:mb-0 self-center sm:self-start">
-                      {/* SVG Placeholder simple "empty box" */}
                       <svg width="70" height="60" viewBox="0 0 70 55" xmlns="http://www.w3.org/2000/svg" className="text-primary/70">
                         <title>Icono Placeholder</title>
                         <rect x="5" y="5" width="60" height="45" rx="5" stroke="currentColor" strokeWidth="4" fill="none" />
