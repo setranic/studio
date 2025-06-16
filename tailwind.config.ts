@@ -12,8 +12,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['PT Sans', ...fontFamily.sans],
-        headline: ['Playfair Display', ...fontFamily.serif],
+        body: ['var(--font-pt-sans)', ...fontFamily.sans], // Correctly use CSS variable
+        headline: ['var(--font-aristorelica-pro)', ...fontFamily.serif], // Updated to use Aristorelica Pro CSS variable
         code: ['monospace', ...fontFamily.mono],
       },
       colors: {

@@ -2,12 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: var(--font-pt-sans), sans-serif;
+/* Add Aristorelica Pro font faces */
+@font-face {
+  font-family: 'Aristorelica Pro';
+  src: url('/fonts/AristorelicaPro-Regular.woff2') format('woff2'),
+       url('/fonts/AristorelicaPro-Regular.woff') format('woff');
+  font-weight: 400; /* normal */
+  font-style: normal;
+  font-display: swap;
 }
 
+@font-face {
+  font-family: 'Aristorelica Pro';
+  src: url('/fonts/AristorelicaPro-Bold.woff2') format('woff2'),
+       url('/fonts/AristorelicaPro-Bold.woff') format('woff');
+  font-weight: 700; /* bold */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* body styling will primarily come from font-body utility class via Tailwind */
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair-display), serif;
+  font-family: var(--font-aristorelica-pro), serif; /* Updated to use Aristorelica Pro variable */
 }
 
 @layer base {
@@ -41,6 +58,10 @@ h1, h2, h3, h4, h5, h6 {
     --ring: 339 100% 32%; /* Primary color for rings */
 
     --radius: 0.5rem;
+
+    /* Define the new font variable for headlines */
+    --font-aristorelica-pro: "Aristorelica Pro";
+    /* --font-pt-sans is defined by next/font in layout.tsx */
 
     /* Sidebar specific colors - can be adjusted if a sidebar is used more extensively */
     --sidebar-background: 0 59% 96%; /* Slightly lighter than main bg for contrast */
@@ -113,5 +134,6 @@ h1, h2, h3, h4, h5, h6 {
   body {
     @apply bg-background text-foreground;
     @apply transition-colors duration-300;
+    /* font-family is applied via font-body class in layout.tsx, which uses --font-pt-sans */
   }
 }

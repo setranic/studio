@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { Playfair_Display, PT_Sans } from 'next/font/google';
+import { PT_Sans } from 'next/font/google'; // Removed Playfair_Display
 import './globals.css';
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
@@ -8,12 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { AuthProvider } from '@/contexts/AuthContext'; // Import AuthProvider
 
-const playfairDisplay = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair-display',
-  weight: ['400', '700'],
-});
-
+// PT Sans for body text remains
 const ptSans = PT_Sans({
   subsets: ['latin'],
   variable: '--font-pt-sans',
@@ -38,7 +33,7 @@ export default function RootLayout({
       <body
         className={cn(
           'min-h-screen bg-background font-body antialiased flex flex-col',
-          playfairDisplay.variable,
+          // playfairDisplay.variable, // Removed
           ptSans.variable
         )}
       >
