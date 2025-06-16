@@ -16,10 +16,13 @@ import { getFirestore } from "firebase/firestore";
 
 const apiKeyFromEnv = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
 
-// -------- START DEBUG LOG --------
+// -------- START CRITICAL DEBUG LOG --------
 console.log("--- Firebase Initialization Attempt ---");
-console.log(`[DEBUG] Value of NEXT_PUBLIC_FIREBASE_API_KEY from environment: "${apiKeyFromEnv}"`);
-// --------  END DEBUG LOG  --------
+console.log("************************************************************************************");
+console.log(`[CRITICAL DEBUG] Checking NEXT_PUBLIC_FIREBASE_API_KEY. Value from environment: >>>${apiKeyFromEnv}<<<`);
+console.log("************************************************************************************");
+console.log("If the value between >>> and <<< is 'undefined' or empty, your .env.local file is not being read correctly, OR the variable is missing from it, OR you haven't restarted the dev server after changes.");
+// --------  END CRITICAL DEBUG LOG  --------
 
 
 if (!apiKeyFromEnv || apiKeyFromEnv.trim() === "") {
@@ -28,14 +31,16 @@ if (!apiKeyFromEnv || apiKeyFromEnv.trim() === "") {
     "Please ensure it is set correctly in your .env.local file (located in the ROOT of your project, NOT in src/) " +
     "and that you have RESTARTED your Next.js development server (e.g., by stopping and re-running `npm run dev`). " +
     "The file must be named '.env.local'.";
+  console.error("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   console.error(errorMessage);
+  console.error("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   throw new Error(
-    "Firebase API Key (NEXT_PUBLIC_FIREBASE_API_KEY) is missing or empty. Check server console logs and your .env.local file."
+    "Firebase API Key (NEXT_PUBLIC_FIREBASE_API_KEY) is missing or empty. Check server console logs (especially [CRITICAL DEBUG] messages) and your .env.local file."
   );
 }
 
 const firebaseConfig = {
-  apiKey: apiKeyFromEnv, // This is now guaranteed to be a non-empty string if we pass the check above
+  apiKey: apiKeyFromEnv,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
@@ -67,7 +72,7 @@ if (missingKeysFound) {
 }
 
 // Example placeholder check - adjust if your actual placeholder is different
-if (firebaseConfig.apiKey === "AIzaSyCQvQk24Z0MzULV2-8QMVStYAO1lrUsMBY_EXAMPLE_DO_NOT_USE") {
+if (firebaseConfig.apiKey === "AIzaSyCQvQk24Z0MzULV2-8QMVStYAO1lrUsMBY_EXAMPLE_DO_NOT_USE" || firebaseConfig.apiKey?.includes("YOUR_API_KEY") || firebaseConfig.apiKey?.includes("_EXAMPLE_")) {
  console.warn(
    "ADVERTENCIA: La Firebase API Key (NEXT_PUBLIC_FIREBASE_API_KEY) que se está utilizando parece ser un valor de ejemplo/placeholder. " +
    "Si este es tu proyecto real, asegúrate de que estás usando tu API Key única desde la consola de Firebase. " +
@@ -84,9 +89,8 @@ if (!getApps().length) {
     console.log("[INFO] Firebase app initialized successfully.");
   } catch (error) {
     console.error("[CRITICAL] Error during Firebase initializeApp call:", error);
-    // Re-throw the error to make it clear initialization failed and stop further execution.
-    // This is often where the actual 'auth/invalid-api-key' from Firebase SDK itself might surface
-    // if the key passes the initial string check but is rejected by Firebase.
+    // If initializeApp itself fails (e.g. due to truly invalid API key format, not just missing)
+    // this will catch it.
     throw error; 
   }
 } else {
