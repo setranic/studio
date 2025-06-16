@@ -121,11 +121,8 @@ export default function Navbar() {
     <>
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2" aria-label="Setranic Home">
-            <Image src="/logo.svg" alt="Setranic Logo" width={32} height={32} />
-            <span className="font-headline text-2xl font-bold text-primary self-center whitespace-nowrap">
-              Setranic
-            </span>
+          <Link href="/" className="flex items-center" aria-label="Setranic Home">
+            <Image src="/logo.svg" alt="Setranic Logo" width={50} height={50} />
           </Link>
 
           {/* Desktop Navigation */}
@@ -169,9 +166,8 @@ export default function Navbar() {
               <SheetContent side="right" className="w-3/4 bg-background p-6">
                 <div className="flex flex-col space-y-4">
                   <div className="flex justify-between items-center mb-6">
-                     <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Image src="/logo.svg" alt="Setranic Logo" width={28} height={28} />
-                      <span className="font-headline text-xl font-bold text-primary">Setranic</span>
+                     <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Image src="/logo.svg" alt="Setranic Logo" width={40} height={40} />
                     </Link>
                     <SheetClose asChild>
                        <Button variant="ghost" size="icon" aria-label="Close navigation menu">
