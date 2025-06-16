@@ -117,9 +117,9 @@ export default function HomePage() {
                 <Image
                   src="/SERVSETIcon.svg"
                   alt="Icono Servicios Setranic"
-                  width={50}
+                  width={500}
                   height={500}
-                  className="w-[50px] h-[500px]"
+                  className="w-[500px] h-[500px]"
                 />
               </div>
               <p className="text-lg text-foreground/80 font-body mb-8 max-w-xl mx-auto">
