@@ -111,12 +111,12 @@ export default function HomePage() {
         <section className="w-full py-16 md:py-24 lg:py-28 bg-transparent">
           <div className="container mx-auto px-4 md:px-6">
             <div className="bg-background p-8 md:p-12 rounded-xl shadow-2xl max-w-4xl mx-auto text-center">
-              <div className="flex justify-center mb-6">
-                <LayoutGrid className="h-16 w-16 md:h-20 md:w-20 text-primary" strokeWidth={1.5} />
-              </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-bold text-primary mb-4">
                 SERVICIOS
               </h2>
+              <div className="flex justify-center mt-4 mb-6"> {/* Icon moved below title, added mt-4 */}
+                <LayoutGrid className="h-16 w-16 md:h-20 md:w-20 text-primary" strokeWidth={1.5} />
+              </div>
               <p className="text-lg text-foreground/80 font-body mb-8 max-w-xl mx-auto">
                 Explora la gama de soluciones que ofrecemos para impulsar tu negocio al siguiente nivel.
               </p>
