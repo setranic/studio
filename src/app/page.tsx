@@ -116,7 +116,7 @@ export default function HomePage() {
               </h2>
               <div className="flex justify-center mt-4 mb-6">
                 <Image 
-                  src="/SETRANIC%20SERVICIOS.SVG" 
+                  src="/SERVICIOS%20SETRANIC.SVG" 
                   alt="Icono de Servicios Setranic" 
                   width={80} 
                   height={80} 
