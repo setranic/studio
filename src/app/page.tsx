@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Users, Cloud, Target, TrendingUp, Lightbulb, Package } from 'lucide-react';
+import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Users, Cloud, Target, TrendingUp, Lightbulb, Package, LayoutGrid } from 'lucide-react';
 
 export default function HomePage() {
   const featuresNew = [
@@ -68,7 +68,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="w-full py-16 md:py-24 lg:py-28 bg-transparent"> {/* Fondo cambiado a transparente */}
+        <section className="w-full py-16 md:py-24 lg:py-28 bg-transparent">
           <div className="container mx-auto px-4 md:px-6">
             <div className="bg-background text-primary p-8 md:p-12 rounded-xl shadow-2xl max-w-4xl mx-auto">
               {/* Title Block */}
@@ -81,7 +81,7 @@ export default function HomePage() {
                       </svg>
                   </div>
                   <div className="flex-grow">
-                      <p className="text-xl md:text-2xl font-headline tracking-wide text-primary/80">POR QUÉ</p> {/* Tipografía cambiada a font-headline */}
+                      <p className="text-xl md:text-2xl font-headline tracking-wide text-primary/80">POR QUÉ</p>
                       <h2 className="text-5xl md:text-6xl lg:text-7xl font-headline font-bold text-primary leading-none -mt-1 md:-mt-2">ELEGIR</h2>
                       <p className="text-3xl md:text-4xl lg:text-5xl font-headline font-normal text-primary/90">a SETRANIC?</p>
                   </div>
@@ -103,6 +103,26 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* New Servicios Section */}
+        <section className="w-full py-16 md:py-24 lg:py-28 bg-transparent">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="bg-background p-8 md:p-12 rounded-xl shadow-2xl max-w-4xl mx-auto text-center">
+              <div className="flex justify-center mb-6">
+                <LayoutGrid className="h-16 w-16 md:h-20 md:w-20 text-primary" strokeWidth={1.5} />
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-bold text-primary mb-4">
+                SERVICIOS
+              </h2>
+              <p className="text-lg text-foreground/80 font-body mb-8 max-w-xl mx-auto">
+                Explora la gama de soluciones que ofrecemos para impulsar tu negocio al siguiente nivel.
+              </p>
+              <Button asChild size="lg" className="font-body shadow-md hover:shadow-lg transition-shadow duration-300">
+                <Link href="/servicios">Ver Nuestros Servicios</Link>
+              </Button>
             </div>
           </div>
         </section>
