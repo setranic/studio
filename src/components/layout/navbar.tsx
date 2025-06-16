@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -15,6 +15,7 @@ const navLinks = [
   { href: '/servicios', label: 'Servicios' },
   { href: '/updates', label: 'Updates' },
   { href: '/contactanos', label: 'Contáctanos' },
+  { href: '/admin', label: 'Admin', icon: ShieldCheck },
 ];
 
 export default function Navbar() {
@@ -27,12 +28,12 @@ export default function Navbar() {
   }, []);
 
 
-  const NavLink = ({ href, label, onClick }: { href: string; label: string; onClick?: () => void }) => (
+  const NavLink = ({ href, label, icon: Icon, onClick }: { href: string; label: string; icon?: React.ElementType, onClick?: () => void }) => (
     <Link
       href={href}
       onClick={onClick}
       className={cn(
-        'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 font-body',
+        'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 font-body flex items-center gap-2',
         pathname === href
           ? 'bg-accent text-accent-foreground shadow-sm'
           : 'text-foreground hover:bg-primary/10 hover:text-primary',
@@ -40,12 +41,13 @@ export default function Navbar() {
       )}
       aria-current={pathname === href ? 'page' : undefined}
     >
+      {Icon && <Icon className="h-4 w-4" />}
       {label}
     </Link>
   );
 
   if (!mounted) {
-    return ( // Return a basic skeleton or null during server render / pre-hydration
+    return ( 
         <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
                 <div className="animate-pulse bg-muted h-8 w-24 rounded-md"></div>
@@ -70,9 +72,9 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-2">
+        <nav className="hidden md:flex space-x-1">
           {navLinks.map((link) => (
-            <NavLink key={link.href} href={link.href} label={link.label} />
+            <NavLink key={link.href} href={link.href} label={link.label} icon={link.icon} />
           ))}
         </nav>
 
@@ -102,6 +104,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     label={link.label}
+                    icon={link.icon}
                     onClick={() => setIsMobileMenuOpen(false)}
                   />
                 ))}
