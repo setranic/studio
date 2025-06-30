@@ -70,9 +70,9 @@ export default function HomePage() {
 
         <section className="w-full py-16 md:py-24 lg:py-28 bg-transparent">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="bg-background text-primary rounded-xl shadow-2xl max-w-4xl mx-auto overflow-hidden">
-              {/* Title Block */}
-              <div className="flex justify-start">
+            <div className="bg-background text-primary rounded-xl shadow-2xl max-w-4xl mx-auto">
+              {/* Title Block with padding added */}
+              <div className="flex justify-start px-8 md:px-12 pt-4">
                 <Image
                     src="/namesetranicwhyus3.svg"
                     alt="Por qué elegir Setranic"
