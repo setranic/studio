@@ -72,20 +72,13 @@ export default function HomePage() {
           <div className="container mx-auto px-4 md:px-6">
             <div className="bg-background text-primary p-8 md:p-12 rounded-xl shadow-2xl max-w-4xl mx-auto">
               {/* Title Block */}
-              <div className="flex flex-col sm:flex-row justify-center items-start mb-6 sm:mb-8 text-center sm:text-left">
-                  <div className="mr-0 sm:mr-6 mb-4 sm:mb-0 self-center sm:self-start">
-                     <Image
-                        src="/namesetranicwhyus3.svg"
-                        alt="Icono Por qué elegir Setranic"
-                        width={70}
-                        height={60}
-                    />
-                  </div>
-                  <div className="flex-grow">
-                      <p className="text-xl md:text-2xl font-headline tracking-wide text-primary/80">POR QUÉ</p>
-                      <h2 className="text-5xl md:text-6xl lg:text-7xl font-headline font-bold text-primary leading-none -mt-1 md:-mt-2">ELEGIR</h2>
-                      <p className="text-3xl md:text-4xl lg:text-5xl font-headline font-normal text-primary/90">a SETRANIC?</p>
-                  </div>
+              <div className="flex justify-center mb-8">
+                <Image
+                    src="/namesetranicwhyus3.svg"
+                    alt="Por qué elegir Setranic"
+                    width={280}
+                    height={240}
+                />
               </div>
 
               <p className="text-center text-md md:text-lg font-body mb-10 md:mb-12 text-foreground/80">
