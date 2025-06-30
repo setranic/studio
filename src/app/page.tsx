@@ -70,32 +70,33 @@ export default function HomePage() {
 
         <section className="w-full py-16 md:py-24 lg:py-28 bg-transparent">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="bg-background text-primary p-8 md:p-12 rounded-xl shadow-2xl max-w-4xl mx-auto">
+            <div className="bg-background text-primary rounded-xl shadow-2xl max-w-4xl mx-auto overflow-hidden">
               {/* Title Block */}
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-start">
                 <Image
                     src="/namesetranicwhyus3.svg"
                     alt="Por qué elegir Setranic"
-                    width={280}
-                    height={240}
+                    width={400}
+                    height={342}
                 />
               </div>
+              <div className="px-8 md:px-12 pt-4 pb-8">
+                <p className="text-center text-md md:text-lg font-body mb-10 md:mb-12 text-foreground/80">
+                  Te compartimos algunas de las razones por las que somos tu mejor opción:
+                </p>
 
-              <p className="text-center text-md md:text-lg font-body mb-10 md:mb-12 text-foreground/80">
-                Te compartimos algunas de las razones por las que somos tu mejor opción:
-              </p>
-
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-8 md:gap-y-10">
-                {featuresNew.map((feature, index) => (
-                  <div key={index} className="flex flex-col items-center text-center text-primary">
-                    <feature.icon className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 mb-2 md:mb-3" strokeWidth={1.5} data-ai-hint={feature.aiHint} />
-                    <h3 className="text-xs sm:text-sm md:text-base font-headline font-semibold uppercase tracking-wider leading-tight">
-                      {feature.titleLine1}
-                      <br />
-                      {feature.titleLine2}
-                    </h3>
-                  </div>
-                ))}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-8 md:gap-y-10">
+                  {featuresNew.map((feature, index) => (
+                    <div key={index} className="flex flex-col items-center text-center text-primary">
+                      <feature.icon className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 mb-2 md:mb-3" strokeWidth={1.5} data-ai-hint={feature.aiHint} />
+                      <h3 className="text-xs sm:text-sm md:text-base font-headline font-semibold uppercase tracking-wider leading-tight">
+                        {feature.titleLine1}
+                        <br />
+                        {feature.titleLine2}
+                      </h3>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
