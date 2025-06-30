@@ -104,7 +104,7 @@ export default function Navbar() {
 
   if (!mounted || loading) {
     return ( 
-        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
                 <div className="animate-pulse bg-muted h-8 w-24 rounded-md"></div>
                 <div className="flex items-center space-x-2">
@@ -119,7 +119,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center" aria-label="Setranic Home">
             <Image src="/logo.svg" alt="Setranic Logo" width={50} height={50} />
