@@ -208,7 +208,7 @@ export default function PublicacionesAdminPage() {
                         {pub.subtitulo}
                         {pub.createdAt && (
                            <Badge variant="outline" className="ml-2 font-body text-xs">
-                             {format(pub.createdAt.toDate(), "dd MMM, yyyy", { locale: es })}
+                             {format(new Date(pub.createdAt), "dd MMM, yyyy", { locale: es })}
                            </Badge>
                         )}
                          {pub.slug && (

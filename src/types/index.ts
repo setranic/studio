@@ -8,7 +8,7 @@ export interface Publicacion {
   contenido: string;
   imagenPortadaUrl: string;
   imagenCarruselUrl: string;
-  createdAt?: Timestamp;
+  createdAt?: string; // Changed from Timestamp to string for serialization
   slug?: string; // Auto-generated or manual
 }
 

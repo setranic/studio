@@ -41,7 +41,12 @@ export async function getPublicaciones(): Promise<Publicacion[]> {
     const querySnapshot = await getDocs(q);
     const publicaciones: Publicacion[] = [];
     querySnapshot.forEach((doc) => {
-      publicaciones.push({ id: doc.id, ...doc.data() } as Publicacion);
+      const data = doc.data();
+      publicaciones.push({
+        id: doc.id,
+        ...data,
+        createdAt: data.createdAt?.toDate().toISOString(),
+      } as Publicacion);
     });
     return publicaciones;
   } catch (error) {
@@ -55,7 +60,12 @@ export async function getPublicacionById(id: string): Promise<Publicacion | null
     const docRef = doc(db, "publicaciones", id);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      return { id: docSnap.id, ...docSnap.data() } as Publicacion;
+      const data = docSnap.data();
+      return { 
+        id: docSnap.id, 
+        ...data,
+        createdAt: data.createdAt?.toDate().toISOString(),
+      } as Publicacion;
     } else {
       return null;
     }

@@ -74,7 +74,7 @@ export default function UpdatesPage() {
                   <Link href={`/updates/${post.slug || post.id}`}>{post.titulo}</Link>
                 </h2>
                 <p className="text-sm text-muted-foreground font-body mb-1">
-                  {post.createdAt ? format(post.createdAt.toDate(), "dd MMMM, yyyy", { locale: es }) : 'Fecha no disponible'}
+                  {post.createdAt ? format(new Date(post.createdAt), "dd MMMM, yyyy", { locale: es }) : 'Fecha no disponible'}
                 </p>
                 <p className="text-foreground/80 font-body mb-4 leading-relaxed flex-grow line-clamp-3">{post.subtitulo || post.contenido}</p>
                 <Button asChild variant="link" className="mt-auto self-start p-0 text-primary hover:text-accent font-body">
