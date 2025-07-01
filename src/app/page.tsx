@@ -2,9 +2,14 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Users, Cloud, Target, TrendingUp, Lightbulb, Package, LayoutGrid } from 'lucide-react';
+import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart } from 'lucide-react';
+import { getPublicaciones } from '@/app/admin/publicaciones/actions';
+import PostCard from '@/components/common/PostCard';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const allPosts = await getPublicaciones();
+  const recentPosts = allPosts.slice(0, 3);
+
   const featuresNew = [
     {
       icon: DoorOpen,
@@ -122,6 +127,34 @@ export default function HomePage() {
               </p>
               <Button asChild size="lg" className="font-body shadow-md hover:shadow-lg transition-shadow duration-300">
                 <Link href="/servicios">Ver Nuestros Servicios</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Updates Section */}
+        <section className="w-full py-16 md:py-24 lg:py-28 bg-transparent">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="bg-background p-8 md:p-12 rounded-xl shadow-2xl max-w-6xl mx-auto text-center">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-bold text-primary mb-4">
+                Últimas Noticias
+              </h2>
+              <p className="text-lg text-foreground/80 font-body mb-12 max-w-xl mx-auto">
+                Mantente al día con nuestras últimas actualizaciones y noticias del sector.
+              </p>
+              
+              {recentPosts.length > 0 ? (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                  {recentPosts.map((post) => (
+                    <PostCard key={post.id} post={post} />
+                  ))}
+                </div>
+              ) : (
+                <p className="text-muted-foreground font-body mb-12">No hay noticias recientes.</p>
+              )}
+
+              <Button asChild size="lg" className="font-body shadow-md hover:shadow-lg transition-shadow duration-300">
+                <Link href="/updates">Ver Todas las Noticias</Link>
               </Button>
             </div>
           </div>
