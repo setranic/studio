@@ -59,13 +59,15 @@ export default async function HomePage() {
             <Image
               src="/logostnblanconuew.svg"
               alt="Logo Setranic"
-              width={400}
-              height={150}
+              width={300}
+              height={113}
               className="mb-8"
             />
-            <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent mb-6">
-              ESTRATEGIAS SIN LIMITES
-            </h1>
+            <div className="bg-black/20 backdrop-blur-sm rounded-xl py-4 px-6 mb-6 border border-white/10">
+              <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                ESTRATEGIAS SIN LIMITES
+              </h1>
+            </div>
             <p className="mx-auto max-w-[700px] text-primary-foreground/90 md:text-xl font-body mb-10">
               En Setranic, transformamos tus ideas en realidades digitales. Soluciones creativas y tecnológicas para impulsar tu negocio al siguiente nivel.
             </p>
