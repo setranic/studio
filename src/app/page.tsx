@@ -57,7 +57,7 @@ export default async function HomePage() {
         <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
           <div className="container px-4 md:px-6 text-center flex flex-col items-center">
             <Image
-              src="/LOGstnblanco.svg"
+              src="/logstnblanco.svg"
               alt="Logo Setranic"
               width={400}
               height={150}
