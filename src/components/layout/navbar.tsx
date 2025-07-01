@@ -163,12 +163,17 @@ export default function Navbar() {
                   <Menu className="h-6 w-6 text-primary" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-3/4 bg-background p-6">
+              <SheetContent side="right" className="w-3/4 bg-background p-6 [&>button]:hidden">
                 <div className="flex flex-col space-y-4">
                   <div className="flex justify-between items-center mb-6">
                      <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
                       <Image src="/logo.svg" alt="Setranic Logo" width={50} height={50} />
                     </Link>
+                    <SheetClose asChild>
+                      <Button variant="ghost" size="icon" aria-label="Cerrar menú">
+                        <X className="h-6 w-6 text-primary" />
+                      </Button>
+                    </SheetClose>
                   </div>
                   {navLinks.map((link) => (
                     <NavLinkItem
