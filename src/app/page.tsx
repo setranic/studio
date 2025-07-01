@@ -100,9 +100,6 @@ export default async function HomePage() {
           
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
             <div className="space-x-4">
-              <Button asChild size="lg" className="font-body shadow-md hover:shadow-lg transition-shadow duration-300">
-                <Link href="/servicios">Nuestros Servicios</Link>
-              </Button>
               <Button asChild variant="ghost" size="lg" className="font-body border border-primary text-primary-foreground hover:bg-primary/10 hover:text-primary hover:shadow-lg transition-shadow duration-300 shadow-md">
                 <Link href="/contactanos">Contáctanos</Link>
               </Button>
