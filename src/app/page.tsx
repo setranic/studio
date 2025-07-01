@@ -57,7 +57,7 @@ export default async function HomePage() {
         <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent mb-6">
-              SETRANIC
+              ESTRATEGIAS SIN LIMITES
             </h1>
             <p className="mx-auto max-w-[700px] text-primary-foreground/90 md:text-xl font-body mb-10">
               En Setranic, transformamos tus ideas en realidades digitales. Soluciones creativas y tecnológicas para impulsar tu negocio al siguiente nivel.
