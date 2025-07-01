@@ -129,7 +129,7 @@ export default function HomePage() {
         </section>
 
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/50 dark:bg-muted/20 rounded-xl shadow-inner">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-background rounded-xl shadow-inner">
           <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
             <div className="space-y-3">
               <h2 className="text-3xl font-headline font-semibold tracking-tighter text-primary sm:text-4xl md:text-5xl">
