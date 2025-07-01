@@ -54,7 +54,7 @@ export default async function HomePage() {
       <div className="fixed inset-0 bg-black opacity-50 z-[1]"></div>
 
       <div className="relative z-10 flex flex-col items-center">
-        <section className="w-full min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent mb-6">
               SETRANIC
@@ -71,6 +71,42 @@ export default async function HomePage() {
               </Button>
             </div>
           </div>
+          
+          <div className="absolute bottom-4 md:bottom-10 left-1/2 -translate-x-1/2 w-full max-w-xs sm:max-w-md md:max-w-2xl px-4">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
+              <Link href="/servicios" className="group block" aria-label="Nuestros Servicios">
+                <Image 
+                  src="/1.png" 
+                  alt="Botón de Servicios" 
+                  width={200} 
+                  height={150} 
+                  className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                  data-ai-hint="service icon"
+                />
+              </Link>
+              <Link href="/updates" className="group block" aria-label="Últimas Noticias">
+                <Image 
+                  src="/2.png" 
+                  alt="Botón de Noticias" 
+                  width={200} 
+                  height={150} 
+                  className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                  data-ai-hint="news icon"
+                />
+              </Link>
+              <Link href="/contactanos" className="group block" aria-label="Contáctanos">
+                <Image 
+                  src="/3.png" 
+                  alt="Botón de Contacto" 
+                  width={200} 
+                  height={150} 
+                  className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                  data-ai-hint="contact icon"
+                />
+              </Link>
+            </div>
+          </div>
+
         </section>
 
         <section className="w-full py-16 md:py-24 lg:py-28 bg-transparent">
