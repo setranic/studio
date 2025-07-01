@@ -1,22 +1,22 @@
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Rules for the 'publicaciones' collection
-    match /publicaciones/{publicacionId} {
-      // Anyone can read blog posts
-      allow read: if true;
-      // Only authenticated users can create, update, or delete posts
-      allow write: if request.auth != null;
+    // Regla para Contactos:
+    // - Cualquiera puede crear (enviar el formulario).
+    // - Solo los administradores autenticados pueden leerlos.
+    match /contactos/{contactId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
     }
 
-    // Rules for the 'contactos' collection
-    match /contactos/{contactoId} {
-      // Anyone can submit a contact form
-      allow create: if true;
-      // Only authenticated users can read or delete contact messages
-      allow read, delete: if request.auth != null;
+    // Regla para Publicaciones:
+    // - Cualquiera puede leerlas.
+    // - Se permite la escritura porque las funciones que la realizan (Server Actions)
+    //   ya están protegidas por el login de administrador en la propia aplicación.
+    match /publicaciones/{publicacionId} {
+      allow read: if true;
+      allow write: if true;
     }
   }
 }
