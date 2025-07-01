@@ -64,7 +64,7 @@ export default async function HomePage() {
             </p>
             <div className="mx-auto max-w-xs sm:max-w-md md:max-w-2xl px-4">
               <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
-                <Link href="/servicios" className="group block" aria-label="Nuestros Servicios">
+                <Link href="/servicios" className="group block p-1" aria-label="Nuestros Servicios">
                   <Image 
                     src="/1.png" 
                     alt="Botón de Servicios" 
@@ -74,7 +74,7 @@ export default async function HomePage() {
                     data-ai-hint="service icon"
                   />
                 </Link>
-                <Link href="/updates" className="group block" aria-label="Últimas Noticias">
+                <Link href="/updates" className="group block p-1" aria-label="Últimas Noticias">
                   <Image 
                     src="/2.png" 
                     alt="Botón de Noticias" 
@@ -84,7 +84,7 @@ export default async function HomePage() {
                     data-ai-hint="news icon"
                   />
                 </Link>
-                <Link href="/contactanos" className="group block" aria-label="Contáctanos">
+                <Link href="/contactanos" className="group block p-1" aria-label="Contáctanos">
                   <Image 
                     src="/3.png" 
                     alt="Botón de Contacto" 
@@ -100,9 +100,7 @@ export default async function HomePage() {
           
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
             <div className="space-x-4">
-              <Button asChild variant="ghost" size="lg" className="font-body border border-primary text-primary-foreground hover:bg-primary/10 hover:text-primary hover:shadow-lg transition-shadow duration-300 shadow-md">
-                <Link href="/contactanos">Contáctanos</Link>
-              </Button>
+              
             </div>
           </div>
 
