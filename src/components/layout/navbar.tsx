@@ -169,11 +169,6 @@ export default function Navbar() {
                      <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
                       <Image src="/logo.svg" alt="Setranic Logo" width={50} height={50} />
                     </Link>
-                    <SheetClose asChild>
-                       <Button variant="ghost" size="icon" aria-label="Close navigation menu">
-                          <X className="h-6 w-6 text-primary" />
-                       </Button>
-                    </SheetClose>
                   </div>
                   {navLinks.map((link) => (
                     <NavLinkItem
