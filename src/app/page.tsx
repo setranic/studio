@@ -62,6 +62,43 @@ export default async function HomePage() {
             <p className="mx-auto max-w-[700px] text-primary-foreground/90 md:text-xl font-body mb-10">
               En Setranic, transformamos tus ideas en realidades digitales. Soluciones creativas y tecnológicas para impulsar tu negocio al siguiente nivel.
             </p>
+            <div className="mx-auto max-w-xs sm:max-w-md md:max-w-2xl px-4">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
+                <Link href="/servicios" className="group block" aria-label="Nuestros Servicios">
+                  <Image 
+                    src="/1.png" 
+                    alt="Botón de Servicios" 
+                    width={200} 
+                    height={150} 
+                    className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                    data-ai-hint="service icon"
+                  />
+                </Link>
+                <Link href="/updates" className="group block" aria-label="Últimas Noticias">
+                  <Image 
+                    src="/2.png" 
+                    alt="Botón de Noticias" 
+                    width={200} 
+                    height={150} 
+                    className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                    data-ai-hint="news icon"
+                  />
+                </Link>
+                <Link href="/contactanos" className="group block" aria-label="Contáctanos">
+                  <Image 
+                    src="/3.png" 
+                    alt="Botón de Contacto" 
+                    width={200} 
+                    height={150} 
+                    className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                    data-ai-hint="contact icon"
+                  />
+                </Link>
+              </div>
+            </div>
+          </div>
+          
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
             <div className="space-x-4">
               <Button asChild size="lg" className="font-body shadow-md hover:shadow-lg transition-shadow duration-300">
                 <Link href="/servicios">Nuestros Servicios</Link>
@@ -69,41 +106,6 @@ export default async function HomePage() {
               <Button asChild variant="ghost" size="lg" className="font-body border border-primary text-primary-foreground hover:bg-primary/10 hover:text-primary hover:shadow-lg transition-shadow duration-300 shadow-md">
                 <Link href="/contactanos">Contáctanos</Link>
               </Button>
-            </div>
-          </div>
-          
-          <div className="absolute bottom-4 md:bottom-10 left-1/2 -translate-x-1/2 w-full max-w-xs sm:max-w-md md:max-w-2xl px-4">
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
-              <Link href="/servicios" className="group block" aria-label="Nuestros Servicios">
-                <Image 
-                  src="/1.png" 
-                  alt="Botón de Servicios" 
-                  width={200} 
-                  height={150} 
-                  className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
-                  data-ai-hint="service icon"
-                />
-              </Link>
-              <Link href="/updates" className="group block" aria-label="Últimas Noticias">
-                <Image 
-                  src="/2.png" 
-                  alt="Botón de Noticias" 
-                  width={200} 
-                  height={150} 
-                  className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
-                  data-ai-hint="news icon"
-                />
-              </Link>
-              <Link href="/contactanos" className="group block" aria-label="Contáctanos">
-                <Image 
-                  src="/3.png" 
-                  alt="Botón de Contacto" 
-                  width={200} 
-                  height={150} 
-                  className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
-                  data-ai-hint="contact icon"
-                />
-              </Link>
             </div>
           </div>
 
