@@ -52,7 +52,7 @@ export default function HomePage() {
         <section className="w-full min-h-screen flex items-center justify-center overflow-hidden">
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent mb-6">
-              Innovación y Estrategia Digital
+              SETRANIC
             </h1>
             <p className="mx-auto max-w-[700px] text-primary-foreground/90 md:text-xl font-body mb-10">
               En Setranic, transformamos tus ideas en realidades digitales. Soluciones creativas y tecnológicas para impulsar tu negocio al siguiente nivel.
@@ -71,7 +71,7 @@ export default function HomePage() {
         <section className="w-full py-16 md:py-24 lg:py-28 bg-transparent">
           <div className="container mx-auto px-4 md:px-6">
             <div className="bg-background text-primary rounded-xl shadow-2xl max-w-4xl mx-auto">
-              <div className="px-8 md:px-12 pt-4">
+              <div className="px-8 md:px-12 pt-8">
                   <Image
                       src="/namesetranicwhyus3.svg"
                       alt="Por qué elegir Setranic"
@@ -80,7 +80,7 @@ export default function HomePage() {
                   />
               </div>
               <div className="px-8 md:px-12 pt-4 pb-8">
-                <p className="text-md md:text-lg font-body mb-10 md:mb-12 text-foreground/80">
+                <p className="text-left text-md md:text-lg font-body mb-10 md:mb-12 text-foreground/80">
                   Te compartimos algunas de las razones por las que somos tu mejor opción:
                 </p>
 
