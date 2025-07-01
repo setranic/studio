@@ -59,8 +59,8 @@ export default async function HomePage() {
             <Image
               src="/logostnblanconuew.svg"
               alt="Logo Setranic"
-              width={300}
-              height={113}
+              width={200}
+              height={75}
               className="mb-8"
             />
             <div className="bg-black/20 backdrop-blur-sm rounded-xl py-4 px-6 mb-6 border border-white/10">
