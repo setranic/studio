@@ -2,7 +2,7 @@
 "use server";
 
 import { db } from "@/lib/firebase";
-import { collection, addDoc, getDocs, serverTimestamp, query, orderBy, doc, updateDoc, deleteDoc, getDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, serverTimestamp, query, orderBy, doc, updateDoc, deleteDoc, getDoc, where, limit } from "firebase/firestore";
 import type { Publicacion } from "@/types";
 import { z } from "zod";
 
@@ -98,5 +98,38 @@ export async function deletePublicacion(id: string) {
   } catch (error) {
     console.error("Error deleting document: ", error);
     return { success: false, error: "Error al eliminar la publicación." };
+  }
+}
+
+export async function getPublicacionBySlug(slug: string): Promise<Publicacion | null> {
+  try {
+    // 1. Try to find by slug
+    const q = query(collection(db, "publicaciones"), where("slug", "==", slug), limit(1));
+    const querySnapshot = await getDocs(q);
+
+    let docSnap;
+    if (!querySnapshot.empty) {
+      docSnap = querySnapshot.docs[0];
+    } else {
+      // 2. If not found, try to find by ID (slug might be an ID)
+      const docRef = doc(db, "publicaciones", slug);
+      const maybeDocSnap = await getDoc(docRef);
+      if (maybeDocSnap.exists()) {
+        docSnap = maybeDocSnap;
+      } else {
+        return null; // Not found by slug or ID
+      }
+    }
+
+    const data = docSnap.data();
+    return {
+      id: docSnap.id,
+      ...data,
+      createdAt: data.createdAt?.toDate().toISOString(),
+    } as Publicacion;
+
+  } catch (error) {
+    console.error("Error fetching publication by slug or ID:", error);
+    return null;
   }
 }
