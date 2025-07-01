@@ -61,7 +61,7 @@ export default function HomePage() {
               <Button asChild size="lg" className="font-body shadow-md hover:shadow-lg transition-shadow duration-300">
                 <Link href="/servicios">Nuestros Servicios</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="font-body border-primary text-primary-foreground hover:bg-primary/10 hover:text-primary hover:shadow-lg transition-shadow duration-300 shadow-md">
+              <Button asChild variant="ghost" size="lg" className="font-body border border-primary text-primary-foreground hover:bg-primary/10 hover:text-primary hover:shadow-lg transition-shadow duration-300 shadow-md">
                 <Link href="/contactanos">Contáctanos</Link>
               </Button>
             </div>
@@ -71,14 +71,13 @@ export default function HomePage() {
         <section className="w-full py-16 md:py-24 lg:py-28 bg-transparent">
           <div className="container mx-auto px-4 md:px-6">
             <div className="bg-background text-primary rounded-xl shadow-2xl max-w-4xl mx-auto">
-              {/* Title Block with padding added */}
-              <div className="flex justify-start px-8 md:px-12 pt-4">
-                <Image
-                    src="/namesetranicwhyus3.svg"
-                    alt="Por qué elegir Setranic"
-                    width={400}
-                    height={342}
-                />
+              <div className="px-8 md:px-12 pt-4">
+                  <Image
+                      src="/namesetranicwhyus3.svg"
+                      alt="Por qué elegir Setranic"
+                      width={400}
+                      height={342}
+                  />
               </div>
               <div className="px-8 md:px-12 pt-4 pb-8">
                 <p className="text-md md:text-lg font-body mb-10 md:mb-12 text-foreground/80">
