@@ -1,36 +1,32 @@
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { CheckCircle } from 'lucide-react';
 
 const services = [
   {
-    title: "Consultoría Estratégica Digital",
-    description: "Analizamos tu negocio y te ayudamos a definir una hoja de ruta digital para alcanzar tus objetivos. Desde la optimización de procesos hasta la identificación de nuevas oportunidades.",
+    title: "TRANSPORTE DE CARGA",
+    description: "SETRANIC NICARAGUA, ofrecemos el servicio de transporte de carga nacional e internacional. Contamos con una flota equipada para todas tus operaciones. Consulta con nuestro equipo de ventas y consulta cuales son nuestros planes y servicios que adaptaremos a tus necesidades...",
     imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "business meeting",
-    features: ["Análisis de mercado", "Estrategia de transformación digital", "Optimización de ROI digital"]
+    aiHint: "cargo truck",
   },
   {
-    title: "Desarrollo Web y Aplicaciones",
-    description: "Creamos sitios web modernos, responsivos y aplicaciones móviles a medida que reflejan la identidad de tu marca y ofrecen una experiencia de usuario excepcional.",
+    title: "RASTREO DE MEDIOS EN TIEMPO REAL",
+    description: "En SETRANIC ofrecemos en nuestros Servicios de valor agregado, el rastreo en tiempo real de la mercancía para mantenerte al tanto del progreso de la operación. Consulta con nuestro equipo de ventas nuestros planes...",
     imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "web development",
-    features: ["Diseño UI/UX personalizado", "Desarrollo front-end y back-end", "E-commerce y plataformas web"]
+    aiHint: "satellite tracking",
   },
   {
-    title: "Marketing Digital Integral",
-    description: "Impulsamos tu presencia online a través de estrategias de marketing digital efectivas, incluyendo SEO, SEM, marketing de contenidos y gestión de redes sociales.",
+    title: "CARGA Y DESCARGA DE MERCANCÍAS",
+    description: "En SETRANIC contamos con equipos y personal, con la experiencia en el sector para realizar todas las maniobras que sean requeridas por nuestros clientes. Consulta con nuestro equipo las mejores condiciones para tus necesidades...",
     imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "digital marketing",
-    features: ["Optimización SEO", "Campañas de publicidad online (SEM)", "Gestión de redes sociales y contenido"]
+    aiHint: "forklift loading",
   },
    {
-    title: "Análisis de Datos e Inteligencia de Negocio",
-    description: "Transformamos tus datos en información valiosa para la toma de decisiones. Implementamos dashboards y reportes que te permiten entender mejor tu negocio y clientes.",
+    title: "SEGURO DE MERCANCÍAS",
+    description: "Contamos con el Servicio Adicional para el Seguro de las Mercancías en transito. Consulta con nuestro equipo de ventas en SETRANIC cuales son las mejores condiciones para tus necesidades, mantente conectado y visita nuestro portal STN Updates...",
     imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "data analytics",
-    features: ["Visualización de datos", "Implementación de BI", "Análisis predictivo"]
+    aiHint: "insurance document",
   }
 ];
 
@@ -40,7 +36,7 @@ export default function ServiciosPage() {
       <section className="text-center py-12 bg-gradient-to-b from-rose-50 to-background rounded-lg shadow-sm">
         <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary mb-4">Nuestros Servicios</h1>
         <p className="text-lg md:text-xl text-foreground max-w-2xl mx-auto font-body">
-          Ofrecemos una gama completa de soluciones digitales diseñadas para potenciar tu marca y optimizar tus operaciones.
+          Ofrecemos una gama completa de soluciones de logística y transporte diseñadas para potenciar tus operaciones.
         </p>
       </section>
 
@@ -58,19 +54,11 @@ export default function ServiciosPage() {
           </div>
           <div>
             <h2 className="text-3xl font-headline font-semibold text-primary mb-6">{service.title}</h2>
-            <p className="text-foreground/90 font-body mb-6 leading-relaxed">
+            <p className="text-foreground/90 font-body mb-8 leading-relaxed">
               {service.description}
             </p>
-            <ul className="space-y-2 mb-8">
-              {service.features.map(feature => (
-                <li key={feature} className="flex items-center font-body text-foreground/80">
-                  <CheckCircle className="h-5 w-5 text-accent mr-2 flex-shrink-0" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
             <Button asChild className="font-body shadow-md hover:shadow-lg transition-shadow duration-300">
-              <Link href="/contactanos">Más Información</Link>
+              <Link href="/contactanos">Consultar con Ventas</Link>
             </Button>
           </div>
         </section>
