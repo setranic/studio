@@ -69,7 +69,7 @@ export default async function HomePage() {
               </h1>
             </div>
             <p className="mx-auto max-w-[700px] text-primary-foreground/90 md:text-xl font-body mb-10">
-              En Setranic, transformamos tus ideas en realidades digitales. Soluciones creativas y tecnológicas para impulsar tu negocio al siguiente nivel.
+              Somos una empresa Nicaragüense de logística y transporte. Con amplia experiencia en la gestión de mercancías.
             </p>
             <div className="mx-auto max-w-xs sm:max-w-md md:max-w-2xl px-4">
               <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
