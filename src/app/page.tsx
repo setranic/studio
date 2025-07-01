@@ -55,7 +55,14 @@ export default async function HomePage() {
 
       <div className="relative z-10 flex flex-col items-center">
         <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-          <div className="container px-4 md:px-6 text-center">
+          <div className="container px-4 md:px-6 text-center flex flex-col items-center">
+            <Image
+              src="/LOGO STN BLANCO.SVG"
+              alt="Logo Setranic"
+              width={400}
+              height={150}
+              className="mb-8"
+            />
             <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent mb-6">
               ESTRATEGIAS SIN LIMITES
             </h1>
