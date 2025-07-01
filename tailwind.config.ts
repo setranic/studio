@@ -12,8 +12,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['var(--font-pt-sans)', ...fontFamily.sans], // Correctly use CSS variable
-        headline: ['var(--font-aristorelica-pro)', ...fontFamily.serif], // Updated to use Aristorelica Pro CSS variable
+        body: ['var(--font-pt-sans)', ...fontFamily.sans],
+        headline: ['var(--font-varela-round)', ...fontFamily.sans],
         code: ['monospace', ...fontFamily.mono],
       },
       colors: {

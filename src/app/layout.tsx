@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { PT_Sans } from 'next/font/google'; // Removed Playfair_Display
+import { PT_Sans, Varela_Round } from 'next/font/google'; // Import Varela_Round
 import './globals.css';
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
@@ -13,6 +13,13 @@ const ptSans = PT_Sans({
   subsets: ['latin'],
   variable: '--font-pt-sans',
   weight: ['400', '700'],
+});
+
+// Varela Round for headlines
+const varelaRound = Varela_Round({
+  subsets: ['latin'],
+  variable: '--font-varela-round',
+  weight: '400',
 });
 
 export const metadata: Metadata = {
@@ -33,8 +40,8 @@ export default function RootLayout({
       <body
         className={cn(
           'min-h-screen bg-background font-body antialiased flex flex-col',
-          // playfairDisplay.variable, // Removed
-          ptSans.variable
+          ptSans.variable,
+          varelaRound.variable // Add Varela Round variable
         )}
       >
         <AuthProvider> {/* Wrap content with AuthProvider */}

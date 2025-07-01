@@ -2,34 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add Aristorelica Pro font faces */
-@font-face {
-  font-family: 'Aristorelica Pro';
-  src: url('/fonts/AristorelicaPro-Regular.woff2') format('woff2'),
-       url('/fonts/AristorelicaPro-Regular.woff') format('woff');
-  font-weight: 400; /* normal */
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Aristorelica Pro';
-  src: url('/fonts/AristorelicaPro-Bold.woff2') format('woff2'),
-       url('/fonts/AristorelicaPro-Bold.woff') format('woff');
-  font-weight: 700; /* bold */
-  font-style: normal;
-  font-display: swap;
-}
-
 /* body styling will primarily come from font-body utility class via Tailwind */
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-aristorelica-pro), serif; /* Updated to use Aristorelica Pro variable */
-}
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* White */
+    --background: 0 0% 100%;
     --foreground: 339 30% 25%; /* Dark Rose Gray */
 
     --card: 0 59% 92%; /* Slightly darker than background for card */
@@ -59,9 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 
     --radius: 0.5rem;
 
-    /* Define the new font variable for headlines */
-    --font-aristorelica-pro: "Aristorelica Pro";
-    /* --font-pt-sans is defined by next/font in layout.tsx */
+    /* --font-varela-round and --font-pt-sans are defined by next/font in layout.tsx */
 
     /* Sidebar specific colors - can be adjusted if a sidebar is used more extensively */
     --sidebar-background: 0 59% 96%; /* Slightly lighter than main bg for contrast */
