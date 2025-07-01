@@ -7,6 +7,7 @@ import Footer from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { AuthProvider } from '@/contexts/AuthContext'; // Import AuthProvider
+import WhatsAppButton from '@/components/common/WhatsAppButton';
 
 // PT Sans for body text remains
 const ptSans = PT_Sans({
@@ -50,6 +51,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <WhatsAppButton />
           <Toaster />
         </AuthProvider>
       </body>
