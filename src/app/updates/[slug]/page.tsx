@@ -1,12 +1,12 @@
 
 import { getPublicacionBySlug } from '@/app/admin/publicaciones/actions';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { CalendarDays, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import PostImage from '@/components/PostImage';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const post = await getPublicacionBySlug(params.slug);
@@ -62,17 +62,7 @@ export default async function PublicacionPage({ params }: { params: { slug: stri
           )}
         </header>
         
-        <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden my-6 shadow-md">
-          <Image
-            src={post.imagenPortadaUrl}
-            alt={`Imagen de portada para ${post.titulo}`}
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 1024px"
-            priority
-            onError={(e) => { e.currentTarget.src = "https://placehold.co/1280x720.png"; }}
-          />
-        </div>
+        <PostImage src={post.imagenPortadaUrl} alt={`Imagen de portada para ${post.titulo}`} />
 
         <div 
           className="font-body text-base md:text-lg text-foreground/90 leading-relaxed whitespace-pre-wrap"
