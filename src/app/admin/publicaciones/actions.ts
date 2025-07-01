@@ -10,8 +10,8 @@ const publicacionSchema = z.object({
   titulo: z.string().min(3, "El título es requerido."),
   subtitulo: z.string().min(3, "El subtítulo es requerido."),
   contenido: z.string().min(10, "El contenido es muy corto."),
-  imagenPortadaUrl: z.string().url("URL de imagen de portada inválida.").startsWith("/", { message: "La URL de la imagen de portada debe ser una ruta relativa (ej: /publicaciones/imagen.jpg)"}),
-  imagenCarruselUrl: z.string().url("URL de imagen de carrusel inválida.").startsWith("/", { message: "La URL de la imagen de carrusel debe ser una ruta relativa (ej: /publicaciones/imagen-thumb.jpg)"}),
+  imagenPortadaUrl: z.string().startsWith("/", { message: "La URL de la imagen de portada debe ser una ruta relativa (ej: /publicaciones/imagen.jpg)"}),
+  imagenCarruselUrl: z.string().startsWith("/", { message: "La URL de la imagen de carrusel debe ser una ruta relativa (ej: /publicaciones/imagen-thumb.jpg)"}),
   slug: z.string().optional(),
 });
 
