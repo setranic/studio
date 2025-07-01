@@ -81,7 +81,7 @@ export default function HomePage() {
                 />
               </div>
               <div className="px-8 md:px-12 pt-4 pb-8">
-                <p className="text-center text-md md:text-lg font-body mb-10 md:mb-12 text-foreground/80">
+                <p className="text-md md:text-lg font-body mb-10 md:mb-12 text-foreground/80">
                   Te compartimos algunas de las razones por las que somos tu mejor opción:
                 </p>
 
