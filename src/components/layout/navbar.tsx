@@ -123,7 +123,7 @@ export default function Navbar() {
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center" aria-label="Setranic Home">
-            <Image src="/logostnrojo.svg" alt="Setranic Logo" width={50} height={50} />
+            <Image src="/logorojostn.svg" alt="Setranic Logo" width={50} height={50} />
           </Link>
 
           {/* Desktop Navigation */}
@@ -168,7 +168,7 @@ export default function Navbar() {
                 <div className="flex flex-col space-y-2">
                    <div className="flex justify-between items-center mb-4">
                      <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Image src="/logostnrojo.svg" alt="Setranic Logo" width={50} height={50} />
+                      <Image src="/logorojostn.svg" alt="Setranic Logo" width={50} height={50} />
                     </Link>
                     <SheetClose asChild>
                       <Button variant="ghost" size="icon" className="h-10 w-10" aria-label="Cerrar menú">
