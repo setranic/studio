@@ -75,9 +75,10 @@ export default function Navbar() {
   const NavLinkItem = ({ href, label, icon: Icon, onClick, isMobile = false }: { href: string; label: string; icon?: React.ElementType, onClick?: (e: React.MouseEvent) => void, isMobile?: boolean }) => {
     const commonProps = {
       className: cn(
-        'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 font-body flex items-center gap-2',
+        'px-3 py-2 rounded-md font-medium transition-colors duration-300 font-body flex items-center gap-2',
+        isMobile ? 'text-lg py-3' : 'text-sm', // Increase font size and padding for mobile
         pathname === href
-          ? 'bg-primary text-primary-foreground shadow-sm' // Changed from bg-accent to bg-primary
+          ? 'bg-primary text-primary-foreground shadow-sm'
           : 'text-foreground hover:bg-primary/10 hover:text-primary',
         'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2'
       ),
@@ -122,7 +123,7 @@ export default function Navbar() {
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center" aria-label="Setranic Home">
-            <Image src="/logo.svg" alt="Setranic Logo" width={50} height={50} />
+            <Image src="/logostnblanconuew.svg?v=1" alt="Setranic Logo" width={50} height={50} />
           </Link>
 
           {/* Desktop Navigation */}
@@ -163,38 +164,40 @@ export default function Navbar() {
                   <Menu className="h-6 w-6 text-primary" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-3/4 bg-background p-6 [&>button]:hidden">
-                <div className="flex flex-col space-y-4">
-                  <div className="flex justify-between items-center mb-6">
+              <SheetContent side="right" className="w-full max-w-xs bg-background p-4 [&>button]:hidden">
+                <div className="flex flex-col space-y-2">
+                   <div className="flex justify-between items-center mb-4">
                      <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Image src="/logo.svg" alt="Setranic Logo" width={50} height={50} />
+                      <Image src="/logostnblanconuew.svg?v=1" alt="Setranic Logo" width={50} height={50} />
                     </Link>
                     <SheetClose asChild>
-                      <Button variant="ghost" size="icon" aria-label="Cerrar menú">
+                      <Button variant="ghost" size="icon" className="h-10 w-10" aria-label="Cerrar menú">
                         <X className="h-6 w-6 text-primary" />
                       </Button>
                     </SheetClose>
                   </div>
                   {navLinks.map((link) => (
-                    <NavLinkItem
-                      key={link.href}
-                      href={link.href}
-                      label={link.label}
-                      icon={link.icon}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      isMobile={true}
-                    />
+                    <SheetClose asChild key={link.href}>
+                       <NavLinkItem
+                        href={link.href}
+                        label={link.label}
+                        icon={link.icon}
+                        isMobile={true}
+                      />
+                    </SheetClose>
                   ))}
                   {/* Admin link for mobile */}
-                  <NavLinkItem
-                    href={adminNavLink.href}
-                    label={adminNavLink.label}
-                    icon={adminNavLink.icon}
-                    onClick={handleAdminClick}
-                    isMobile={true}
-                  />
+                   <SheetClose asChild>
+                      <NavLinkItem
+                        href={adminNavLink.href}
+                        label={adminNavLink.label}
+                        icon={adminNavLink.icon}
+                        onClick={handleAdminClick}
+                        isMobile={true}
+                      />
+                   </SheetClose>
                   {user && (
-                    <Button onClick={() => { handleSignOut(); setIsMobileMenuOpen(false); }} variant="ghost" className="w-full justify-start font-body text-red-600 hover:!text-red-600 hover:!bg-red-100">
+                    <Button onClick={() => { handleSignOut(); setIsMobileMenuOpen(false); }} variant="ghost" className="w-full justify-start text-lg py-3 font-body text-red-600 hover:!text-red-600 hover:!bg-red-100">
                       <LogOut className="mr-2 h-4 w-4" /> Cerrar Sesión
                     </Button>
                   )}
