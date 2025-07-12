@@ -57,7 +57,7 @@ export default async function HomePage() {
         <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
           <div className="container px-4 md:px-6 text-center flex flex-col items-center">
             <Image
-              src="/logostnblanconuew.svg?v=1"
+              src="/logostnblanconuew.svg?v=2"
               alt="Logo Setranic"
               width={200}
               height={75}
@@ -71,9 +71,9 @@ export default async function HomePage() {
             <p className="mx-auto max-w-[700px] text-primary-foreground/90 md:text-xl font-body mb-10">
               Somos una empresa Nicaragüense de logística y transporte. Con amplia experiencia en la gestión de mercancías.
             </p>
-            <div className="mx-auto max-w-xs sm:max-w-md md:max-w-2xl px-4">
-              <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
-                <Link href="/servicios" className="group block p-2" aria-label="Nuestros Servicios">
+            <div className="mx-auto w-full max-w-xs sm:max-w-md md:max-w-2xl px-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <Link href="/servicios" className="group block" aria-label="Nuestros Servicios">
                   <Image 
                     src="/1.png" 
                     alt="Botón de Servicios" 
@@ -83,7 +83,7 @@ export default async function HomePage() {
                     data-ai-hint="service icon"
                   />
                 </Link>
-                <Link href="/updates" className="group block p-2" aria-label="Últimas Noticias">
+                <Link href="/updates" className="group block" aria-label="Últimas Noticias">
                   <Image 
                     src="/2.png" 
                     alt="Botón de Noticias" 
@@ -93,7 +93,7 @@ export default async function HomePage() {
                     data-ai-hint="news icon"
                   />
                 </Link>
-                <Link href="/contactanos" className="group block p-2" aria-label="Contáctanos">
+                <Link href="/contactanos" className="group block" aria-label="Contáctanos">
                   <Image 
                     src="/3.png" 
                     alt="Botón de Contacto" 
