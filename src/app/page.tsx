@@ -108,9 +108,7 @@ export default async function HomePage() {
           </div>
           
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-            <div className="space-x-4">
-              
-            </div>
+            
           </div>
 
         </section>
