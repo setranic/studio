@@ -72,7 +72,7 @@ export default async function HomePage() {
               Somos una empresa Nicaragüense de logística y transporte. Con amplia experiencia en la gestión de mercancías.
             </p>
             <div className="mx-auto w-full max-w-sm sm:max-w-md md:max-w-lg px-4">
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Link href="/servicios" className="group block" aria-label="Nuestros Servicios">
                   <Image 
                     src="/1.png" 
