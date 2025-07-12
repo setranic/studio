@@ -107,10 +107,6 @@ export default async function HomePage() {
             </div>
           </div>
           
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-            
-          </div>
-
         </section>
 
         <section className="w-full py-16 md:py-24 lg:py-28 bg-transparent">
