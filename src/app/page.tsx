@@ -54,7 +54,7 @@ export default async function HomePage() {
       <div className="fixed inset-0 bg-black opacity-50 z-[1]"></div>
 
       <div className="relative z-10 flex flex-col items-center">
-        <section className="relative w-full min-h-screen flex justify-center overflow-hidden pt-24">
+        <section className="relative w-full flex justify-center overflow-hidden min-h-[calc(100vh-64px)] pt-12 pb-12 md:pt-24">
           <div className="container px-4 md:px-6 text-center flex flex-col items-center">
             <Image
               src="/logostnblanconuew.svg?v=2"
