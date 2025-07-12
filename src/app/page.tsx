@@ -71,7 +71,7 @@ export default async function HomePage() {
             <p className="mx-auto max-w-[700px] text-primary-foreground/90 md:text-xl font-body mb-10">
               Somos una empresa Nicaragüense de logística y transporte. Con amplia experiencia en la gestión de mercancías.
             </p>
-            <div className="mx-auto w-full max-w-xs sm:max-w-md md:max-w-lg px-4">
+            <div className="mx-auto w-full max-w-xs md:max-w-lg px-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Link href="/servicios" className="group block" aria-label="Nuestros Servicios">
                   <Image 
