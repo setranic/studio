@@ -72,7 +72,7 @@ export default function NosotrosPage() {
             {/* Initial View */}
             <div className="flex flex-col md:flex-row items-center justify-between w-full gap-8">
               {/* Left Side: About Card */}
-              <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center">
+              <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
                   <div className="relative w-full max-w-xs md:max-w-md lg:max-w-lg">
                       <Image
                           src="/nosotros/sobrenosotroscard.svg"
