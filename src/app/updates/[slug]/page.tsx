@@ -1,5 +1,4 @@
-
-import { getPublicacionBySlug } from '@/app/admin/publicaciones/actions';
+import { getPublicacionBySlug } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import { CalendarDays, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,8 +8,6 @@ import { Card } from '@/components/ui/card';
 import type { Metadata } from 'next';
 import ClientFormattedDate from './ClientFormattedDate';
 import { getPostSlugs } from '@/lib/static-paths';
-import type { Publicacion } from '@/types';
-
 
 // Generate static pages for each publication using a local, static list of slugs
 export async function generateStaticParams() {
@@ -37,7 +34,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     description: post.subtitulo,
   };
 }
-
 
 // This is a Server Component that fetches data during the build
 export default async function PublicacionPage({ params }: { params: { slug: string } }) {
