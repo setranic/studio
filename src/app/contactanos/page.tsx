@@ -32,7 +32,7 @@ export default function ContactanosPage() {
                 <Phone className="h-6 w-6 text-accent mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-body font-semibold text-foreground">Teléfono</h3>
-                  <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-colors font-body">+1 (234) 567-890</a>
+                  <a href="tel:+50575301222" className="text-muted-foreground hover:text-primary transition-colors font-body">+(505) 7530-1222</a>
                 </div>
               </li>
               <li className="flex items-start">
