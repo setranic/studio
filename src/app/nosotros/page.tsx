@@ -1,7 +1,7 @@
-
 "use client";
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function NosotrosPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -36,11 +36,14 @@ export default function NosotrosPage() {
       </div>
       <div className="fixed inset-0 bg-black opacity-50 z-[1]"></div>
       
-      {/* El contenido futuro se puede añadir aquí, sobre el video. 
-          Debe tener un z-index mayor a 1, por ejemplo, `relative z-10`.
-      */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-64px)] text-white">
-        {/* Aquí puedes agregar títulos u otro contenido en el futuro */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-64px)] p-4">
+        <Image
+          src="/nosotros/sobrenosotroscard.svg"
+          alt="Sobre Nosotros Card"
+          width={800} // Ancho base, se ajustará con las clases de Tailwind
+          height={600} // Alto base, se ajustará con las clases de Tailwind
+          className="w-full max-w-lg md:max-w-2xl lg:max-w-4xl" // Clases para responsive
+        />
       </div>
     </>
   );
