@@ -2,7 +2,7 @@
 "use client";
 
 import type { Metadata } from 'next';
-import { PT_Sans, Playfair_Display } from 'next/font/google';
+import { Varela_Round, PT_Sans } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
@@ -12,19 +12,20 @@ import { AuthProvider } from '@/contexts/AuthContext';
 import WhatsAppButton from '@/components/common/WhatsAppButton';
 import { usePathname } from 'next/navigation';
 
-// PT Sans for body text remains
+// Varela Round for headlines
+const varelaRound = Varela_Round({
+  subsets: ['latin'],
+  variable: '--font-varela-round',
+  weight: ['400'],
+});
+
+// PT Sans for body text
 const ptSans = PT_Sans({
   subsets: ['latin'],
   variable: '--font-pt-sans',
   weight: ['400', '700'],
 });
 
-// Playfair Display for headlines
-const playfairDisplay = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  weight: ['400', '700'],
-});
 
 // Metadata can't be dynamic in a client component, 
 // so we'll define it statically here. 
@@ -66,8 +67,8 @@ export default function RootLayout({
       <body
         className={cn(
           'min-h-screen bg-background font-body antialiased flex flex-col',
-          ptSans.variable,
-          playfairDisplay.variable
+          varelaRound.variable,
+          ptSans.variable
         )}
       >
         <AuthProvider>

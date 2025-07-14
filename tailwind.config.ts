@@ -14,7 +14,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['var(--font-pt-sans)', ...fontFamily.sans],
-        headline: ['var(--font-playfair)', ...fontFamily.serif],
+        headline: ['var(--font-varela-round)', ...fontFamily.serif],
         code: ['monospace', ...fontFamily.mono],
       },
       colors: {
