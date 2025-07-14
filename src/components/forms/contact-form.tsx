@@ -31,7 +31,7 @@ const formSchema = z.object({
   name: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
   email: z.string().email({ message: "Por favor, introduce un email válido." }),
   phone: z.string().optional(),
-  service: z.enum(["consultoria", "desarrollo_web", "marketing_digital", "otro"], {
+  service: z.enum(["transporte_carga", "transporte_local", "distribucion", "agencia_aduanera", "almacen_fiscal", "rastreo_medios", "seguro_carga", "otro"], {
     errorMap: () => ({ message: "Por favor, selecciona un tipo de servicio." }),
   }),
   message: z.string().min(10, { message: "El mensaje debe tener al menos 10 caracteres." }).max(500, { message: "El mensaje no puede exceder los 500 caracteres." }),
@@ -154,9 +154,13 @@ export default function ContactForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="consultoria" className="font-body">Consultoría Estratégica</SelectItem>
-                  <SelectItem value="desarrollo_web" className="font-body">Desarrollo Web y Apps</SelectItem>
-                  <SelectItem value="marketing_digital" className="font-body">Marketing Digital</SelectItem>
+                  <SelectItem value="transporte_carga" className="font-body">TRANSPORTE DE CARGA</SelectItem>
+                  <SelectItem value="transporte_local" className="font-body">TRANSPORTE LOCAL</SelectItem>
+                  <SelectItem value="distribucion" className="font-body">DISTRIBUCION</SelectItem>
+                  <SelectItem value="agencia_aduanera" className="font-body">AGENCIA ADUANERA</SelectItem>
+                  <SelectItem value="almacen_fiscal" className="font-body">ALMACEN FISCAL</SelectItem>
+                  <SelectItem value="rastreo_medios" className="font-body">RASTREO DE MEDIOS</SelectItem>
+                  <SelectItem value="seguro_carga" className="font-body">SEGURO DE CARGA</SelectItem>
                   <SelectItem value="otro" className="font-body">Otro</SelectItem>
                 </SelectContent>
               </Select>

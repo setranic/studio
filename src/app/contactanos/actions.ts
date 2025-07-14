@@ -10,7 +10,7 @@ const formSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
   email: z.string().email("Por favor, introduce un email válido."),
   phone: z.string().optional(),
-  service: z.enum(["consultoria", "desarrollo_web", "marketing_digital", "otro"], {
+  service: z.enum(["transporte_carga", "transporte_local", "distribucion", "agencia_aduanera", "almacen_fiscal", "rastreo_medios", "seguro_carga", "otro"], {
     errorMap: () => ({ message: "Por favor, selecciona un tipo de servicio." }),
   }),
   message: z.string().min(10, "El mensaje debe tener al menos 10 caracteres.").max(500, "El mensaje no puede exceder los 500 caracteres."),

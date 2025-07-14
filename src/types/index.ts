@@ -17,7 +17,7 @@ export interface Contacto {
   name: string;
   email: string;
   phone?: string;
-  service: "consultoria" | "desarrollo_web" | "marketing_digital" | "otro";
+  service: "transporte_carga" | "transporte_local" | "distribucion" | "agencia_aduanera" | "almacen_fiscal" | "rastreo_medios" | "seguro_carga" | "otro";
   message: string;
   submittedAt?: Timestamp;
 }

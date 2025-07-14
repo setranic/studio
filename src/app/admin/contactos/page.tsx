@@ -14,9 +14,13 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 const serviceLabels: Record<Contacto["service"], string> = {
-  consultoria: "Consultoría Estratégica",
-  desarrollo_web: "Desarrollo Web/Apps",
-  marketing_digital: "Marketing Digital",
+  transporte_carga: "TRANSPORTE DE CARGA",
+  transporte_local: "TRANSPORTE LOCAL",
+  distribucion: "DISTRIBUCION",
+  agencia_aduanera: "AGENCIA ADUANERA",
+  almacen_fiscal: "ALMACEN FISCAL",
+  rastreo_medios: "RASTREO DE MEDIOS",
+  seguro_carga: "SEGURO DE CARGA",
   otro: "Otro"
 };
 
