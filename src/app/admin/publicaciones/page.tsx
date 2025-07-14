@@ -192,13 +192,13 @@ export default function PublicacionesAdminPage() {
           </div>
           <div>
             <Label htmlFor="imagenPortadaUrl" className="font-body text-foreground">URL Imagen de Portada</Label>
-            <Input id="imagenPortadaUrl" value={imagenPortadaUrl} onChange={(e) => setImagenPortadaUrl(e.target.value)} placeholder="Ej: /publicaciones/portada.jpg" required className="font-body"/>
+            <Input id="imagenPortadaUrl" value={imagenPortadaUrl} onChange={(e) => setImagenPortadaUrl(e.target.value)} placeholder="Ej: /studio/publicaciones/portada.jpg" required className="font-body"/>
             {formErrors.imagenPortadaUrl && <p className="text-sm text-destructive mt-1">{formErrors.imagenPortadaUrl.join(', ')}</p>}
             <p className="text-xs text-muted-foreground mt-1">Sube la imagen a la carpeta `public/publicaciones` y luego ingresa la ruta aquí.</p>
           </div>
           <div>
             <Label htmlFor="imagenCarruselUrl" className="font-body text-foreground">URL Imagen para Carrusel/Miniatura</Label>
-            <Input id="imagenCarruselUrl" value={imagenCarruselUrl} onChange={(e) => setImagenCarruselUrl(e.target.value)} placeholder="Ej: /publicaciones/thumbnail.jpg" required className="font-body"/>
+            <Input id="imagenCarruselUrl" value={imagenCarruselUrl} onChange={(e) => setImagenCarruselUrl(e.target.value)} placeholder="Ej: /studio/publicaciones/thumbnail.jpg" required className="font-body"/>
             {formErrors.imagenCarruselUrl && <p className="text-sm text-destructive mt-1">{formErrors.imagenCarruselUrl.join(', ')}</p>}
              <p className="text-xs text-muted-foreground mt-1">Sube la imagen a la carpeta `public/publicaciones` y luego ingresa la ruta aquí.</p>
           </div>

@@ -90,7 +90,7 @@ export default function HomePage() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/VIDEO.mp4" type="video/mp4" />
+          <source src="/studio/VIDEO.mp4" type="video/mp4" />
           Tu navegador no soporta el tag de video.
         </video>
       </div>
@@ -100,7 +100,7 @@ export default function HomePage() {
         <section className="relative w-full flex flex-col justify-start overflow-hidden min-h-[calc(100vh-64px)] pt-4 pb-12 md:pt-24">
           <div className="container px-4 md:px-6 text-center flex flex-col items-center">
             <Image
-              src="/logostnblanconuew.svg?v=2"
+              src="/studio/logostnblanconuew.svg?v=2"
               alt="Logo Setranic"
               width={200}
               height={75}
@@ -118,7 +118,7 @@ export default function HomePage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                  <Link href="https://www.instagram.com/setranic/" target="_blank" rel="noopener noreferrer" className="group block" aria-label="Nuestro Instagram">
                   <Image 
-                    src="/1.png" 
+                    src="/studio/1.png" 
                     alt="Botón de Instagram" 
                     width={200} 
                     height={150} 
@@ -128,7 +128,7 @@ export default function HomePage() {
                 </Link>
                 <Link href="mailto:info@setranic.com" className="group block" aria-label="Enviar un correo">
                   <Image 
-                    src="/2.png" 
+                    src="/studio/2.png" 
                     alt="Botón de Correo" 
                     width={200} 
                     height={150} 
@@ -138,7 +138,7 @@ export default function HomePage() {
                 </Link>
                 <Link href="https://www.facebook.com/Setranic/" target="_blank" rel="noopener noreferrer" className="group block" aria-label="Nuestro Facebook">
                   <Image 
-                    src="/3.png" 
+                    src="/studio/3.png" 
                     alt="Botón de Facebook" 
                     width={200} 
                     height={150} 
@@ -157,7 +157,7 @@ export default function HomePage() {
             <div className="bg-background text-primary rounded-xl shadow-2xl max-w-4xl mx-auto">
               <div className="px-8 md:px-12 pt-8">
                   <Image
-                      src="/namesetranicwhyus3.svg"
+                      src="/studio/namesetranicwhyus3.svg"
                       alt="Por qué elegir Setranic"
                       width={400}
                       height={342}
@@ -194,7 +194,7 @@ export default function HomePage() {
               </h2>
               <div className="flex justify-center mt-4 mb-6">
                 <Image
-                  src="/SERVSETIcon.svg"
+                  src="/studio/SERVSETIcon.svg"
                   alt="Icono Servicios Setranic"
                   width={500}
                   height={500}

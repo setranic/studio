@@ -8,12 +8,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Target, Eye, Compass, ArrowLeft } from 'lucide-react';
 
 const valorAgregadoItems = [
-  { src: "/nosotros/valor agregado/principal.png", alt: "Valor Agregado" },
-  { src: "/nosotros/valor agregado/1.png", alt: "Inspección Continua" },
-  { src: "/nosotros/valor agregado/2.png", alt: "Rastreo de Mercancías" },
-  { src: "/nosotros/valor agregado/3.png", alt: "Personal Certificado" },
-  { src: "/nosotros/valor agregado/4.png", alt: "Cadena Logística" },
-  { src: "/nosotros/valor agregado/5.png", alt: "Atención Personalizada" },
+  { src: "/studio/nosotros/valor agregado/principal.png", alt: "Valor Agregado" },
+  { src: "/studio/nosotros/valor agregado/1.png", alt: "Inspección Continua" },
+  { src: "/studio/nosotros/valor agregado/2.png", alt: "Rastreo de Mercancías" },
+  { src: "/studio/nosotros/valor agregado/3.png", alt: "Personal Certificado" },
+  { src: "/studio/nosotros/valor agregado/4.png", alt: "Cadena Logística" },
+  { src: "/studio/nosotros/valor agregado/5.png", alt: "Atención Personalizada" },
 ];
 
 const infoCards = [
@@ -59,7 +59,7 @@ export default function NosotrosPage() {
           poster="https://placehold.co/1920x1080.png"
           data-ai-hint="office background"
         >
-          <source src="/nosotros/video/nosotrosstn.mp4" type="video/mp4" />
+          <source src="/studio/nosotros/video/nosotrosstn.mp4" type="video/mp4" />
           Tu navegador no soporta el tag de video.
         </video>
       </div>
@@ -75,14 +75,14 @@ export default function NosotrosPage() {
               <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
                   <div className="relative w-full max-w-xs md:max-w-md lg:max-w-lg">
                       <Image
-                          src="/nosotros/sobrenosotroscard.svg"
+                          src="/studio/nosotros/sobrenosotroscard.svg"
                           alt="Sobre Nosotros Card"
                           width={800} 
                           height={600} 
                           className="w-full h-auto opacity-50"
                       />
                       <Image
-                          src="/nosotros/sobrenosotroscardtext.svg"
+                          src="/studio/nosotros/sobrenosotroscardtext.svg"
                           alt="Sobre Nosotros Texto"
                           width={800}
                           height={600}
