@@ -1,5 +1,5 @@
 
-"use server";
+"use client";
 
 import * as z from "zod";
 import { db } from "@/lib/firebase";
