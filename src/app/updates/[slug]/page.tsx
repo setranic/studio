@@ -1,68 +1,50 @@
-"use client";
 
-import { useState, useEffect } from 'react';
-import { notFound } from 'next/navigation';
 import { getPublicacionBySlug } from '@/app/admin/publicaciones/actions';
-import type { Publicacion } from '@/types';
-import { CalendarDays, ArrowLeft, Loader2 } from 'lucide-react';
+import { notFound } from 'next/navigation';
+import { CalendarDays, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import PostImage from '@/components/PostImage';
 import { Card } from '@/components/ui/card';
+import type { Metadata } from 'next';
 import ClientFormattedDate from './ClientFormattedDate';
+import { getPostSlugs } from '@/lib/static-paths';
+import type { Publicacion } from '@/types';
 
-export default function PublicacionPage({ params }: { params: { slug: string } }) {
-  const [post, setPost] = useState<Publicacion | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!params.slug) {
-      setIsLoading(false);
-      setError("No se proporcionó slug.");
-      return;
-    }
+// Generate static pages for each publication using a local, static list of slugs
+export async function generateStaticParams() {
+  const slugs = await getPostSlugs();
+  return slugs.map((slug) => ({
+    slug,
+  }));
+}
 
-    const fetchPost = async () => {
-      setIsLoading(true);
-      try {
-        const fetchedPost = await getPublicacionBySlug(params.slug);
-        if (fetchedPost) {
-          setPost(fetchedPost);
-          // Set document title dynamically
-          document.title = `${fetchedPost.titulo} | Setranic`;
-        } else {
-          setError("Publicación no encontrada.");
-        }
-      } catch (err) {
-        console.error("Error fetching post:", err);
-        setError("Error al cargar la publicación.");
-      } finally {
-        setIsLoading(false);
-      }
+// Generate metadata for each page
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  // This fetch now happens at build time for each generated page
+  const post = await getPublicacionBySlug(params.slug);
+  
+  if (!post) {
+    return {
+      title: 'Post No Encontrado',
+      description: 'La publicación que buscas no existe.',
     };
-
-    fetchPost();
-  }, [params.slug]);
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[60vh]">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-        <p className="ml-4 text-lg font-body">Cargando publicación...</p>
-      </div>
-    );
   }
 
-  if (error) {
-     // You can render a custom error component or use Next.js's notFound()
-     // For this static export context, showing an error message is better.
-     notFound();
-  }
+  return {
+    title: `${post.titulo} | Setranic`,
+    description: post.subtitulo,
+  };
+}
+
+
+// This is a Server Component that fetches data during the build
+export default async function PublicacionPage({ params }: { params: { slug: string } }) {
+  const post = await getPublicacionBySlug(params.slug);
 
   if (!post) {
-    // This case is mostly covered by the error state, but as a fallback.
-    return notFound();
+    notFound();
   }
 
   return (
@@ -79,6 +61,7 @@ export default function PublicacionPage({ params }: { params: { slug: string } }
           <p className="text-lg md:text-xl text-muted-foreground font-body">{post.subtitulo}</p>
           <div className="flex items-center text-sm text-muted-foreground font-body">
             <CalendarDays className="mr-2 h-4 w-4" />
+            {/* ClientFormattedDate handles date formatting safely on the client to avoid hydration errors */}
             <ClientFormattedDate date={post.createdAt} />
           </div>
         </header>
