@@ -13,11 +13,7 @@ import { getPublicacionBySlug } from '@/app/admin/publicaciones/actions';
 import type { Publicacion } from '@/types';
 import { Card } from '@/components/ui/card';
 
-type Props = {
-  params: { slug: string };
-};
-
-export default function PublicacionPage({ params }: Props) {
+export default function PublicacionPage({ params }: { params: { slug: string } }) {
   const [post, setPost] = useState<Publicacion | null | undefined>(undefined);
   const { slug } = params;
 
