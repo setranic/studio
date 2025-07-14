@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Target, Eye, Compass, ArrowLeft } from 'lucide-react';
-import Footer from '@/components/layout/footer';
 
 const valorAgregadoItems = [
   { src: "/nosotros/valor agregado/principal.png", alt: "Valor Agregado" },
@@ -148,7 +147,6 @@ export default function NosotrosPage() {
           </>
         )}
       </div>
-       <Footer />
     </>
   );
 }
