@@ -15,7 +15,9 @@ export async function getPostSlugs(): Promise<string[]> {
   // Add slugs here manually for each new publication.
   // This array tells Next.js which pages to pre-render at build time.
   const staticSlugs = [
-    'bienvenidos-a-setranic', // This is an example slug. Replace or remove it.
+    'regulaciones-permisos-aduaneros',
+    'recomendaciones-carga-internacional-nicaragua',
+    'rutas-aduaneras-terrestres-nicaragua'
   ];
 
   return staticSlugs;
