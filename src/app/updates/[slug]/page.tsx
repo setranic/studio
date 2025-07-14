@@ -1,27 +1,25 @@
-import { getPublicacionBySlug, getPublicaciones } from '@/app/admin/publicaciones/actions';
+import { getPublicacionBySlug } from '@/app/admin/publicaciones/actions';
 import { notFound } from 'next/navigation';
-import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
 import { CalendarDays, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import PostImage from '@/components/PostImage';
-import type { Publicacion } from '@/types';
 import { Card } from '@/components/ui/card';
 import type { Metadata } from 'next';
-import { Timestamp } from 'firebase/firestore';
 import ClientFormattedDate from './ClientFormattedDate';
+import { getPostSlugs } from '@/lib/static-paths';
+import type { Publicacion } from '@/types';
 
 
 interface PageProps {
   params: { slug: string };
 }
 
-// Generate static pages for each publication
+// Generate static pages for each publication using a local, static list of slugs
 export async function generateStaticParams() {
-  const posts = await getPublicaciones();
-  return posts.map((post) => ({
-    slug: post.slug || post.id,
+  const slugs = await getPostSlugs();
+  return slugs.map((slug) => ({
+    slug,
   }));
 }
 
@@ -40,6 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+// This is a Server Component that fetches data during the build
 export default async function PublicacionPage({ params }: PageProps) {
   const post = await getPublicacionBySlug(params.slug);
 
@@ -61,6 +60,7 @@ export default async function PublicacionPage({ params }: PageProps) {
           <p className="text-lg md:text-xl text-muted-foreground font-body">{post.subtitulo}</p>
           <div className="flex items-center text-sm text-muted-foreground font-body">
             <CalendarDays className="mr-2 h-4 w-4" />
+            {/* ClientFormattedDate handles date formatting safely on the client */}
             <ClientFormattedDate date={post.createdAt} />
           </div>
         </header>

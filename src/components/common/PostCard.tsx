@@ -14,7 +14,7 @@ interface PostCardProps {
 }
 
 function ClientFormattedDate({ date }: { date: string | Timestamp | undefined }) {
-  const [formattedDate, setFormattedDate] = useState<string>('');
+  const [formattedDate, setFormattedDate] = useState<string>('Cargando fecha...');
 
   useEffect(() => {
     if (date) {
