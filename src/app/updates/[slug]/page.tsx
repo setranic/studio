@@ -8,6 +8,11 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import PostImage from '@/components/PostImage';
 import type { Publicacion } from '@/types';
+import type { Metadata } from 'next';
+
+type Props = {
+  params: { slug: string };
+};
 
 // This function tells Next.js which routes to pre-render at build time.
 export async function generateStaticParams() {
@@ -19,7 +24,7 @@ export async function generateStaticParams() {
 }
 
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPublicacionBySlug(params.slug);
 
   if (!post) {
@@ -46,7 +51,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function PublicacionPage({ params }: { params: { slug: string } }) {
+export default async function PublicacionPage({ params }: Props) {
   const post = await getPublicacionBySlug(params.slug);
 
   if (!post) {
