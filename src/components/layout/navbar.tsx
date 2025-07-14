@@ -20,6 +20,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 
 const navLinksBase = [
@@ -72,23 +78,25 @@ export default function Navbar() {
   const adminNavLink = { href: '/admin', label: 'Admin', icon: ShieldCheck };
 
 
-  const NavLinkItem = ({ href, label, icon: Icon, onClick, isMobile = false }: { href: string; label: string; icon?: React.ElementType, onClick?: (e: React.MouseEvent) => void, isMobile?: boolean }) => {
+  const NavLinkItem = ({ href, label, icon: Icon, onClick, isMobile = false, ...props }: { href: string; label?: string; icon?: React.ElementType, onClick?: (e: React.MouseEvent) => void, isMobile?: boolean, [key: string]: any }) => {
     const commonProps = {
       className: cn(
         'px-3 py-2 rounded-md font-medium transition-colors duration-300 font-body flex items-center gap-2',
         isMobile ? 'text-lg py-3' : 'text-sm', // Increase font size and padding for mobile
+        !label && !isMobile ? 'justify-center' : '',
         pathname === href
           ? 'bg-primary text-primary-foreground shadow-sm'
           : 'text-foreground hover:bg-primary/10 hover:text-primary',
         'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2'
       ),
       'aria-current': pathname === href ? 'page' : undefined,
+      ...props
     };
 
     if (onClick && !isMobile) { // For non-mobile with custom click (like Admin button)
        return (
         <button onClick={onClick} {...commonProps}>
-          {Icon && <Icon className="h-4 w-4" />}
+          {Icon && <Icon className="h-5 w-5" />}
           {label}
         </button>
       );
@@ -96,7 +104,7 @@ export default function Navbar() {
     
     return (
       <Link href={href} onClick={onClick} {...commonProps}>
-        {Icon && <Icon className="h-4 w-4" />}
+        {Icon && <Icon className="h-5 w-5" />}
         {label}
       </Link>
     );
@@ -152,7 +160,21 @@ export default function Navbar() {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <NavLinkItem href={adminNavLink.href} label={adminNavLink.label} icon={adminNavLink.icon} onClick={handleAdminClick} />
+               <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                     <NavLinkItem 
+                       href={adminNavLink.href} 
+                       icon={adminNavLink.icon} 
+                       onClick={handleAdminClick} 
+                       aria-label="Admin Panel"
+                     />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Admin Panel</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             )}
           </nav>
 
@@ -176,12 +198,11 @@ export default function Navbar() {
                       </Button>
                     </SheetClose>
                   </div>
-                  {navLinks.map((link) => (
+                  {navLinksBase.map((link) => (
                     <SheetClose asChild key={link.href}>
                        <NavLinkItem
                         href={link.href}
                         label={link.label}
-                        icon={link.icon}
                         isMobile={true}
                       />
                     </SheetClose>
