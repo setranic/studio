@@ -1,3 +1,4 @@
+
 import ContactForm from '@/components/forms/contact-form';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
@@ -46,10 +47,13 @@ export default function ContactanosPage() {
           </div>
           <div className="bg-card p-8 rounded-xl shadow-xl h-64 md:h-80">
              <h2 className="text-2xl font-headline font-semibold text-primary mb-6">Nuestra Ubicación</h2>
-            {/* Placeholder for map. In a real app, use @vis.gl/react-google-maps or an iframe */}
-            <div className="w-full h-full bg-muted rounded-md flex items-center justify-center">
-              <p className="text-muted-foreground font-body italic">Mapa embebido aquí</p>
-            </div>
+            <iframe 
+              src="https://www.google.com/maps/d/u/0/embed?mid=1hrVpBwjBxdXdYDoMnCZZoImGWMYefAQ&ehbc=2E312F&noprof=1" 
+              className="w-full h-full border-0 rounded-md"
+              allowFullScreen={false} 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </section>
