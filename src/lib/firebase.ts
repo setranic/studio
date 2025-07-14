@@ -72,13 +72,13 @@ if (missingKeysFound) {
 }
 
 // Example placeholder check - adjust if your actual placeholder is different
-if (firebaseConfig.apiKey === "AIzaSyCQvQk24Z0MzULV2-8QMVStYAO1lrUsMBY_EXAMPLE_DO_NOT_USE" || firebaseConfig.apiKey?.includes("YOUR_API_KEY") || firebaseConfig.apiKey?.includes("_EXAMPLE_")) {
- console.warn(
-   "ADVERTENCIA: La Firebase API Key (NEXT_PUBLIC_FIREBASE_API_KEY) que se está utilizando parece ser un valor de ejemplo/placeholder. " +
-   "Si este es tu proyecto real, asegúrate de que estás usando tu API Key única desde la consola de Firebase. " +
-   "Usar un placeholder genérico resultará en errores como 'auth/invalid-api-key'."
- );
-}
+// if (firebaseConfig.apiKey === "AIzaSyCQvQk24Z0MzULV2-8QMVStYAO1lrUsMBY_EXAMPLE_DO_NOT_USE" || firebaseConfig.apiKey?.includes("YOUR_API_KEY") || firebaseConfig.apiKey?.includes("_EXAMPLE_")) {
+//  console.warn(
+//    "ADVERTENCIA: La Firebase API Key (NEXT_PUBLIC_FIREBASE_API_KEY) que se está utilizando parece ser un valor de ejemplo/placeholder. " +
+//    "Si este es tu proyecto real, asegúrate de que estás usando tu API Key única desde la consola de Firebase. " +
+//    "Usar un placeholder genérico resultará en errores como 'auth/invalid-api-key'."
+//  );
+// }
 
 let app: FirebaseApp;
 
