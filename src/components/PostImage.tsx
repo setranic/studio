@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -9,10 +8,13 @@ interface PostImageProps {
 }
 
 export default function PostImage({ src, alt }: PostImageProps) {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const imageUrl = src.startsWith('http') ? src : `${basePath}${src}`;
+
   return (
     <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden my-6 shadow-md">
       <Image
-        src={src}
+        src={imageUrl}
         alt={alt}
         fill
         className="object-cover"
