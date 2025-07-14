@@ -29,7 +29,7 @@ export default function NosotrosPage() {
         poster="https://placehold.co/1920x1080.png" // Un póster mientras carga el video
         data-ai-hint="office background"
       >
-        <source src="/nosotros/video.mp4" type="video/mp4" />
+        <source src="/nosotros/video/nosotrosstn.mp4" type="video/mp4" />
         Tu navegador no soporta el tag de video.
       </video>
        <div className="absolute inset-0 bg-black opacity-50 z-[1]"></div>
