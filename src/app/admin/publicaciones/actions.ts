@@ -1,6 +1,4 @@
 
-"use client";
-
 import { db } from "@/lib/firebase";
 import { collection, addDoc, getDocs, serverTimestamp, query, orderBy, doc, updateDoc, deleteDoc, getDoc, where, limit } from "firebase/firestore";
 import type { Publicacion } from "@/types";
