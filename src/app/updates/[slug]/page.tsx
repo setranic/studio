@@ -9,22 +9,13 @@ import { CalendarDays, ArrowLeft, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import PostImage from '@/components/PostImage';
-import { getPublicacionBySlug, getPublicaciones } from '@/app/admin/publicaciones/actions';
+import { getPublicacionBySlug } from '@/app/admin/publicaciones/actions';
 import type { Publicacion } from '@/types';
 import { Card } from '@/components/ui/card';
 
 type Props = {
   params: { slug: string };
 };
-
-// This function is still useful for telling Next.js which routes to pre-render at build time.
-// Next.js will call this at build time, but the page itself will be a client component.
-export async function generateStaticParams() {
-  const posts = await getPublicaciones();
-  return posts.map((post) => ({
-    slug: post.slug || post.id || '',
-  })).filter(item => item.slug);
-}
 
 export default function PublicacionPage({ params }: Props) {
   const [post, setPost] = useState<Publicacion | null | undefined>(undefined);
