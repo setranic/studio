@@ -18,22 +18,30 @@ export default function NosotrosPage() {
   }, []);
 
   return (
-    <div className="relative w-full h-[calc(100vh-64px)] overflow-hidden -m-8">
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline // Esencial para la reproducción en iOS
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        poster="https://placehold.co/1920x1080.png" // Un póster mientras carga el video
-        data-ai-hint="office background"
-      >
-        <source src="/nosotros/video/nosotrosstn.mp4" type="video/mp4" />
-        Tu navegador no soporta el tag de video.
-      </video>
-       <div className="absolute inset-0 bg-black opacity-50 z-[1]"></div>
-      {/* Futuro contenido se puede añadir aquí sobre el video */}
-    </div>
+    <>
+      <div className="fixed top-0 left-0 w-full h-full z-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline // Esencial para la reproducción en iOS
+          className="w-full h-full object-cover"
+          poster="https://placehold.co/1920x1080.png" // Un póster mientras carga el video
+          data-ai-hint="office background"
+        >
+          <source src="/nosotros/video/nosotrosstn.mp4" type="video/mp4" />
+          Tu navegador no soporta el tag de video.
+        </video>
+      </div>
+      <div className="fixed inset-0 bg-black opacity-50 z-[1]"></div>
+      
+      {/* El contenido futuro se puede añadir aquí, sobre el video. 
+          Debe tener un z-index mayor a 1, por ejemplo, `relative z-10`.
+      */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-64px)] text-white">
+        {/* Aquí puedes agregar títulos u otro contenido en el futuro */}
+      </div>
+    </>
   );
 }
