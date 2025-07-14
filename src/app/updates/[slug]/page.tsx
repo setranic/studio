@@ -1,16 +1,20 @@
 
+"use client";
+
+import { useState, useEffect } from 'react';
 import { getPublicacionBySlug } from '@/lib/data';
-import { notFound } from 'next/navigation';
-import { CalendarDays, ArrowLeft } from 'lucide-react';
+import { notFound, useParams } from 'next/navigation';
+import { CalendarDays, ArrowLeft, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import PostImage from '@/components/PostImage';
 import { Card } from '@/components/ui/card';
-import type { Metadata } from 'next';
 import ClientFormattedDate from './ClientFormattedDate';
+import type { Publicacion } from '@/types';
 import { getPostSlugs } from '@/lib/static-paths';
 
 // Generate static pages for each publication using a local, static list of slugs
+// This is REQUIRED for `output: 'export'`
 export async function generateStaticParams() {
   const slugs = await getPostSlugs();
   return slugs.map((slug) => ({
@@ -18,31 +22,51 @@ export async function generateStaticParams() {
   }));
 }
 
-// Generate metadata for each page
-export async function generateMetadata({ params }): Promise<Metadata> {
-  const { slug } = params;
-  const post = await getPublicacionBySlug(slug);
-  
-  if (!post) {
-    return {
-      title: 'Post No Encontrado',
-      description: 'La publicación que buscas no existe.',
+// This is now a Client Component that fetches its own data after mounting.
+export default function PublicacionPage() {
+  const params = useParams();
+  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+
+  const [post, setPost] = useState<Publicacion | null | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!slug) return;
+
+    const fetchPost = async () => {
+      setIsLoading(true);
+      const fetchedPost = await getPublicacionBySlug(slug);
+      setPost(fetchedPost);
+      setIsLoading(false);
     };
+
+    fetchPost();
+  }, [slug]);
+  
+   useEffect(() => {
+    if (post) {
+      document.title = `${post.titulo} | Setranic`;
+    } else {
+      document.title = 'Noticias | Setranic';
+    }
+  }, [post]);
+
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-[50vh]">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        <p className="ml-4 text-lg font-body text-foreground">Cargando publicación...</p>
+      </div>
+    );
   }
 
-  return {
-    title: `${post.titulo} | Setranic`,
-    description: post.subtitulo,
-  };
-}
-
-// This is a Server Component that fetches data during the build
-export default async function PublicacionPage({ params }) {
-  const { slug } = params;
-  const post = await getPublicacionBySlug(slug);
-
-  if (!post) {
+  if (post === null) {
     notFound();
+  }
+  
+  if (!post) {
+      return null; // or a fallback component
   }
 
   return (
@@ -59,7 +83,6 @@ export default async function PublicacionPage({ params }) {
           <p className="text-lg md:text-xl text-muted-foreground font-body">{post.subtitulo}</p>
           <div className="flex items-center text-sm text-muted-foreground font-body">
             <CalendarDays className="mr-2 h-4 w-4" />
-            {/* ClientFormattedDate handles date formatting safely on the client to avoid hydration errors */}
             <ClientFormattedDate date={post.createdAt} />
           </div>
         </header>
