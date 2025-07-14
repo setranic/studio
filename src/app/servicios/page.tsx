@@ -25,7 +25,7 @@ const services = [
    {
     title: "SEGURO DE MERCANCÍAS",
     description: "Contamos con el Servicio Adicional para el Seguro de las Mercancías en transito. Consulta con nuestro equipo de ventas en SETRANIC cuales son las mejores condiciones para tus necesidades, mantente conectado y visita nuestro portal STN Updates...",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "/servicios/seguro.png",
     aiHint: "insurance document",
   }
 ];
