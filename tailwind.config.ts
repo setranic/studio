@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 const { fontFamily } = require("tailwindcss/defaultTheme")
@@ -13,7 +14,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['var(--font-pt-sans)', ...fontFamily.sans],
-        headline: ['var(--font-varela-round)', ...fontFamily.sans],
+        headline: ['var(--font-playfair)', ...fontFamily.serif],
         code: ['monospace', ...fontFamily.mono],
       },
       colors: {

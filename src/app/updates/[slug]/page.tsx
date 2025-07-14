@@ -1,5 +1,5 @@
 
-import { getPublicacionBySlug } from '@/app/admin/publicaciones/actions';
+import { getPublicaciones, getPublicacionBySlug } from '@/app/admin/publicaciones/actions';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
@@ -7,6 +7,17 @@ import { CalendarDays, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import PostImage from '@/components/PostImage';
+import type { Publicacion } from '@/types';
+
+// This function tells Next.js which routes to pre-render at build time.
+export async function generateStaticParams() {
+  const posts = await getPublicaciones();
+ 
+  return posts.map((post) => ({
+    slug: post.slug || post.id || '',
+  })).filter(item => item.slug);
+}
+
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const post = await getPublicacionBySlug(params.slug);
