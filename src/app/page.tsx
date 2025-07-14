@@ -1,11 +1,14 @@
 
+"use client";
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart } from 'lucide-react';
+import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Loader2 } from 'lucide-react';
 import { getPublicaciones } from '@/app/admin/publicaciones/actions';
 import PostCard from '@/components/common/PostCard';
 import type { Publicacion } from '@/types';
+import { useState, useEffect } from 'react';
 
 const featuresNew = [
     {
@@ -34,15 +37,36 @@ const featuresNew = [
     },
   ];
 
-async function PostsWrapper() {
-  const allPosts = await getPublicaciones();
-  const recentPosts = allPosts.slice(0, 3);
+function PostsWrapper() {
+  const [posts, setPosts] = useState<Publicacion[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setIsLoading(true);
+      const allPosts = await getPublicaciones();
+      const recentPosts = allPosts.slice(0, 3);
+      setPosts(recentPosts);
+      setIsLoading(false);
+    };
+
+    fetchPosts();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center py-10">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        <p className="ml-3 font-body">Cargando noticias...</p>
+      </div>
+    );
+  }
   
   return (
     <>
-      {recentPosts.length > 0 ? (
+      {posts.length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {recentPosts.map((post) => (
+          {posts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}
         </div>

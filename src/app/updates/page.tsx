@@ -64,13 +64,9 @@ export default function UpdatesPage() {
                   data-ai-hint="technology blog" // Generic hint
                   onError={(e) => e.currentTarget.src = "https://placehold.co/600x400.png"}
                 />
-                {/* TODO: Add category if available in Publicacion type later */}
-                {/* <Badge variant="default" className="absolute top-4 right-4 bg-primary text-primary-foreground">Categoría</Badge> */}
               </div>
               <div className="p-6 flex flex-col flex-grow">
                 <h2 className="text-xl font-headline font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {/* IMPORTANT: The link below assumes you'll create a /updates/[slug] or /updates/[id] page */}
-                  {/* For now, it will link to an anchor on the current page if no dynamic route exists. */}
                   <Link href={`/updates/${post.slug || post.id}`}>{post.titulo}</Link>
                 </h2>
                 <p className="text-sm text-muted-foreground font-body mb-1">
