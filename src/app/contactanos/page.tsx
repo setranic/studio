@@ -39,7 +39,7 @@ export default function ContactanosPage() {
                 <MapPin className="h-6 w-6 text-accent mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-body font-semibold text-foreground">Oficina</h3>
-                  <p className="text-muted-foreground font-body">123 Calle Innovación, Ciudad Digital, CP 45678</p>
+                  <p className="text-muted-foreground font-body">Nicaragua, Managua - Rubenia</p>
                 </div>
               </li>
             </ul>
