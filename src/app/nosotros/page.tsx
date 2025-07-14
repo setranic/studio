@@ -43,7 +43,7 @@ export default function NosotrosPage() {
           alt="Sobre Nosotros Card"
           width={800} // Ancho base, se ajustará con las clases de Tailwind
           height={600} // Alto base, se ajustará con las clases de Tailwind
-          className="w-full max-w-xs md:max-w-md lg:max-w-lg" // Clases para responsive (tamaño reducido y alineado a la izquierda por el contenedor)
+          className="w-full max-w-xs md:max-w-md lg:max-w-lg opacity-50" // Clases para responsive (tamaño reducido y alineado a la izquierda por el contenedor)
         />
       </div>
     </>
