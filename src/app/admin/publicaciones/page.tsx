@@ -28,6 +28,7 @@ import { Badge } from "@/components/ui/badge";
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { useAuth } from "@/contexts/AuthContext";
+import type { Timestamp } from 'firebase/firestore';
 
 
 export default function PublicacionesAdminPage() {
@@ -131,6 +132,12 @@ export default function PublicacionesAdminPage() {
       });
     }
   };
+
+  const formatDate = (date: string | Timestamp | undefined): string => {
+    if (!date) return '';
+    const dateObj = typeof date === 'string' ? new Date(date) : date.toDate();
+    return format(dateObj, "dd MMM, yyyy", { locale: es });
+  }
 
   if (!user) {
       return (
@@ -238,7 +245,7 @@ export default function PublicacionesAdminPage() {
                         {pub.subtitulo}
                         {pub.createdAt && (
                            <Badge variant="outline" className="ml-2 font-body text-xs">
-                             {format(new Date(pub.createdAt), "dd MMM, yyyy", { locale: es })}
+                             {formatDate(pub.createdAt)}
                            </Badge>
                         )}
                          {pub.slug && (
