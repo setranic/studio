@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef } from 'react';
@@ -36,13 +37,13 @@ export default function NosotrosPage() {
       </div>
       <div className="fixed inset-0 bg-black opacity-50 z-[1]"></div>
       
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-64px)] p-4">
+      <div className="relative z-10 flex flex-col items-start justify-center min-h-[calc(100vh-64px)] p-4">
         <Image
           src="/nosotros/sobrenosotroscard.svg"
           alt="Sobre Nosotros Card"
           width={800} // Ancho base, se ajustará con las clases de Tailwind
           height={600} // Alto base, se ajustará con las clases de Tailwind
-          className="w-full max-w-lg md:max-w-2xl lg:max-w-4xl" // Clases para responsive
+          className="w-full max-w-xs md:max-w-md lg:max-w-lg" // Clases para responsive (tamaño reducido y alineado a la izquierda por el contenedor)
         />
       </div>
     </>
