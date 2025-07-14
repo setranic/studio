@@ -1,20 +1,15 @@
 
-"use client";
-
-import { useState, useEffect } from 'react';
 import { getPublicacionBySlug } from '@/lib/data';
-import { notFound, useParams } from 'next/navigation';
-import { CalendarDays, ArrowLeft, Loader2 } from 'lucide-react';
+import { notFound } from 'next/navigation';
+import { CalendarDays, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import PostImage from '@/components/PostImage';
 import { Card } from '@/components/ui/card';
 import ClientFormattedDate from './ClientFormattedDate';
-import type { Publicacion } from '@/types';
 import { getPostSlugs } from '@/lib/static-paths';
+import type { Metadata } from 'next';
 
-// Generate static pages for each publication using a local, static list of slugs
-// This is REQUIRED for `output: 'export'`
 export async function generateStaticParams() {
   const slugs = await getPostSlugs();
   return slugs.map((slug) => ({
@@ -22,51 +17,43 @@ export async function generateStaticParams() {
   }));
 }
 
-// This is now a Client Component that fetches its own data after mounting.
-export default function PublicacionPage() {
-  const params = useParams();
-  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+type Props = {
+  params: { slug: string }
+};
 
-  const [post, setPost] = useState<Publicacion | null | undefined>(undefined);
-  const [isLoading, setIsLoading] = useState(true);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getPublicacionBySlug(params.slug);
 
-  useEffect(() => {
-    if (!slug) return;
-
-    const fetchPost = async () => {
-      setIsLoading(true);
-      const fetchedPost = await getPublicacionBySlug(slug);
-      setPost(fetchedPost);
-      setIsLoading(false);
-    };
-
-    fetchPost();
-  }, [slug]);
-  
-   useEffect(() => {
-    if (post) {
-      document.title = `${post.titulo} | Setranic`;
-    } else {
-      document.title = 'Noticias | Setranic';
-    }
-  }, [post]);
-
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[50vh]">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-        <p className="ml-4 text-lg font-body text-foreground">Cargando publicación...</p>
-      </div>
-    );
-  }
-
-  if (post === null) {
-    notFound();
-  }
-  
   if (!post) {
-      return null; // or a fallback component
+    return {
+      title: 'Publicación no encontrada',
+    };
+  }
+
+  return {
+    title: `${post.titulo} | Setranic`,
+    description: post.subtitulo,
+    openGraph: {
+      title: post.titulo,
+      description: post.subtitulo,
+      images: [
+        {
+          url: post.imagenPortadaUrl,
+          width: 1200,
+          height: 630,
+          alt: post.titulo,
+        },
+      ],
+    },
+  };
+}
+
+export default async function PublicacionPage({ params }: Props) {
+  const slug = params.slug;
+  const post = await getPublicacionBySlug(slug);
+
+  if (!post) {
+    notFound();
   }
 
   return (
