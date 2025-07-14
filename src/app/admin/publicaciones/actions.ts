@@ -1,7 +1,7 @@
 "use client";
 
 import { db } from "@/lib/firebase";
-import { collection, addDoc, getDocs, serverTimestamp, query, orderBy, doc, updateDoc, deleteDoc, getDoc, where, limit } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import type { Publicacion } from "@/types";
 import { z } from "zod";
 
@@ -31,46 +31,6 @@ export async function addPublicacion(data: Omit<Publicacion, "id" | "createdAt">
   } catch (error) {
     console.error("Error adding document: ", error);
     return { success: false, error: "Error al guardar la publicación." };
-  }
-}
-
-export async function getPublicaciones(): Promise<Publicacion[]> {
-  try {
-    const q = query(collection(db, "publicaciones"), orderBy("createdAt", "desc"));
-    const querySnapshot = await getDocs(q);
-    const publicaciones: Publicacion[] = [];
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      publicaciones.push({
-        id: doc.id,
-        ...data,
-        createdAt: data.createdAt?.toDate().toISOString(),
-      } as Publicacion);
-    });
-    return publicaciones;
-  } catch (error) {
-    console.error("Error fetching publicaciones: ", error);
-    return [];
-  }
-}
-
-export async function getPublicacionById(id: string): Promise<Publicacion | null> {
-  try {
-    const docRef = doc(db, "publicaciones", id);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      const data = docSnap.data();
-      return { 
-        id: docSnap.id, 
-        ...data,
-        createdAt: data.createdAt?.toDate().toISOString(),
-      } as Publicacion;
-    } else {
-      return null;
-    }
-  } catch (error) {
-    console.error("Error fetching publicacion by ID: ", error);
-    return null;
   }
 }
 

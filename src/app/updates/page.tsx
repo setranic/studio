@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { getPublicaciones } from '@/app/admin/publicaciones/actions'; // Reuse the server action
+import { getPublicaciones } from '@/lib/data'; // Import from data.ts
 import type { Publicacion } from '@/types';
 import { Loader2 } from 'lucide-react';
 import { format } from 'date-fns';

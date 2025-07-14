@@ -7,7 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { addPublicacion, getPublicaciones, deletePublicacion } from "./actions";
+import { addPublicacion, deletePublicacion } from "./actions";
+import { getPublicaciones } from "@/lib/data"; // Import from data.ts
 import type { Publicacion } from "@/types";
 import Link from 'next/link';
 import Image from "next/image";

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Loader2 } from 'lucide-react';
-import { getPublicaciones } from '@/app/admin/publicaciones/actions';
+import { getPublicaciones } from '@/lib/data';
 import PostCard from '@/components/common/PostCard';
 import type { Publicacion } from '@/types';
 import { useState, useEffect } from 'react';
