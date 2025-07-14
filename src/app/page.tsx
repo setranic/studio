@@ -5,12 +5,9 @@ import Link from 'next/link';
 import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart } from 'lucide-react';
 import { getPublicaciones } from '@/app/admin/publicaciones/actions';
 import PostCard from '@/components/common/PostCard';
+import type { Publicacion } from '@/types';
 
-export default async function HomePage() {
-  const allPosts = await getPublicaciones();
-  const recentPosts = allPosts.slice(0, 3);
-
-  const featuresNew = [
+const featuresNew = [
     {
       icon: DoorOpen,
       titleLine1: "(DTD) PUERTA",
@@ -36,6 +33,28 @@ export default async function HomePage() {
       aiHint: "customer support",
     },
   ];
+
+async function PostsWrapper() {
+  const allPosts = await getPublicaciones();
+  const recentPosts = allPosts.slice(0, 3);
+  
+  return (
+    <>
+      {recentPosts.length > 0 ? (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {recentPosts.map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-muted-foreground font-body mb-12">No hay noticias recientes.</p>
+      )}
+    </>
+  )
+}
+
+
+export default function HomePage() {
 
   return (
     <>
@@ -179,15 +198,7 @@ export default async function HomePage() {
                 Mantente al día con nuestras últimas actualizaciones y noticias del sector.
               </p>
               
-              {recentPosts.length > 0 ? (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                  {recentPosts.map((post) => (
-                    <PostCard key={post.id} post={post} />
-                  ))}
-                </div>
-              ) : (
-                <p className="text-muted-foreground font-body mb-12">No hay noticias recientes.</p>
-              )}
+              <PostsWrapper />
 
               <Button asChild size="lg" className="font-body shadow-md hover:shadow-lg transition-shadow duration-300">
                 <Link href="/updates">Ver Todas las Noticias</Link>
@@ -218,4 +229,3 @@ export default async function HomePage() {
     </>
   );
 }
-    
