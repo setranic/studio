@@ -92,10 +92,10 @@ export default function HomePage() {
             </p>
             <div className="mx-auto w-full max-w-[200px] md:max-w-lg px-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Link href="/servicios" className="group block" aria-label="Nuestros Servicios">
+                 <Link href="https://www.instagram.com/setranic/" target="_blank" rel="noopener noreferrer" className="group block" aria-label="Nuestro Instagram">
                   <Image 
                     src="/1.png" 
-                    alt="Botón de Servicios" 
+                    alt="Botón de Instagram" 
                     width={200} 
                     height={150} 
                     className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
