@@ -1,74 +1,51 @@
-
-"use client";
-
-import { useEffect, useState } from 'react';
+import { getPublicacionBySlug, getPublicaciones } from '@/app/admin/publicaciones/actions';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { CalendarDays, ArrowLeft, Loader2 } from 'lucide-react';
+import { CalendarDays, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import PostImage from '@/components/PostImage';
-import { getPublicacionBySlug } from '@/app/admin/publicaciones/actions';
 import type { Publicacion } from '@/types';
 import { Card } from '@/components/ui/card';
+import type { Metadata } from 'next';
+import { Timestamp } from 'firebase/firestore';
+import ClientFormattedDate from './ClientFormattedDate';
 
-export default function PublicacionPage({ params }: { params: { slug: string } }) {
-  const [post, setPost] = useState<Publicacion | null | undefined>(undefined);
-  const { slug } = params;
 
-  useEffect(() => {
-    if (slug) {
-      const fetchPost = async () => {
-        const fetchedPost = await getPublicacionBySlug(slug);
-        setPost(fetchedPost);
-      };
-      fetchPost();
-    }
-  }, [slug]);
+interface PageProps {
+  params: { slug: string };
+}
 
-  useEffect(() => {
-    if (post) {
-      document.title = `${post.titulo} | Setranic`;
-      
-      const descriptionMeta = document.querySelector('meta[name="description"]');
-      if (descriptionMeta) {
-        descriptionMeta.setAttribute('content', post.subtitulo);
-      } else {
-        const newMeta = document.createElement('meta');
-        newMeta.name = 'description';
-        newMeta.content = post.subtitulo;
-        document.head.appendChild(newMeta);
-      }
-    }
-  }, [post]);
+// Generate static pages for each publication
+export async function generateStaticParams() {
+  const posts = await getPublicaciones();
+  return posts.map((post) => ({
+    slug: post.slug || post.id,
+  }));
+}
 
-  if (post === undefined) {
-    return (
-      <div className="flex justify-center items-center py-20 min-h-[50vh]">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-        <p className="ml-4 text-lg font-body">Cargando publicación...</p>
-      </div>
-    );
+// Generate metadata for each page
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const post = await getPublicacionBySlug(params.slug);
+  if (!post) {
+    return {
+      title: 'Post No Encontrado',
+      description: 'La publicación que buscas no existe.',
+    };
   }
+  return {
+    title: `${post.titulo} | Setranic`,
+    description: post.subtitulo,
+  };
+}
 
-  if (post === null) {
+export default async function PublicacionPage({ params }: PageProps) {
+  const post = await getPublicacionBySlug(params.slug);
+
+  if (!post) {
     notFound();
   }
-
-  const getFormattedDate = () => {
-    if (!post?.createdAt) return null;
-    try {
-      // It can be a string (from server) or a Timestamp (from direct client fetch)
-      const date = typeof post.createdAt === 'string' ? new Date(post.createdAt) : post.createdAt.toDate();
-      return format(date, "dd 'de' MMMM, yyyy", { locale: es });
-    } catch (error) {
-      console.error("Error formatting date:", error);
-      return "Fecha inválida";
-    }
-  };
-
-  const formattedDate = getFormattedDate();
 
   return (
     <article className="max-w-4xl mx-auto py-8 my-8">
@@ -82,12 +59,10 @@ export default function PublicacionPage({ params }: { params: { slug: string } }
           </Button>
           <h1 className="text-3xl md:text-5xl font-headline font-bold text-primary">{post.titulo}</h1>
           <p className="text-lg md:text-xl text-muted-foreground font-body">{post.subtitulo}</p>
-          {formattedDate && (
-            <div className="flex items-center text-sm text-muted-foreground font-body">
-              <CalendarDays className="mr-2 h-4 w-4" />
-              <span>Publicado el {formattedDate}</span>
-            </div>
-          )}
+          <div className="flex items-center text-sm text-muted-foreground font-body">
+            <CalendarDays className="mr-2 h-4 w-4" />
+            <ClientFormattedDate date={post.createdAt} />
+          </div>
         </header>
         
         <PostImage src={post.imagenPortadaUrl} alt={`Imagen de portada para ${post.titulo}`} />
