@@ -18,15 +18,10 @@ export async function generateStaticParams() {
   }));
 }
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
 // Generate metadata for each page
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = await getPublicacionBySlug(params.slug);
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const { slug } = params;
+  const post = await getPublicacionBySlug(slug);
   
   if (!post) {
     return {
@@ -42,8 +37,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 // This is a Server Component that fetches data during the build
-export default async function PublicacionPage({ params }: PageProps) {
-  const post = await getPublicacionBySlug(params.slug);
+export default async function PublicacionPage({ params }) {
+  const { slug } = params;
+  const post = await getPublicacionBySlug(slug);
 
   if (!post) {
     notFound();
