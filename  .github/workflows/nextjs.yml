@@ -1,0 +1,39 @@
+# Sample workflow for building and deploying a Next.js site to Firebase Hosting
+# For more information on:
+#   - GitHub Actions for Firebase: https://github.com/firebase/actions
+#   - Firebase Hosting Actions: https://github.com/firebase/hosting-actions
+#   - Next.js server-side rendering: https://firebase.google.com/docs/hosting/frameworks/nextjs
+
+name: Build and Preview
+'on':
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_and_preview:
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_FIREBASE_API_KEY: "dummy"
+          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: "dummy"
+          NEXT_PUBLIC_FIREBASE_PROJECT_ID: "dummy"
+          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: "dummy"
+          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: "dummy"
+          NEXT_PUBLIC_FIREBASE_APP_ID: "dummy"
+      - name: Lint
+        run: npm run lint
+      - uses: firebase/hosting-actions/action@v1
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SETRANIC_659C5 }}'
+          expires: 30d
+          projectId: setranic-659c5
