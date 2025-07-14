@@ -17,7 +17,7 @@ const services = [
     aiHint: "satellite tracking",
   },
   {
-    title: "CARGA Y DESCARGA DE MERCANCÍAS",
+    title: "DISTRIBUCION DE MERCANCIAS",
     description: "En SETRANIC contamos con equipos y personal, con la experiencia en el sector para realizar todas las maniobras que sean requeridas por nuestros clientes. Consulta con nuestro equipo las mejores condiciones para tus necesidades...",
     imageUrl: "https://placehold.co/600x400.png",
     aiHint: "forklift loading",
