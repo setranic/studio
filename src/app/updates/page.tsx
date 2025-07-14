@@ -85,9 +85,6 @@ export default function UpdatesPage() {
           ))}
         </section>
       )}
-      <section className="text-center text-sm text-muted-foreground font-body">
-        <p>Nota: Las páginas individuales de cada publicación (ej: /updates/mi-articulo) aún necesitan ser implementadas para mostrar el contenido completo desde Firestore.</p>
-      </section>
     </div>
   );
 }
