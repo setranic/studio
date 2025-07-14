@@ -15,8 +15,8 @@ const WhatsAppIcon = () => (
 );
 
 export default function WhatsAppButton() {
-    // TODO: Reemplaza este número por tu número de teléfono real, incluyendo el código de país (sin el '+', espacios o guiones).
-    const phoneNumber = "5211234567890"; 
+    // Reemplaza este número por tu número de teléfono real, incluyendo el código de país (sin el '+', espacios o guiones).
+    const phoneNumber = "50575301222"; 
     const whatsappLink = `https://wa.me/${phoneNumber}`;
 
     return (
