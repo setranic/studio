@@ -112,10 +112,10 @@ export default function HomePage() {
                     data-ai-hint="news icon"
                   />
                 </Link>
-                <Link href="/contactanos" className="group block" aria-label="Contáctanos">
+                <Link href="https://www.facebook.com/Setranic/" target="_blank" rel="noopener noreferrer" className="group block" aria-label="Nuestro Facebook">
                   <Image 
                     src="/3.png" 
-                    alt="Botón de Contacto" 
+                    alt="Botón de Facebook" 
                     width={200} 
                     height={150} 
                     className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
