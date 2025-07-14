@@ -38,13 +38,22 @@ export default function NosotrosPage() {
       <div className="fixed inset-0 bg-black opacity-50 z-[1]"></div>
       
       <div className="relative z-10 flex flex-col items-start justify-center min-h-[calc(100vh-64px)] p-4">
-        <Image
-          src="/nosotros/sobrenosotroscard.svg"
-          alt="Sobre Nosotros Card"
-          width={800} // Ancho base, se ajustará con las clases de Tailwind
-          height={600} // Alto base, se ajustará con las clases de Tailwind
-          className="w-full max-w-xs md:max-w-md lg:max-w-lg opacity-50" // Clases para responsive (tamaño reducido y alineado a la izquierda por el contenedor)
-        />
+        <div className="relative w-full max-w-xs md:max-w-md lg:max-w-lg">
+          <Image
+            src="/nosotros/sobrenosotroscard.svg"
+            alt="Sobre Nosotros Card"
+            width={800} 
+            height={600} 
+            className="w-full h-auto opacity-50"
+          />
+           <Image
+            src="/nosotros/sobrenosotroscardtext.svg"
+            alt="Sobre Nosotros Texto"
+            width={800}
+            height={600}
+            className="absolute top-0 left-0 w-full h-auto"
+          />
+        </div>
       </div>
     </>
   );
