@@ -1,4 +1,9 @@
+
+"use client";
+
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { cn } from '@/lib/utils';
 
 const WhatsAppIcon = () => (
     <svg
@@ -15,7 +20,22 @@ const WhatsAppIcon = () => (
 );
 
 export default function WhatsAppButton() {
-    // Reemplaza este número por tu número de teléfono real, incluyendo el código de país (sin el '+', espacios o guiones).
+    const [isAtBottom, setIsAtBottom] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const bottomOffset = 100; // Pixels from bottom to trigger the move
+            const isBottom = window.innerHeight + window.scrollY >= document.documentElement.offsetHeight - bottomOffset;
+            setIsAtBottom(isBottom);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        // Initial check in case the page is not scrollable or already at the bottom
+        handleScroll(); 
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     const phoneNumber = "50575301222"; 
     const whatsappLink = `https://wa.me/${phoneNumber}`;
 
@@ -24,7 +44,10 @@ export default function WhatsAppButton() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-24 right-6 z-50 flex items-center justify-center w-14 h-14 bg-green-500 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400 transition-all duration-300 transform hover:scale-110"
+            className={cn(
+                "fixed right-6 z-50 flex items-center justify-center w-14 h-14 bg-green-500 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400 transition-all duration-300 transform hover:scale-110",
+                isAtBottom ? 'bottom-24' : 'bottom-6'
+            )}
             aria-label="Contact us on WhatsApp"
         >
             <WhatsAppIcon />
