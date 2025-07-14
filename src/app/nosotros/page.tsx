@@ -18,19 +18,19 @@ const valorAgregadoItems = [
 
 const infoCards = [
   {
-    icon: Target,
-    title: "Misión",
-    content: "Ofrecer soluciones logísticas integrales y eficientes que superen las expectativas de nuestros clientes, impulsando su crecimiento y éxito."
-  },
-  {
     icon: Eye,
     title: "Visión",
-    content: "Ser la empresa líder en logística y transporte en la región, reconocida por nuestra innovación, confiabilidad y compromiso con la excelencia."
+    content: "Nuestra visión consiste en alcanzar un nivel de liderazgo caracterizado por nuestras estrategias sin límites, con una inversión constante en mantenimiento, capacitación y tecnología."
+  },
+  {
+    icon: Target,
+    title: "Misión",
+    content: "Nuestra Misión va más allá del posicionamiento queremos consolidarnos como la recomendación número uno en el sector logístico, contamos con una red de aliados logísticos que hacen posible cumplir nuestra meta."
   },
   {
     icon: Compass,
-    title: "Nuestro Norte",
-    content: "Guiar cada operación con integridad, seguridad y un enfoque personalizado, asegurando que cada entrega fortalezca la confianza de nuestros socios."
+    title: "Principal Norte",
+    content: "Nosotros en Setranic, creemos que el transporte no solo mueve mercancías, sino que construye confianza y conecta oportunidades. Nuestro norte es avanzar cada día con propósito, para ser más que un servicio: ser un aliado en el camino."
   }
 ];
 
@@ -117,30 +117,32 @@ export default function NosotrosPage() {
         ) : (
           <>
             {/* Info Cards View */}
-            <div className="w-full max-w-5xl text-center">
-              <div className="grid md:grid-cols-3 gap-8">
+            <div className="w-full max-w-6xl text-white">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {infoCards.map((card, index) => (
-                   <Card key={index} className="bg-card/70 backdrop-blur-sm border-white/10 text-card-foreground shadow-2xl flex flex-col items-center text-center p-6">
-                    <CardHeader className="p-0 mb-4">
-                      <div className="bg-primary/90 text-primary-foreground rounded-full p-4 mb-4 inline-flex">
-                         <card.icon className="h-8 w-8" />
-                      </div>
-                      <CardTitle className="font-headline text-2xl text-primary">{card.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-0">
-                      <p className="font-body text-foreground/90">{card.content}</p>
-                    </CardContent>
-                  </Card>
+                   <div key={index} className="space-y-4">
+                     <div className="flex items-center gap-4">
+                       <div className="bg-primary/90 text-primary-foreground rounded-full p-3 inline-flex border-2 border-white/50">
+                          <card.icon className="h-8 w-8" />
+                       </div>
+                       <h2 className="font-headline text-3xl font-bold">{card.title}</h2>
+                     </div>
+                     <div className="bg-primary/80 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-base font-body">
+                       <p>{card.content}</p>
+                     </div>
+                   </div>
                 ))}
               </div>
-              <Button 
-                onClick={() => setShowInfoCards(false)} 
-                variant="outline"
-                className="mt-12 bg-transparent hover:bg-white/20 text-white font-body shadow-lg border-white/50"
-              >
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Volver
-              </Button>
+              <div className="text-center">
+                <Button 
+                  onClick={() => setShowInfoCards(false)} 
+                  variant="outline"
+                  className="mt-12 bg-transparent hover:bg-white/20 text-white font-body shadow-lg border-white/50"
+                >
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Volver
+                </Button>
+              </div>
             </div>
           </>
         )}
