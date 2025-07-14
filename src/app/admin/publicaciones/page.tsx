@@ -11,7 +11,7 @@ import { addPublicacion, getPublicaciones, deletePublicacion } from "./actions";
 import type { Publicacion } from "@/types";
 import Link from 'next/link';
 import Image from "next/image";
-import { PlusCircle, Trash2, Edit, List, Loader2, ExternalLink, Eye, AlertCircle } from 'lucide-react';
+import { PlusCircle, Trash2, Edit, List, Loader2, ExternalLink, Eye, AlertCircle, ShieldAlert } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   AlertDialog,
@@ -27,6 +27,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import { useAuth } from "@/contexts/AuthContext";
 
 
 export default function PublicacionesAdminPage() {
@@ -43,6 +44,7 @@ export default function PublicacionesAdminPage() {
   const [formErrors, setFormErrors] = useState<Record<string, string[] | undefined>>({});
 
   const { toast } = useToast();
+  const { user } = useAuth(); // Get user from auth context
 
   const fetchPublicaciones = async () => {
     setIsFetching(true);
@@ -52,11 +54,20 @@ export default function PublicacionesAdminPage() {
   };
 
   useEffect(() => {
-    fetchPublicaciones();
-  }, []);
+    // Only fetch if user is logged in
+    if (user) {
+      fetchPublicaciones();
+    } else {
+      setIsFetching(false);
+    }
+  }, [user]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!user) {
+        toast({ variant: "destructive", title: "No autenticado", description: "Debes iniciar sesión para crear una publicación." });
+        return;
+    }
     setIsLoading(true);
     setFormErrors({});
 
@@ -101,6 +112,10 @@ export default function PublicacionesAdminPage() {
   };
 
   const handleDelete = async (id: string) => {
+    if (!user) {
+        toast({ variant: "destructive", title: "No autenticado", description: "Debes iniciar sesión para eliminar una publicación." });
+        return;
+    }
     const result = await deletePublicacion(id);
     if (result.success) {
       toast({
@@ -116,6 +131,21 @@ export default function PublicacionesAdminPage() {
       });
     }
   };
+
+  if (!user) {
+      return (
+        <section className="bg-card p-8 rounded-xl shadow-xl text-center">
+            <ShieldAlert className="mx-auto h-12 w-12 text-destructive mb-4" />
+            <h1 className="text-2xl font-headline font-bold text-destructive">Acceso Denegado</h1>
+            <p className="text-muted-foreground font-body mt-2">Debes iniciar sesión para gestionar las publicaciones.</p>
+            <Button variant="outline" asChild className="mt-6">
+                <Link href="/admin">
+                    Volver al Panel
+                </Link>
+            </Button>
+        </section>
+      )
+  }
 
   return (
     <div className="space-y-12">
