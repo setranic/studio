@@ -1,66 +1,91 @@
 
-import { getPublicaciones, getPublicacionBySlug } from '@/app/admin/publicaciones/actions';
+"use client";
+
+import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { CalendarDays, ArrowLeft } from 'lucide-react';
+import { CalendarDays, ArrowLeft, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import PostImage from '@/components/PostImage';
+import { getPublicacionBySlug, getPublicaciones } from '@/app/admin/publicaciones/actions';
 import type { Publicacion } from '@/types';
-import type { Metadata } from 'next';
+import { Card } from '@/components/ui/card';
 
 type Props = {
   params: { slug: string };
 };
 
-// This function tells Next.js which routes to pre-render at build time.
+// This function is still useful for telling Next.js which routes to pre-render at build time.
+// Next.js will call this at build time, but the page itself will be a client component.
 export async function generateStaticParams() {
   const posts = await getPublicaciones();
- 
   return posts.map((post) => ({
     slug: post.slug || post.id || '',
   })).filter(item => item.slug);
 }
 
+export default function PublicacionPage({ params }: Props) {
+  const [post, setPost] = useState<Publicacion | null | undefined>(undefined);
+  const { slug } = params;
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPublicacionBySlug(params.slug);
-
-  if (!post) {
-    return {
-      title: 'Publicación no encontrada',
+  useEffect(() => {
+    if (slug) {
+      const fetchPost = async () => {
+        const fetchedPost = await getPublicacionBySlug(slug);
+        setPost(fetchedPost);
+      };
+      fetchPost();
     }
+  }, [slug]);
+
+  useEffect(() => {
+    if (post) {
+      document.title = `${post.titulo} | Setranic`;
+      
+      const descriptionMeta = document.querySelector('meta[name="description"]');
+      if (descriptionMeta) {
+        descriptionMeta.setAttribute('content', post.subtitulo);
+      } else {
+        const newMeta = document.createElement('meta');
+        newMeta.name = 'description';
+        newMeta.content = post.subtitulo;
+        document.head.appendChild(newMeta);
+      }
+    }
+  }, [post]);
+
+  if (post === undefined) {
+    return (
+      <div className="flex justify-center items-center py-20 min-h-[50vh]">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        <p className="ml-4 text-lg font-body">Cargando publicación...</p>
+      </div>
+    );
   }
 
-  return {
-    title: `${post.titulo} | Setranic`,
-    description: post.subtitulo,
-    openGraph: {
-      title: post.titulo,
-      description: post.subtitulo,
-      images: [
-        {
-          url: post.imagenPortadaUrl,
-          width: 1200,
-          height: 630,
-          alt: post.titulo,
-        },
-      ],
-    },
-  }
-}
-
-export default async function PublicacionPage({ params }: Props) {
-  const post = await getPublicacionBySlug(params.slug);
-
-  if (!post) {
+  if (post === null) {
     notFound();
   }
 
+  const getFormattedDate = () => {
+    if (!post?.createdAt) return null;
+    try {
+      // It can be a string (from server) or a Timestamp (from direct client fetch)
+      const date = typeof post.createdAt === 'string' ? new Date(post.createdAt) : post.createdAt.toDate();
+      return format(date, "dd 'de' MMMM, yyyy", { locale: es });
+    } catch (error) {
+      console.error("Error formatting date:", error);
+      return "Fecha inválida";
+    }
+  };
+
+  const formattedDate = getFormattedDate();
+
   return (
     <article className="max-w-4xl mx-auto py-8 my-8">
-      <div className="bg-card shadow-xl rounded-2xl p-6 md:p-8 lg:p-10 space-y-8">
+      <Card className="shadow-xl rounded-2xl p-6 md:p-8 lg:p-10 space-y-8">
         <header className="space-y-4 border-b border-border pb-6">
           <Button variant="outline" asChild>
             <Link href="/updates" className="inline-flex items-center text-sm font-body">
@@ -70,10 +95,10 @@ export default async function PublicacionPage({ params }: Props) {
           </Button>
           <h1 className="text-3xl md:text-5xl font-headline font-bold text-primary">{post.titulo}</h1>
           <p className="text-lg md:text-xl text-muted-foreground font-body">{post.subtitulo}</p>
-          {post.createdAt && (
+          {formattedDate && (
             <div className="flex items-center text-sm text-muted-foreground font-body">
               <CalendarDays className="mr-2 h-4 w-4" />
-              <span>Publicado el {format(new Date(post.createdAt), "dd 'de' MMMM, yyyy", { locale: es })}</span>
+              <span>Publicado el {formattedDate}</span>
             </div>
           )}
         </header>
@@ -85,7 +110,7 @@ export default async function PublicacionPage({ params }: Props) {
         >
           {post.contenido}
         </div>
-      </div>
+      </Card>
     </article>
   );
 }

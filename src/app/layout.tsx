@@ -10,7 +10,6 @@ import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { AuthProvider } from '@/contexts/AuthContext';
 import WhatsAppButton from '@/components/common/WhatsAppButton';
-import { usePathname } from 'next/navigation';
 
 // Varela Round for headlines
 const varelaRound = Varela_Round({
@@ -37,8 +36,6 @@ const ptSans = PT_Sans({
 
 
 function LayoutContent({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-
   return (
     <>
       <Navbar />

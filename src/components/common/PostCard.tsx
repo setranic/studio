@@ -7,19 +7,27 @@ import type { Publicacion } from '@/types';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { useState, useEffect } from 'react';
+import type { Timestamp } from 'firebase/firestore';
 
 interface PostCardProps {
   post: Publicacion;
 }
 
-function ClientFormattedDate({ dateString }: { dateString: string | undefined }) {
-  const [formattedDate, setFormattedDate] = useState<string>('Fecha no disponible');
+function ClientFormattedDate({ date }: { date: string | Timestamp | undefined }) {
+  const [formattedDate, setFormattedDate] = useState<string>('');
 
   useEffect(() => {
-    if (dateString) {
-      setFormattedDate(format(new Date(dateString), "dd MMMM, yyyy", { locale: es }));
+    if (date) {
+      try {
+        const dateObj = typeof date === 'string' ? new Date(date) : date.toDate();
+        setFormattedDate(format(dateObj, "dd MMMM, yyyy", { locale: es }));
+      } catch (e) {
+        setFormattedDate('Fecha no disponible');
+      }
+    } else {
+      setFormattedDate('Fecha no disponible');
     }
-  }, [dateString]);
+  }, [date]);
 
   return <>{formattedDate}</>;
 }
@@ -49,7 +57,7 @@ export default function PostCard({ post }: PostCardProps) {
             {post.titulo}
           </h3>
           <p className="text-sm text-muted-foreground font-body mb-3">
-             <ClientFormattedDate dateString={post.createdAt} />
+             <ClientFormattedDate date={post.createdAt} />
           </p>
           <p className="text-foreground/80 font-body mb-4 leading-relaxed flex-grow line-clamp-3">{post.subtitulo || post.contenido}</p>
           <span className="mt-auto self-start text-primary group-hover:text-accent font-body font-semibold">

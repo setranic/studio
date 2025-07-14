@@ -8,7 +8,7 @@ export interface Publicacion {
   contenido: string;
   imagenPortadaUrl: string;
   imagenCarruselUrl: string;
-  createdAt?: string; // Changed from Timestamp to string for serialization
+  createdAt?: Timestamp | string; // Can be a Timestamp from firestore or a serialized string
   slug?: string; // Auto-generated or manual
 }
 
