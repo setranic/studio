@@ -6,10 +6,24 @@ import Image from 'next/image';
 import type { Publicacion } from '@/types';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import { useState, useEffect } from 'react';
 
 interface PostCardProps {
   post: Publicacion;
 }
+
+function ClientFormattedDate({ dateString }: { dateString: string | undefined }) {
+  const [formattedDate, setFormattedDate] = useState<string>('Fecha no disponible');
+
+  useEffect(() => {
+    if (dateString) {
+      setFormattedDate(format(new Date(dateString), "dd MMMM, yyyy", { locale: es }));
+    }
+  }, [dateString]);
+
+  return <>{formattedDate}</>;
+}
+
 
 export default function PostCard({ post }: PostCardProps) {
   const postUrl = `/updates/${post.slug || post.id}`;
@@ -35,7 +49,7 @@ export default function PostCard({ post }: PostCardProps) {
             {post.titulo}
           </h3>
           <p className="text-sm text-muted-foreground font-body mb-3">
-            {post.createdAt ? format(new Date(post.createdAt), "dd MMMM, yyyy", { locale: es }) : 'Fecha no disponible'}
+             <ClientFormattedDate dateString={post.createdAt} />
           </p>
           <p className="text-foreground/80 font-body mb-4 leading-relaxed flex-grow line-clamp-3">{post.subtitulo || post.contenido}</p>
           <span className="mt-auto self-start text-primary group-hover:text-accent font-body font-semibold">
