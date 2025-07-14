@@ -5,12 +5,12 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 const valorAgregadoItems = [
-  { src: "/nosotros/valoragregado/principal.svg", alt: "Valor Agregado" },
-  { src: "/nosotros/valoragregado/1.svg", alt: "Inspección Continua" },
-  { src: "/nosotros/valoragregado/2.svg", alt: "Rastreo de Mercancías" },
-  { src: "/nosotros/valoragregado/3.svg", alt: "Personal Certificado" },
-  { src: "/nosotros/valoragregado/4.svg", alt: "Cadena Logística" },
-  { src: "/nosotros/valoragregado/5.svg", alt: "Atención Personalizada" },
+  { src: "/nosotros/valor agregado/principal.png", alt: "Valor Agregado" },
+  { src: "/nosotros/valor agregado/1.png", alt: "Inspección Continua" },
+  { src: "/nosotros/valor agregado/2.png", alt: "Rastreo de Mercancías" },
+  { src: "/nosotros/valor agregado/3.png", alt: "Personal Certificado" },
+  { src: "/nosotros/valor agregado/4.png", alt: "Cadena Logística" },
+  { src: "/nosotros/valor agregado/5.png", alt: "Atención Personalizada" },
 ];
 
 export default function NosotrosPage() {
