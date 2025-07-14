@@ -7,7 +7,7 @@ const services = [
   {
     title: "TRANSPORTE DE CARGA",
     description: "SETRANIC NICARAGUA, ofrecemos el servicio de transporte de carga nacional e internacional. Contamos con una flota equipada para todas tus operaciones. Consulta con nuestro equipo de ventas y consulta cuales son nuestros planes y servicios que adaptaremos a tus necesidades...",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "/servicios/transportedecarga.png",
     aiHint: "cargo truck",
   },
   {
