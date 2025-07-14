@@ -1,3 +1,5 @@
+"use client";
+
 import { db } from "@/lib/firebase";
 import { collection, addDoc, getDocs, serverTimestamp, query, orderBy, doc, updateDoc, deleteDoc, getDoc, where, limit } from "firebase/firestore";
 import type { Publicacion } from "@/types";
@@ -100,31 +102,31 @@ export async function deletePublicacion(id: string) {
 
 export async function getPublicacionBySlug(slug: string): Promise<Publicacion | null> {
   try {
-    // 1. Try to find by slug
     const q = query(collection(db, "publicaciones"), where("slug", "==", slug), limit(1));
     const querySnapshot = await getDocs(q);
 
-    let docSnap;
     if (!querySnapshot.empty) {
-      docSnap = querySnapshot.docs[0];
+      const docSnap = querySnapshot.docs[0];
+      const data = docSnap.data();
+      return {
+        id: docSnap.id,
+        ...data,
+        createdAt: data.createdAt?.toDate().toISOString(),
+      } as Publicacion;
     } else {
-      // 2. If not found, try to find by ID (slug might be an ID)
+       // Fallback to check if the slug is actually an ID
       const docRef = doc(db, "publicaciones", slug);
-      const maybeDocSnap = await getDoc(docRef);
-      if (maybeDocSnap.exists()) {
-        docSnap = maybeDocSnap;
-      } else {
-        return null; // Not found by slug or ID
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        return {
+          id: docSnap.id,
+          ...data,
+          createdAt: data.createdAt?.toDate().toISOString(),
+        } as Publicacion;
       }
     }
-
-    const data = docSnap.data();
-    return {
-      id: docSnap.id,
-      ...data,
-      createdAt: data.createdAt?.toDate().toISOString(),
-    } as Publicacion;
-
+    return null;
   } catch (error) {
     console.error("Error fetching publication by slug or ID:", error);
     return null;
