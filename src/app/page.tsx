@@ -102,10 +102,10 @@ export default function HomePage() {
                     data-ai-hint="service icon"
                   />
                 </Link>
-                <Link href="/updates" className="group block" aria-label="Últimas Noticias">
+                <Link href="mailto:info@setranic.com" className="group block" aria-label="Enviar un correo">
                   <Image 
                     src="/2.png" 
-                    alt="Botón de Noticias" 
+                    alt="Botón de Correo" 
                     width={200} 
                     height={150} 
                     className="w-full h-auto rounded-lg shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
