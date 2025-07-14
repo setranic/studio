@@ -1,3 +1,4 @@
+
 import { getPublicacionBySlug } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import { CalendarDays, ArrowLeft } from 'lucide-react';
@@ -17,9 +18,14 @@ export async function generateStaticParams() {
   }));
 }
 
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
 // Generate metadata for each page
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  // This fetch now happens at build time for each generated page
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = await getPublicacionBySlug(params.slug);
   
   if (!post) {
@@ -36,7 +42,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // This is a Server Component that fetches data during the build
-export default async function PublicacionPage({ params }: { params: { slug: string } }) {
+export default async function PublicacionPage({ params }: PageProps) {
   const post = await getPublicacionBySlug(params.slug);
 
   if (!post) {
