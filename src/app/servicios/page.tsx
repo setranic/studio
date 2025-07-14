@@ -19,7 +19,7 @@ const services = [
   {
     title: "DISTRIBUCION DE MERCANCIAS",
     description: "En SETRANIC contamos con equipos y personal, con la experiencia en el sector para realizar todas las maniobras que sean requeridas por nuestros clientes. Consulta con nuestro equipo las mejores condiciones para tus necesidades...",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "/servicios/distribuciondemercancias.png",
     aiHint: "forklift loading",
   },
    {
