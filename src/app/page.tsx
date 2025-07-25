@@ -83,7 +83,7 @@ export default function HomePage() {
   return (
     <div className="w-full">
       {/* Section 1: Hero with Video Background */}
-      <section className="relative w-full flex flex-col justify-start items-center overflow-hidden min-h-[calc(100vh-64px)] pt-4 pb-12 md:pt-24 text-white">
+      <section className="relative w-full flex flex-col justify-center items-center overflow-hidden min-h-screen text-white">
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
            <video
