@@ -4,11 +4,12 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Loader2 } from 'lucide-react';
+import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Loader2, ArrowRight } from 'lucide-react';
 import { getPublicaciones } from '@/lib/data';
 import PostCard from '@/components/common/PostCard';
 import type { Publicacion } from '@/types';
 import { useState, useEffect } from 'react';
+import { cn } from '@/lib/utils';
 
 const featuresNew = [
     {
@@ -76,6 +77,33 @@ function PostsWrapper() {
     </>
   )
 }
+
+const services = [
+  {
+    title: "TRANSPORTE DE CARGA",
+    imageUrl: "https://placehold.co/1200x600.png",
+    aiHint: "cargo truck",
+    colSpan: "col-span-2",
+  },
+  {
+    title: "RASTREO DE MEDIOS EN TIEMPO REAL",
+    imageUrl: "https://placehold.co/600x400.png",
+    aiHint: "satellite tracking",
+    colSpan: "col-span-1",
+  },
+  {
+    title: "CARGA Y DESCARGA DE MERCANCÍAS",
+    imageUrl: "https://placehold.co/600x400.png",
+    aiHint: "forklift loading",
+    colSpan: "col-span-1",
+  },
+  {
+    title: "SEGURO DE MERCANCÍAS",
+    imageUrl: "https://placehold.co/1200x600.png",
+    aiHint: "insurance document",
+    colSpan: "col-span-2",
+  },
+];
 
 
 export default function HomePage() {
@@ -191,24 +219,56 @@ export default function HomePage() {
       {/* Section 3: Services */}
       <section className="w-full py-16 md:py-24 lg:py-28 bg-background">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="bg-card p-8 md:p-12 rounded-xl shadow-2xl max-w-4xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-bold text-primary mb-4">
               SERVICIOS
             </h2>
-            <div className="flex justify-center mt-4 mb-6">
-              <Image
-                src="/SERVSETIcon.svg"
-                alt="Icono Servicios Setranic"
-                width={500}
-                height={500}
-                className="w-[500px] h-[500px]"
-              />
-            </div>
-            <p className="text-lg text-foreground/80 font-body mb-8 max-w-xl mx-auto">
+            <p className="text-lg text-foreground/80 font-body mb-12 max-w-xl mx-auto">
               Explora la gama de soluciones que ofrecemos para impulsar tu negocio al siguiente nivel.
             </p>
-            <Button asChild size="lg" className="font-body shadow-md hover:shadow-lg transition-shadow duration-300">
-              <Link href="/servicios">Ver Nuestros Servicios</Link>
+            
+            <div className="grid grid-cols-2 gap-6">
+              {services.map((service, index) => (
+                <Link 
+                  href="/servicios" 
+                  key={index} 
+                  className={cn(
+                    "relative group rounded-2xl overflow-hidden shadow-lg h-64",
+                    service.colSpan
+                  )}
+                >
+                  <Image
+                    src={service.imageUrl}
+                    alt={service.title}
+                    fill
+                    className="object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    data-ai-hint={service.aiHint}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-6 text-left">
+                    <h3 className="font-headline text-2xl font-bold text-white shadow-md">
+                      {service.title}
+                    </h3>
+                  </div>
+                   <div className="absolute top-4 right-4 text-white">
+                      <Image
+                        src="/logostnblanconuew.svg"
+                        alt="Setranic"
+                        width={40}
+                        height={40}
+                       />
+                  </div>
+                  <div className="absolute bottom-4 right-4 w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <Button asChild size="lg" className="mt-12 font-body shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Link href="/servicios">Ver Todos Nuestros Servicios</Link>
             </Button>
           </div>
         </div>
