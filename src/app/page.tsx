@@ -122,7 +122,7 @@ export default function HomePage() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/VIDEO.mp4" type="video/mp4" />
+            <source src="/homesetranic1.mp4" type="video/mp4" />
             Tu navegador no soporta el tag de video.
           </video>
           {/* Overlay */}
