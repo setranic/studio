@@ -100,15 +100,15 @@ export default function NosotrosPage() {
 
               {/* Right Side: Valor Agregado */}
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                  <div className="flex flex-col items-center space-y-3 w-full max-w-sm">
+                  <div className="flex flex-wrap justify-center items-center gap-4 w-full max-w-lg">
                       {valorAgregadoItems.map((item, index) => (
                           <Image
                               key={index}
                               src={item.src}
                               alt={item.alt}
                               width={400}
-                              height={80}
-                              className="w-full h-auto"
+                              height={100}
+                              className="w-full sm:w-2/5 md:w-auto md:h-20"
                           />
                       ))}
                   </div>
