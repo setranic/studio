@@ -257,7 +257,7 @@ export default function HomePage() {
                 />
             </div>
             <div className="px-6 md:px-16 pt-4 pb-16">
-              <p className="text-center font-body mb-10 text-foreground/80 max-w-2xl mx-auto">
+              <p className="text-left font-body mb-10 text-foreground/80 max-w-2xl text-base">
                 Te compartimos algunas de las razones por las que somos tu mejor opción:
               </p>
 
@@ -272,7 +272,7 @@ export default function HomePage() {
                       className="h-28 w-auto mb-6"
                       data-ai-hint={feature.aiHint}
                     />
-                    <h3 className="text-xl font-headline font-bold uppercase tracking-wider leading-tight">
+                    <h3 className="text-xl font-bold uppercase tracking-wider leading-tight">
                       {feature.titleLine1}
                       <br />
                       {feature.titleLine2}
