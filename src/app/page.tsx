@@ -256,22 +256,22 @@ export default function HomePage() {
                 />
             </div>
             <div className="px-12 md:px-24 pt-4 pb-16">
-              <p className="text-left text-xl md:text-2xl font-body mb-16 md:mb-20 text-foreground/80">
+              <p className="text-left text-lg font-body mb-16 text-foreground/80">
                 Te compartimos algunas de las razones por las que somos tu mejor opción:
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 sm:gap-x-12 gap-y-12 md:gap-y-16">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 sm:gap-x-12 gap-y-12">
                 {featuresNew.map((feature, index) => (
                   <div key={index} className="flex flex-col items-center text-center text-primary">
                     <Image
                       src={feature.imageUrl}
                       alt={feature.titleLine1 + ' ' + feature.titleLine2}
-                      width={200}
-                      height={200}
-                      className="h-28 w-auto sm:h-32 md:h-40 mb-4 md:mb-6"
+                      width={150}
+                      height={150}
+                      className="h-28 w-auto mb-4"
                       data-ai-hint={feature.aiHint}
                     />
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-headline font-semibold uppercase tracking-wider leading-tight">
+                    <h3 className="text-lg font-headline font-semibold uppercase tracking-wider leading-tight">
                       {feature.titleLine1}
                       <br />
                       {feature.titleLine2}
