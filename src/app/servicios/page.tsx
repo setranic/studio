@@ -1,53 +1,55 @@
 
+"use client";
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { useRef, useEffect } from 'react';
 
-const services = [
+const servicesData = [
   {
     title: "TRANSPORTE DE CARGA",
-    description: "SETRANIC NICARAGUA, ofrecemos el servicio de transporte de carga nacional e internacional. Contamos con una flota equipada para todas tus operaciones. Consulta con nuestro equipo de ventas y consulta cuales son nuestros planes y servicios que adaptaremos a tus necesidades...",
-    imageUrl: "https://placehold.co/1200x600.png",
-    aiHint: "cargo truck",
-    colSpan: "col-span-2 row-span-2",
+    description: "SETRANIC NICARAGUA, ofrecemos el servicio de transporte de carga nacional e internacional. Contamos con una flota equipada para todas tus operaciones.",
+    media: { type: 'image', src: '/studio/servicios/transportedecarga.png' },
+    aiHint: "cargo truck logistics",
+    align: "left"
   },
   {
     title: "DISTRIBUCION DE MERCANCIAS",
     description: "En SETRANIC contamos con equipos y personal, con la experiencia en el sector para realizar todas las maniobras que sean requeridas por nuestros clientes.",
-    imageUrl: "https://placehold.co/600x400.png",
+    media: { type: 'image', src: '/studio/servicios/distribuciondemercancias.png' },
     aiHint: "warehouse distribution",
-    colSpan: "col-span-1 row-span-1",
-  },
-  {
-    title: "AGENCIA ADUANERA",
-    description: "Contamos con una red de aliados logísticos que hacen posible cumplir nuestra meta de ser la recomendación número uno en el sector.",
-    imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "customs office",
-    colSpan: "col-span-1 row-span-1",
-  },
-  {
-    title: "ALMACEN FISCAL",
-    description: "Ofrecemos soluciones de almacenaje seguras y eficientes, adaptadas a las normativas fiscales vigentes.",
-    imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "secure warehouse",
-    colSpan: "col-span-1 row-span-1",
-  },
-    {
-    title: "SEGURO DE MERCANCÍAS",
-    description: "Contamos con el Servicio Adicional para el Seguro de las Mercancías en transito.",
-    imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "insurance document",
-    colSpan: "col-span-1 row-span-1",
+    align: "right"
   },
   {
     title: "RASTREO DE MEDIOS EN TIEMPO REAL",
     description: "Ofrecemos en nuestros Servicios de valor agregado, el rastreo en tiempo real de la mercancía para mantenerte al tanto.",
-    imageUrl: "https://placehold.co/1200x600.png",
-    aiHint: "satellite tracking",
-    colSpan: "col-span-2 row-span-1",
+    media: { type: 'video', src: '/studio/servicios/rastreodemedios.mp4' },
+    aiHint: "satellite tracking map",
+    align: "left"
   },
+  {
+    title: "SEGURO DE MERCANCÍAS",
+    description: "Contamos con el Servicio Adicional para el Seguro de las Mercancías en transito.",
+    media: { type: 'image', src: '/studio/servicios/seguro.png' },
+    aiHint: "insurance document protection",
+    align: "right"
+  }
 ];
+
+const VideoComponent = ({ src }: { src: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.warn("Autoplay was prevented:", error);
+      });
+    }
+  }, []);
+  return (
+    <video ref={videoRef} src={src} loop muted playsInline className="w-full h-full object-cover rounded-lg" />
+  );
+};
 
 
 export default function ServiciosPage() {
@@ -61,46 +63,40 @@ export default function ServiciosPage() {
           </p>
         </section>
 
-        <section className="grid grid-cols-1 md:grid-cols-3 grid-rows-3 gap-6 h-[70vh] md:h-[90vh]">
-          {services.map((service, index) => (
-            <Link 
-              href="/contactanos" 
+        <div className="space-y-24">
+          {servicesData.map((service, index) => (
+            <section 
               key={index} 
-              className={cn(
-                "relative group rounded-2xl overflow-hidden shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:scale-105",
-                service.colSpan
-              )}
+              className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 ${service.align === 'right' ? 'md:flex-row-reverse' : ''}`}
             >
-              <Image
-                src={service.imageUrl}
-                alt={service.title}
-                fill
-                className="object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110"
-                data-ai-hint={service.aiHint}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6 w-full">
-                 <div className="flex justify-between items-end">
-                    <div className="text-white">
-                      <h3 className="font-headline text-2xl md:text-3xl font-bold text-white shadow-md transition-colors duration-300 group-hover:text-accent">
-                        {service.title}
-                      </h3>
-                      <p className="font-body text-sm text-white/80 mt-2 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        {service.description}
-                      </p>
-                    </div>
-                    <div className="w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:rotate-[-90deg]">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
-                      </svg>
-                    </div>
-                 </div>
+              <div className="w-full md:w-1/2 rounded-xl overflow-hidden shadow-2xl">
+                 <div className="aspect-w-16 aspect-h-9">
+                    {service.media.type === 'image' ? (
+                      <Image
+                        src={service.media.src}
+                        alt={service.title}
+                        width={600}
+                        height={400}
+                        className="object-cover w-full h-full"
+                        data-ai-hint={service.aiHint}
+                      />
+                    ) : (
+                      <VideoComponent src={service.media.src} />
+                    )}
+                </div>
               </div>
-            </Link>
+              <div className="w-full md:w-1/2 text-center md:text-left">
+                <h2 className="text-2xl md:text-3xl font-headline font-bold text-primary mb-4">{service.title}</h2>
+                <p className="text-foreground/80 font-body text-lg mb-6">{service.description}</p>
+                <Button asChild size="lg" className="font-body shadow-md hover:shadow-lg transition-shadow duration-300">
+                  <Link href="/contactanos">Consultar con Ventas</Link>
+                </Button>
+              </div>
+            </section>
           ))}
-        </section>
+        </div>
 
-        <section className="text-center py-8">
+        <section className="text-center py-16">
             <h2 className="text-3xl font-headline font-semibold text-primary mb-4">¿Listo para empezar?</h2>
             <p className="text-lg text-foreground/80 font-body mb-8 max-w-xl mx-auto">
               Nuestro equipo está listo para crear una solución a tu medida.
