@@ -14,25 +14,25 @@ import QuickContactForm from '@/components/forms/quick-contact-form';
 
 const featuresNew = [
     {
-      imageUrl: "/whyus/1.svg",
+      imageUrl: "/whyus/1.png",
       titleLine1: "(DTD) PUERTA",
       titleLine2: "A PUERTA",
       aiHint: "door delivery",
     },
     {
-      imageUrl: "/whyus/2.svg",
+      imageUrl: "/whyus/2.png",
       titleLine1: "SEGUIMIENTO",
       titleLine2: "EN TIEMPO REAL",
       aiHint: "mobile tracking",
     },
     {
-      imageUrl: "/whyus/3.svg",
+      imageUrl: "/whyus/3.png",
       titleLine1: "COBERTURA",
       titleLine2: "NACIONAL",
       aiHint: "country map",
     },
     {
-      imageUrl: "/whyus/4.svg",
+      imageUrl: "/whyus/4.png",
       titleLine1: "ATENCIÓN",
       titleLine2: "PERSONALIZADA",
       aiHint: "customer support",
