@@ -246,22 +246,22 @@ export default function HomePage() {
       {/* Section 3: Why Choose Us */}
       <section className="w-full py-12 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="bg-card text-primary rounded-xl shadow-2xl max-w-5xl mx-auto">
+          <div className="bg-card text-primary rounded-xl shadow-2xl max-w-4xl mx-auto">
             <div className="px-6 md:px-16 py-12">
                 <Image
                     src="/namesetranicwhyus3.svg"
                     alt="Por qué elegir Setranic"
                     width={500}
-                    height={400}
-                    className="w-auto h-auto"
+                    height={100}
+                    className="w-auto h-auto mx-auto"
                 />
             </div>
             <div className="px-6 md:px-16 pt-4 pb-16">
-              <p className="text-left text-lg font-body mb-10 text-foreground/80">
+              <p className="text-center text-lg font-body mb-10 text-foreground/80 max-w-2xl mx-auto">
                 Te compartimos algunas de las razones por las que somos tu mejor opción:
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
                 {featuresNew.map((feature, index) => (
                   <div key={index} className="flex flex-col items-center text-center text-primary">
                     <Image
