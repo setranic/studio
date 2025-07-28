@@ -126,7 +126,7 @@ export default function HomePage() {
             Tu navegador no soporta el tag de video.
           </video>
           {/* Overlay */}
-          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/70 to-black/30"></div>
         </div>
         
         {/* Content */}
