@@ -246,13 +246,13 @@ export default function HomePage() {
       {/* Section 3: Why Choose Us */}
       <section className="w-full py-12 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="bg-card text-primary rounded-xl shadow-2xl max-w-4xl mx-auto">
+          <div className="bg-card text-primary rounded-xl shadow-2xl max-w-6xl mx-auto">
             <div className="px-6 md:px-16 py-12">
                 <Image
                     src="/namesetranicwhyus3.svg"
                     alt="Por qué elegir Setranic"
-                    width={500}
-                    height={100}
+                    width={350}
+                    height={70}
                     className="w-auto h-auto"
                 />
             </div>
@@ -269,10 +269,10 @@ export default function HomePage() {
                       alt={feature.titleLine1 + ' ' + feature.titleLine2}
                       width={100}
                       height={100}
-                      className="h-20 w-auto mb-4"
+                      className="h-24 w-auto mb-6"
                       data-ai-hint={feature.aiHint}
                     />
-                    <h3 className="text-base font-headline font-bold uppercase tracking-wider leading-tight">
+                    <h3 className="text-lg font-headline font-bold uppercase tracking-wider leading-tight">
                       {feature.titleLine1}
                       <br />
                       {feature.titleLine2}
