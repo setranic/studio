@@ -272,7 +272,7 @@ export default function HomePage() {
                       className="h-28 w-auto mb-6"
                       data-ai-hint={feature.aiHint}
                     />
-                    <h3 className="text-xl font-bold uppercase tracking-wider leading-tight">
+                    <h3 className="text-2xl font-bold uppercase tracking-wider leading-tight">
                       {feature.titleLine1}
                       <br />
                       {feature.titleLine2}
