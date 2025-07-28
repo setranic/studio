@@ -82,26 +82,22 @@ function PostsWrapper() {
 const services = [
   {
     title: "TRANSPORTE DE CARGA",
-    imageUrl: "https://placehold.co/1200x600.png",
-    aiHint: "cargo truck",
+    imageUrl: "/botonservice/1.png",
     colSpan: "col-span-2",
   },
   {
     title: "RASTREO DE MEDIOS EN TIEMPO REAL",
-    imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "satellite tracking",
+    imageUrl: "/botonservice/2.png",
     colSpan: "col-span-1",
   },
   {
     title: "CARGA Y DESCARGA DE MERCANCÍAS",
-    imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "forklift loading",
+    imageUrl: "/botonservice/3.png",
     colSpan: "col-span-1",
   },
   {
     title: "SEGURO DE MERCANCÍAS",
-    imageUrl: "https://placehold.co/1200x600.png",
-    aiHint: "insurance document",
+    imageUrl: "/botonservice/4.png",
     colSpan: "col-span-2",
   },
 ];
@@ -257,7 +253,7 @@ export default function HomePage() {
                 />
             </div>
             <div className="px-6 md:px-16 pt-4 pb-16">
-              <p className="text-left font-body mb-10 text-foreground/80 max-w-2xl text-base">
+              <p className="text-left font-body text-base mb-10 text-foreground/80 max-w-2xl">
                 Te compartimos algunas de las razones por las que somos tu mejor opción:
               </p>
 
@@ -311,7 +307,6 @@ export default function HomePage() {
                     alt={service.title}
                     fill
                     className="object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110"
-                    data-ai-hint={service.aiHint}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
                   <div className="absolute bottom-0 left-0 p-6 text-left">
