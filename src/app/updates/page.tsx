@@ -33,54 +33,56 @@ export default function UpdatesPage() {
   }, []);
 
   return (
-    <div className="space-y-12">
-      <section className="text-center py-12 bg-gradient-to-b from-rose-50 to-background rounded-lg shadow-sm">
-        <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary mb-4">Updates y Noticias</h1>
-        <p className="text-lg md:text-xl text-foreground max-w-2xl mx-auto font-body">
-          Mantente al día con las últimas novedades, tendencias y consejos del mundo digital.
-        </p>
-      </section>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="space-y-12">
+        <section className="text-center py-12 bg-gradient-to-b from-rose-50 to-background rounded-lg shadow-sm">
+          <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary mb-4">Updates y Noticias</h1>
+          <p className="text-lg md:text-xl text-foreground max-w-2xl mx-auto font-body">
+            Mantente al día con las últimas novedades, tendencias y consejos del mundo digital.
+          </p>
+        </section>
 
-      {isLoading ? (
-        <div className="flex justify-center items-center py-20">
-          <Loader2 className="h-12 w-12 animate-spin text-primary" />
-          <p className="ml-4 text-lg font-body">Cargando noticias...</p>
-        </div>
-      ) : blogPosts.length === 0 ? (
-        <section className="text-center py-10">
-          <p className="text-xl text-muted-foreground font-body">Aún no hay publicaciones. ¡Vuelve pronto!</p>
-        </section>
-      ) : (
-        <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
-            <article key={post.id || post.slug} className="bg-card rounded-xl shadow-lg overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-2xl">
-              <div className="relative">
-                <Image 
-                  src={post.imagenCarruselUrl || "https://placehold.co/600x400.png"}
-                  alt={post.titulo}
-                  width={600} 
-                  height={400} 
-                  className="object-cover w-full h-48 transform transition-transform duration-500 group-hover:scale-105"
-                  data-ai-hint="technology blog" // Generic hint
-                  onError={(e) => e.currentTarget.src = "https://placehold.co/600x400.png"}
-                />
-              </div>
-              <div className="p-6 flex flex-col flex-grow">
-                <h2 className="text-xl font-headline font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  <Link href={`/updates/${post.slug || post.id}`}>{post.titulo}</Link>
-                </h2>
-                <p className="text-sm text-muted-foreground font-body mb-1">
-                  {post.createdAt ? format(new Date(post.createdAt), "dd MMMM, yyyy", { locale: es }) : 'Fecha no disponible'}
-                </p>
-                <p className="text-foreground/80 font-body mb-4 leading-relaxed flex-grow line-clamp-3">{post.subtitulo || post.contenido}</p>
-                <Button asChild variant="link" className="mt-auto self-start p-0 text-primary hover:text-accent font-body">
-                  <Link href={`/updates/${post.slug || post.id}`}>Leer Más &rarr;</Link>
-                </Button>
-              </div>
-            </article>
-          ))}
-        </section>
-      )}
+        {isLoading ? (
+          <div className="flex justify-center items-center py-20">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+            <p className="ml-4 text-lg font-body">Cargando noticias...</p>
+          </div>
+        ) : blogPosts.length === 0 ? (
+          <section className="text-center py-10">
+            <p className="text-xl text-muted-foreground font-body">Aún no hay publicaciones. ¡Vuelve pronto!</p>
+          </section>
+        ) : (
+          <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.map((post) => (
+              <article key={post.id || post.slug} className="bg-card rounded-xl shadow-lg overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-2xl">
+                <div className="relative">
+                  <Image 
+                    src={post.imagenCarruselUrl || "https://placehold.co/600x400.png"}
+                    alt={post.titulo}
+                    width={600} 
+                    height={400} 
+                    className="object-cover w-full h-48 transform transition-transform duration-500 group-hover:scale-105"
+                    data-ai-hint="technology blog" // Generic hint
+                    onError={(e) => e.currentTarget.src = "https://placehold.co/600x400.png"}
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h2 className="text-xl font-headline font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    <Link href={`/updates/${post.slug || post.id}`}>{post.titulo}</Link>
+                  </h2>
+                  <p className="text-sm text-muted-foreground font-body mb-1">
+                    {post.createdAt ? format(new Date(post.createdAt), "dd MMMM, yyyy", { locale: es }) : 'Fecha no disponible'}
+                  </p>
+                  <p className="text-foreground/80 font-body mb-4 leading-relaxed flex-grow line-clamp-3">{post.subtitulo || post.contenido}</p>
+                  <Button asChild variant="link" className="mt-auto self-start p-0 text-primary hover:text-accent font-body">
+                    <Link href={`/updates/${post.slug || post.id}`}>Leer Más &rarr;</Link>
+                  </Button>
+                </div>
+              </article>
+            ))}
+          </section>
+        )}
+      </div>
     </div>
   );
 }
