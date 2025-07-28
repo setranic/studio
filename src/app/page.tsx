@@ -363,24 +363,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 6: CTA */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-card rounded-t-xl shadow-inner">
-        <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
-          <div className="space-y-3">
-            <h2 className="text-3xl font-headline font-semibold tracking-tighter text-primary sm:text-4xl md:text-5xl">
-              Listos para Empezar?
-            </h2>
-            <p className="mx-auto max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed font-body">
-              Contáctanos hoy mismo y descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.
-            </p>
-          </div>
-          <div className="mx-auto w-full max-w-sm space-y-2">
-             <Button asChild size="lg" className="w-full font-body shadow-md hover:shadow-lg transition-shadow duration-300">
-              <Link href="/contactanos">Solicitar Consulta</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
