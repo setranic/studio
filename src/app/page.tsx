@@ -14,25 +14,25 @@ import QuickContactForm from '@/components/forms/quick-contact-form';
 
 const featuresNew = [
     {
-      icon: DoorOpen,
+      imageUrl: "/whyus/1.svg",
       titleLine1: "(DTD) PUERTA",
       titleLine2: "A PUERTA",
       aiHint: "door delivery",
     },
     {
-      icon: Smartphone,
+      imageUrl: "/whyus/2.svg",
       titleLine1: "SEGUIMIENTO",
       titleLine2: "EN TIEMPO REAL",
       aiHint: "mobile tracking",
     },
     {
-      icon: MapIcon,
+      imageUrl: "/whyus/3.svg",
       titleLine1: "COBERTURA",
       titleLine2: "NACIONAL",
       aiHint: "country map",
     },
     {
-      icon: MessageSquareHeart,
+      imageUrl: "/whyus/4.svg",
       titleLine1: "ATENCIÓN",
       titleLine2: "PERSONALIZADA",
       aiHint: "customer support",
@@ -263,7 +263,14 @@ export default function HomePage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-8 md:gap-y-10">
                 {featuresNew.map((feature, index) => (
                   <div key={index} className="flex flex-col items-center text-center text-primary">
-                    <feature.icon className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 mb-2 md:mb-3" strokeWidth={1.5} data-ai-hint={feature.aiHint} />
+                    <Image
+                      src={feature.imageUrl}
+                      alt={feature.titleLine1 + ' ' + feature.titleLine2}
+                      width={100}
+                      height={100}
+                      className="h-14 w-auto sm:h-16 md:h-20 mb-2 md:mb-3"
+                      data-ai-hint={feature.aiHint}
+                    />
                     <h3 className="text-xs sm:text-sm md:text-base font-headline font-semibold uppercase tracking-wider leading-tight">
                       {feature.titleLine1}
                       <br />
