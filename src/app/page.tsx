@@ -14,25 +14,25 @@ import QuickContactForm from '@/components/forms/quick-contact-form';
 
 const featuresNew = [
     {
-      imageUrl: "/whyus/1.png",
+      imageUrl: "/whyus/1.svg",
       titleLine1: "(DTD) PUERTA",
       titleLine2: "A PUERTA",
       aiHint: "door delivery",
     },
     {
-      imageUrl: "/whyus/2.png",
+      imageUrl: "/whyus/2.svg",
       titleLine1: "SEGUIMIENTO",
       titleLine2: "EN TIEMPO REAL",
       aiHint: "mobile tracking",
     },
     {
-      imageUrl: "/whyus/3.png",
+      imageUrl: "/whyus/3.svg",
       titleLine1: "COBERTURA",
       titleLine2: "NACIONAL",
       aiHint: "country map",
     },
     {
-      imageUrl: "/whyus/4.png",
+      imageUrl: "/whyus/4.svg",
       titleLine1: "ATENCIÓN",
       titleLine2: "PERSONALIZADA",
       aiHint: "customer support",
@@ -247,31 +247,31 @@ export default function HomePage() {
       <section className="w-full py-16 md:py-24 lg:py-28 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="bg-card text-primary rounded-xl shadow-2xl max-w-4xl mx-auto">
-            <div className="px-8 md:px-12 pt-8">
+            <div className="px-12 md:px-24 py-12">
                 <Image
                     src="/namesetranicwhyus3.svg"
                     alt="Por qué elegir Setranic"
-                    width={400}
-                    height={342}
+                    width={800}
+                    height={684}
                 />
             </div>
-            <div className="px-8 md:px-12 pt-4 pb-8">
-              <p className="text-left text-md md:text-lg font-body mb-10 md:mb-12 text-foreground/80">
+            <div className="px-12 md:px-24 pt-4 pb-16">
+              <p className="text-left text-xl md:text-2xl font-body mb-16 md:mb-20 text-foreground/80">
                 Te compartimos algunas de las razones por las que somos tu mejor opción:
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-8 md:gap-y-10">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 sm:gap-x-12 gap-y-12 md:gap-y-16">
                 {featuresNew.map((feature, index) => (
                   <div key={index} className="flex flex-col items-center text-center text-primary">
                     <Image
                       src={feature.imageUrl}
                       alt={feature.titleLine1 + ' ' + feature.titleLine2}
-                      width={100}
-                      height={100}
-                      className="h-14 w-auto sm:h-16 md:h-20 mb-2 md:mb-3"
+                      width={200}
+                      height={200}
+                      className="h-28 w-auto sm:h-32 md:h-40 mb-4 md:mb-6"
                       data-ai-hint={feature.aiHint}
                     />
-                    <h3 className="text-xs sm:text-sm md:text-base font-headline font-semibold uppercase tracking-wider leading-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-headline font-semibold uppercase tracking-wider leading-tight">
                       {feature.titleLine1}
                       <br />
                       {feature.titleLine2}
