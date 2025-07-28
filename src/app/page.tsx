@@ -182,7 +182,49 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 2: Why Choose Us */}
+      {/* Section 2: About Us Teaser */}
+      <section className="relative w-full flex flex-col justify-center items-center overflow-hidden text-white py-24">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+           <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/nosotros/video/nosotrosstn.mp4" type="video/mp4" />
+            Tu navegador no soporta el tag de video.
+          </video>
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center">
+            <div className="relative w-full max-w-xs md:max-w-md lg:max-w-lg">
+                <Image
+                    src="/nosotros/sobrenosotroscard.svg"
+                    alt="Sobre Nosotros Card"
+                    width={800} 
+                    height={600} 
+                    className="w-full h-auto opacity-50"
+                />
+                <Image
+                    src="/nosotros/sobrenosotroscardtext.svg"
+                    alt="Sobre Nosotros Texto"
+                    width={800}
+                    height={600}
+                    className="absolute top-0 left-0 w-full h-auto"
+                />
+            </div>
+            <Button asChild className="mt-6 bg-primary/80 hover:bg-primary text-primary-foreground font-body shadow-lg backdrop-blur-sm border border-white/20">
+              <Link href="/nosotros">Conocer Más</Link>
+            </Button>
+        </div>
+      </section>
+
+      {/* Section 3: Why Choose Us */}
       <section className="w-full py-16 md:py-24 lg:py-28 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="bg-card text-primary rounded-xl shadow-2xl max-w-4xl mx-auto">
@@ -216,7 +258,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 3: Services */}
+      {/* Section 4: Services */}
       <section className="w-full py-16 md:py-24 lg:py-28 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-6xl mx-auto text-center">
@@ -274,7 +316,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 4: Updates */}
+      {/* Section 5: Updates */}
       <section className="w-full py-16 md:py-24 lg:py-28 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="bg-card p-8 md:p-12 rounded-xl shadow-2xl max-w-6xl mx-auto text-center">
@@ -294,7 +336,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 5: CTA */}
+      {/* Section 6: CTA */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-card rounded-t-xl shadow-inner">
         <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
           <div className="space-y-3">
