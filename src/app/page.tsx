@@ -253,7 +253,7 @@ export default function HomePage() {
                     alt="Por qué elegir Setranic"
                     width={500}
                     height={100}
-                    className="w-auto h-auto mx-auto"
+                    className="w-auto h-auto"
                 />
             </div>
             <div className="px-6 md:px-16 pt-4 pb-16">
