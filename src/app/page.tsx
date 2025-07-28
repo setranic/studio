@@ -244,34 +244,35 @@ export default function HomePage() {
       </section>
 
       {/* Section 3: Why Choose Us */}
-      <section className="w-full py-12 md:py-16 bg-background">
+      <section className="w-full py-12 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="bg-card text-primary rounded-xl shadow-2xl max-w-4xl mx-auto">
-            <div className="px-6 md:px-12 py-8">
+          <div className="bg-card text-primary rounded-xl shadow-2xl max-w-5xl mx-auto">
+            <div className="px-6 md:px-16 py-12">
                 <Image
                     src="/namesetranicwhyus3.svg"
                     alt="Por qué elegir Setranic"
-                    width={400}
-                    height={342}
+                    width={500}
+                    height={400}
+                    className="w-auto h-auto"
                 />
             </div>
-            <div className="px-6 md:px-12 pt-2 pb-12">
-              <p className="text-left text-base font-body mb-8 text-foreground/80">
+            <div className="px-6 md:px-16 pt-4 pb-16">
+              <p className="text-left text-lg font-body mb-10 text-foreground/80">
                 Te compartimos algunas de las razones por las que somos tu mejor opción:
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8">
                 {featuresNew.map((feature, index) => (
                   <div key={index} className="flex flex-col items-center text-center text-primary">
                     <Image
                       src={feature.imageUrl}
                       alt={feature.titleLine1 + ' ' + feature.titleLine2}
-                      width={75}
-                      height={75}
-                      className="h-14 w-auto mb-2"
+                      width={100}
+                      height={100}
+                      className="h-20 w-auto mb-4"
                       data-ai-hint={feature.aiHint}
                     />
-                    <h3 className="text-sm font-headline font-semibold uppercase tracking-wider leading-tight">
+                    <h3 className="text-base font-headline font-bold uppercase tracking-wider leading-tight">
                       {feature.titleLine1}
                       <br />
                       {feature.titleLine2}
