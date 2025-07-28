@@ -47,6 +47,7 @@ export default function NosotrosPage() {
   }, []);
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <>
       <div className="fixed top-0 left-0 w-full h-full z-0">
         <video
@@ -99,7 +100,7 @@ export default function NosotrosPage() {
 
               {/* Right Side: Valor Agregado */}
               <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                  <div className="flex flex-col items-center space-y-2 md:space-y-3 w-full max-w-sm">
+                  <div className="flex flex-col items-center space-y-3 w-full max-w-sm">
                       {valorAgregadoItems.map((item, index) => (
                           <Image
                               key={index}
@@ -148,5 +149,6 @@ export default function NosotrosPage() {
         )}
       </div>
     </>
+    </div>
   );
 }
