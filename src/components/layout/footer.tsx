@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Instagram, Facebook, MapPin, Mail, Phone } from 'lucide-react';
+import { Instagram, Facebook, MapPin, Mail, Phone, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -9,35 +9,16 @@ export default function Footer() {
       <div className="bg-gray-900 text-gray-300 py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* About Section */}
+            {/* Logo and Contact Info Section */}
             <div className="md:col-span-1 space-y-4">
               <Image 
                 src="/logostnblanconuew.svg" 
                 alt="Setranic Logo" 
                 width={150} 
                 height={50} 
-                className="mb-2"
+                className="mb-4"
               />
-              <p className="text-sm font-body">
-                Somos una empresa Nicaragüense de logística y transporte con amplia experiencia en la gestión de mercancías a nivel nacional e internacional.
-              </p>
-            </div>
-            
-            {/* Links Section */}
-            <div>
-              <h3 className="font-headline text-lg font-semibold text-white mb-4">Enlaces</h3>
-              <ul className="space-y-2 font-body">
-                <li><Link href="/servicios" className="hover:text-white transition-colors">Servicios</Link></li>
-                <li><Link href="/nosotros" className="hover:text-white transition-colors">Nosotros</Link></li>
-                <li><Link href="/updates" className="hover:text-white transition-colors">Updates</Link></li>
-                <li><Link href="/contactanos" className="hover:text-white transition-colors">Contáctanos</Link></li>
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <h3 className="font-headline text-lg font-semibold text-white mb-4">Contacto</h3>
-              <ul className="space-y-3 font-body text-sm">
+               <ul className="space-y-3 font-body text-sm">
                 <li className="flex items-start">
                   <MapPin className="h-5 w-5 mr-3 mt-1 flex-shrink-0 text-accent" />
                   <span>Nicaragua, Managua - Rubenia</span>
@@ -51,6 +32,25 @@ export default function Footer() {
                   <a href="tel:+50575301222" className="hover:text-white transition-colors">+(505) 7530-1222</a>
                 </li>
               </ul>
+            </div>
+            
+            {/* Links Section */}
+            <div>
+              <h3 className="font-headline text-lg font-semibold text-white mb-4">Enlaces</h3>
+              <ul className="space-y-2 font-body">
+                <li><Link href="/servicios" className="hover:text-white transition-colors">Servicios</Link></li>
+                <li><Link href="/nosotros" className="hover:text-white transition-colors">Nosotros</Link></li>
+                <li><Link href="/updates" className="hover:text-white transition-colors">Updates</Link></li>
+                <li><Link href="/contactanos" className="hover:text-white transition-colors">Contáctanos</Link></li>
+              </ul>
+            </div>
+
+            {/* About Us */}
+            <div>
+              <h3 className="font-headline text-lg font-semibold text-white mb-4">Sobre Nosotros</h3>
+              <p className="text-sm font-body">
+                Somos una empresa Nicaragüense de logística y transporte con amplia experiencia en la gestión de mercancías a nivel nacional e internacional.
+              </p>
             </div>
 
             {/* Social Media */}
@@ -74,6 +74,18 @@ export default function Footer() {
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   <Facebook className="h-6 w-6" />
+                </Link>
+                 <a href="mailto:info@setranic.com" aria-label="Enviar un correo" className="text-gray-400 hover:text-white transition-colors">
+                  <Mail className="h-6 w-6" />
+                </a>
+                 <Link 
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn de Setranic"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <Linkedin className="h-6 w-6" />
                 </Link>
               </div>
             </div>
