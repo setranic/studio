@@ -261,7 +261,7 @@ export default function HomePage() {
                 Te compartimos algunas de las razones por las que somos tu mejor opción:
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-16">
                 {featuresNew.map((feature, index) => (
                   <div key={index} className="flex flex-col items-center text-center text-primary">
                     <Image
@@ -269,10 +269,10 @@ export default function HomePage() {
                       alt={feature.titleLine1 + ' ' + feature.titleLine2}
                       width={100}
                       height={100}
-                      className="h-24 w-auto mb-6"
+                      className="h-28 w-auto mb-6"
                       data-ai-hint={feature.aiHint}
                     />
-                    <h3 className="text-lg font-headline font-bold uppercase tracking-wider leading-tight">
+                    <h3 className="text-xl font-headline font-bold uppercase tracking-wider leading-tight">
                       {feature.titleLine1}
                       <br />
                       {feature.titleLine2}
