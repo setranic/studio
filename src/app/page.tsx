@@ -257,7 +257,7 @@ export default function HomePage() {
                 />
             </div>
             <div className="px-6 md:px-16 pt-4 pb-16">
-              <p className="text-center text-lg font-body mb-10 text-foreground/80 max-w-2xl mx-auto">
+              <p className="text-center font-body mb-10 text-foreground/80 max-w-2xl mx-auto">
                 Te compartimos algunas de las razones por las que somos tu mejor opción:
               </p>
 
