@@ -14,25 +14,25 @@ import QuickContactForm from '@/components/forms/quick-contact-form';
 
 const featuresNew = [
     {
-      imageUrl: "/whyus/1.svg",
+      imageUrl: "/studio/whyus/1.svg",
       titleLine1: "(DTD) PUERTA",
       titleLine2: "A PUERTA",
       aiHint: "door delivery",
     },
     {
-      imageUrl: "/whyus/2.svg",
+      imageUrl: "/studio/whyus/2.svg",
       titleLine1: "SEGUIMIENTO",
       titleLine2: "EN TIEMPO REAL",
       aiHint: "mobile tracking",
     },
     {
-      imageUrl: "/whyus/3.svg",
+      imageUrl: "/studio/whyus/3.svg",
       titleLine1: "COBERTURA",
       titleLine2: "NACIONAL",
       aiHint: "country map",
     },
     {
-      imageUrl: "/whyus/4.svg",
+      imageUrl: "/studio/whyus/4.svg",
       titleLine1: "ATENCIÓN",
       titleLine2: "PERSONALIZADA",
       aiHint: "customer support",
@@ -82,22 +82,22 @@ function PostsWrapper() {
 const services = [
   {
     title: "TRANSPORTE DE CARGA",
-    imageUrl: "/botonservices/1.png",
+    imageUrl: "/studio/botonservices/1.png",
     colSpan: "col-span-2",
   },
   {
     title: "RASTREO DE MEDIOS EN TIEMPO REAL",
-    imageUrl: "/botonservices/2.png",
+    imageUrl: "/studio/botonservices/2.png",
     colSpan: "col-span-1",
   },
   {
     title: "CARGA Y DESCARGA DE MERCANCÍAS",
-    imageUrl: "/botonservices/3.png",
+    imageUrl: "/studio/botonservices/3.png",
     colSpan: "col-span-1",
   },
   {
     title: "SEGURO DE MERCANCÍAS",
-    imageUrl: "/botonservices/4.png",
+    imageUrl: "/studio/botonservices/4.png",
     colSpan: "col-span-2",
   },
 ];
@@ -118,7 +118,7 @@ export default function HomePage() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/homesetranic1.mp4" type="video/mp4" />
+            <source src="/studio/homesetranic1.mp4" type="video/mp4" />
             Tu navegador no soporta el tag de video.
           </video>
           {/* Overlay */}
@@ -128,7 +128,7 @@ export default function HomePage() {
         {/* Content */}
         <div className="relative z-10 container px-4 md:px-6 text-center flex flex-col items-center h-full">
            <Image
-            src="/logostnblanconuew.svg?v=2"
+            src="/studio/logostnblanconuew.svg?v=2"
             alt="Logo Setranic"
             width={200}
             height={75}
@@ -146,7 +146,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                <Link href="https://www.instagram.com/setranic/" target="_blank" rel="noopener noreferrer" className="group block" aria-label="Nuestro Instagram">
                 <Image 
-                  src="/1.png" 
+                  src="/studio/1.png" 
                   alt="Botón de Instagram" 
                   width={200} 
                   height={150} 
@@ -156,7 +156,7 @@ export default function HomePage() {
               </Link>
               <Link href="mailto:info@setranic.com" className="group block" aria-label="Enviar un correo">
                 <Image 
-                  src="/2.png" 
+                  src="/studio/2.png" 
                   alt="Botón de Correo" 
                   width={200} 
                   height={150} 
@@ -166,7 +166,7 @@ export default function HomePage() {
               </Link>
               <Link href="https://www.facebook.com/Setranic/" target="_blank" rel="noopener noreferrer" className="group block" aria-label="Nuestro Facebook">
                 <Image 
-                  src="/3.png" 
+                  src="/studio/3.png" 
                   alt="Botón de Facebook" 
                   width={200} 
                   height={150} 
@@ -190,7 +190,7 @@ export default function HomePage() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/nosotros/video/nosotrosstn.mp4" type="video/mp4" />
+            <source src="/studio/nosotros/video/nosotrosstn.mp4" type="video/mp4" />
             Tu navegador no soporta el tag de video.
           </video>
           {/* Overlay */}
@@ -204,14 +204,14 @@ export default function HomePage() {
                 <div className="flex justify-center">
                     <div className="relative w-full max-w-xs md:max-w-md lg:max-w-lg">
                         <Image
-                            src="/nosotros/sobrenosotroscard.svg"
+                            src="/studio/nosotros/sobrenosotroscard.svg"
                             alt="Sobre Nosotros Card"
                             width={800} 
                             height={600} 
                             className="w-full h-auto opacity-50"
                         />
                         <Image
-                            src="/nosotros/sobrenosotroscardtext.svg"
+                            src="/studio/nosotros/sobrenosotroscardtext.svg"
                             alt="Sobre Nosotros Texto"
                             width={800}
                             height={600}
@@ -223,7 +223,7 @@ export default function HomePage() {
                 {/* Right Side: Quick Contact Form */}
                 <div className="flex flex-col items-center text-center bg-black/30 backdrop-blur-md p-8 rounded-2xl border border-white/20">
                      <Image
-                        src="/logostnblanconuew.svg?v=2"
+                        src="/studio/logostnblanconuew.svg?v=2"
                         alt="Logo Setranic"
                         width={120}
                         height={45}
@@ -245,7 +245,7 @@ export default function HomePage() {
           <div className="bg-card text-primary rounded-xl shadow-2xl max-w-6xl mx-auto">
             <div className="px-6 md:px-16 py-12">
                 <Image
-                    src="/namesetranicwhyus3.svg"
+                    src="/studio/namesetranicwhyus3.svg"
                     alt="Por qué elegir Setranic"
                     width={350}
                     height={70}
@@ -316,7 +316,7 @@ export default function HomePage() {
                   </div>
                    <div className="absolute top-4 right-4 text-white">
                       <Image
-                        src="/logostnblanconuew.svg"
+                        src="/studio/logostnblanconuew.svg"
                         alt="Setranic"
                         width={40}
                         height={40}
