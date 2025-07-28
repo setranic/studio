@@ -246,7 +246,7 @@ export default function HomePage() {
       {/* Section 3: Why Choose Us */}
       <section className="w-full py-16 md:py-24 lg:py-28 bg-background">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="bg-card text-primary rounded-xl shadow-2xl max-w-4xl mx-auto">
+          <div className="bg-card text-primary rounded-xl shadow-2xl max-w-6xl mx-auto">
             <div className="px-12 md:px-24 py-12">
                 <Image
                     src="/namesetranicwhyus3.svg"
