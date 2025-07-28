@@ -10,6 +10,7 @@ import PostCard from '@/components/common/PostCard';
 import type { Publicacion } from '@/types';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import QuickContactForm from '@/components/forms/quick-contact-form';
 
 const featuresNew = [
     {
@@ -183,10 +184,10 @@ export default function HomePage() {
       </section>
 
       {/* Section 2: About Us Teaser */}
-      <section className="relative w-full flex flex-col justify-center items-center overflow-hidden text-white py-24">
+      <section className="relative w-full flex items-center overflow-hidden text-white py-24">
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
-           <video
+          <video
             autoPlay
             loop
             muted
@@ -201,26 +202,44 @@ export default function HomePage() {
         </div>
         
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center">
-            <div className="relative w-full max-w-xs md:max-w-md lg:max-w-lg">
-                <Image
-                    src="/nosotros/sobrenosotroscard.svg"
-                    alt="Sobre Nosotros Card"
-                    width={800} 
-                    height={600} 
-                    className="w-full h-auto opacity-50"
-                />
-                <Image
-                    src="/nosotros/sobrenosotroscardtext.svg"
-                    alt="Sobre Nosotros Texto"
-                    width={800}
-                    height={600}
-                    className="absolute top-0 left-0 w-full h-auto"
-                />
+        <div className="relative z-10 container mx-auto px-4 md:px-6">
+           <div className="grid md:grid-cols-2 gap-12 items-center">
+                {/* Left Side: SVG Card */}
+                <div className="flex justify-center">
+                    <div className="relative w-full max-w-xs md:max-w-md lg:max-w-lg">
+                        <Image
+                            src="/nosotros/sobrenosotroscard.svg"
+                            alt="Sobre Nosotros Card"
+                            width={800} 
+                            height={600} 
+                            className="w-full h-auto opacity-50"
+                        />
+                        <Image
+                            src="/nosotros/sobrenosotroscardtext.svg"
+                            alt="Sobre Nosotros Texto"
+                            width={800}
+                            height={600}
+                            className="absolute top-0 left-0 w-full h-auto"
+                        />
+                    </div>
+                </div>
+
+                {/* Right Side: Quick Contact Form */}
+                <div className="flex flex-col items-center text-center bg-black/30 backdrop-blur-md p-8 rounded-2xl border border-white/20">
+                     <Image
+                        src="/logostnblanconuew.svg?v=2"
+                        alt="Logo Setranic"
+                        width={120}
+                        height={45}
+                        className="mb-4"
+                      />
+                    <Button asChild className="mb-6 bg-primary/80 hover:bg-primary text-primary-foreground font-body shadow-lg border border-white/20">
+                      <Link href="/nosotros">Conocer Más</Link>
+                    </Button>
+                    
+                    <QuickContactForm />
+                </div>
             </div>
-            <Button asChild className="mt-6 bg-primary/80 hover:bg-primary text-primary-foreground font-body shadow-lg backdrop-blur-sm border border-white/20">
-              <Link href="/nosotros">Conocer Más</Link>
-            </Button>
         </div>
       </section>
 
