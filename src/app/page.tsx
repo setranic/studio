@@ -82,22 +82,22 @@ function PostsWrapper() {
 const services = [
   {
     title: "TRANSPORTE DE CARGA",
-    imageUrl: "/botonservice/1.png",
+    imageUrl: "/botonservices/1.png",
     colSpan: "col-span-2",
   },
   {
     title: "RASTREO DE MEDIOS EN TIEMPO REAL",
-    imageUrl: "/botonservice/2.png",
+    imageUrl: "/botonservices/2.png",
     colSpan: "col-span-1",
   },
   {
     title: "CARGA Y DESCARGA DE MERCANCÍAS",
-    imageUrl: "/botonservice/3.png",
+    imageUrl: "/botonservices/3.png",
     colSpan: "col-span-1",
   },
   {
     title: "SEGURO DE MERCANCÍAS",
-    imageUrl: "/botonservice/4.png",
+    imageUrl: "/botonservices/4.png",
     colSpan: "col-span-2",
   },
 ];
