@@ -30,7 +30,7 @@ const ptSans = PT_Sans({
 // so we'll define it statically here. 
 // For dynamic metadata, you'd use the generateMetadata function in a server component page.
 // export const metadata: Metadata = {
-//   title: 'Setranic - Innovación Digital',
+//   title: 'Setranic - Servicios y transporte',
 //   description: 'Soluciones creativas y tecnológicas para impulsar tu negocio.',
 // };
 
@@ -58,8 +58,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-         <title>Setranic - Innovación Digital</title>
-         <meta name="description" content="Soluciones creativas y tecnológicas para impulsar tu negocio." />
+         <title>Setranic - Servicios y transporte</title>
+         <meta name="description" content="Empresa de logística y transporte en Nicaragua. Ofrecemos transporte de carga, distribución, agencia aduanera y más. Estrategias sin límites para tus envíos." />
+         <link rel="icon" href="/logostnblanconuew.svg" type="image/svg+xml" />
       </head>
       <body
         className={cn(

@@ -1,4 +1,12 @@
 
+
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Política de Privacidad | Setranic',
+  description: 'Consulta nuestra política de privacidad para entender cómo recopilamos, usamos y protegemos tu información personal cuando utilizas nuestros servicios de logística y transporte.',
+};
+
 export default function PoliticaDePrivacidadPage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

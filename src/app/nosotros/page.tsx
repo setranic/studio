@@ -6,6 +6,15 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Target, Eye, Compass, ArrowLeft } from 'lucide-react';
+import type { Metadata } from 'next';
+
+// Although this is a client component, we cannot export metadata directly.
+// This is here for reference. For actual implementation, a parent server component would be needed.
+// export const metadata: Metadata = {
+//   title: 'Sobre Nosotros | Setranic',
+//   description: 'Conoce nuestra visión, misión y valores. En Setranic, creemos que el transporte construye confianza y conecta oportunidades. Sé nuestro aliado en el camino.',
+// };
+
 
 const valorAgregadoItems = [
   { src: "/nosotros/valor agregado/principal.png", alt: "Valor Agregado" },
@@ -39,6 +48,17 @@ export default function NosotrosPage() {
   const [showInfoCards, setShowInfoCards] = useState(false);
 
   useEffect(() => {
+    document.title = 'Sobre Nosotros | Setranic';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Conoce nuestra visión, misión y valores. En Setranic, creemos que el transporte construye confianza y conecta oportunidades. Sé nuestro aliado en el camino.');
+    } else {
+      const newMeta = document.createElement('meta');
+      newMeta.name = 'description';
+      newMeta.content = 'Conoce nuestra visión, misión y valores. En Setranic, creemos que el transporte construye confianza y conecta oportunidades. Sé nuestro aliado en el camino.';
+      document.head.appendChild(newMeta);
+    }
+    
     if (videoRef.current) {
       videoRef.current.play().catch(error => {
         console.warn("La reproducción automática del video fue bloqueada:", error);

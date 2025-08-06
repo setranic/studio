@@ -1,4 +1,5 @@
 
+
 "use client"; // Required because we use useEffect and useState
 
 import { useState, useEffect } from 'react';
@@ -12,11 +13,25 @@ import { Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 
+// Metadata cannot be exported from a Client Component.
+// It needs to be handled in a parent Server Component or layout.
+
 export default function UpdatesPage() {
   const [blogPosts, setBlogPosts] = useState<Publicacion[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    document.title = 'Updates y Noticias | Setranic';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Mantente al día con las últimas novedades, tendencias y noticias del sector de logística y transporte en Nicaragua y la región.');
+    } else {
+      const newMeta = document.createElement('meta');
+      newMeta.name = 'description';
+      newMeta.content = 'Mantente al día con las últimas novedades, tendencias y noticias del sector de logística y transporte en Nicaragua y la región.';
+      document.head.appendChild(newMeta);
+    }
+
     const fetchPosts = async () => {
       setIsLoading(true);
       const posts = await getPublicaciones();
@@ -38,7 +53,7 @@ export default function UpdatesPage() {
         <section className="text-center py-12 bg-gradient-to-b from-rose-50 to-background rounded-lg shadow-sm">
           <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary mb-4">Updates y Noticias</h1>
           <p className="text-lg md:text-xl text-foreground max-w-2xl mx-auto font-body">
-            Mantente al día con las últimas novedades, tendencias y consejos del mundo digital.
+            Mantente al día con las últimas novedades, tendencias y consejos del mundo logístico.
           </p>
         </section>
 

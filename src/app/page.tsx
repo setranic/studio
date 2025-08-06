@@ -1,16 +1,18 @@
 
-"use client";
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { DoorOpen, Smartphone, Map as MapIcon, MessageSquareHeart, Loader2, ArrowRight } from 'lucide-react';
-import { getPublicaciones } from '@/lib/data';
-import PostCard from '@/components/common/PostCard';
-import type { Publicacion } from '@/types';
-import { useState, useEffect } from 'react';
+import PostsWrapper from '@/components/PostsWrapper';
 import { cn } from '@/lib/utils';
 import QuickContactForm from '@/components/forms/quick-contact-form';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Setranic - Servicios y transporte de carga',
+  description: 'Somos una empresa Nicaragüense de logística y transporte. Con amplia experiencia en la gestión de mercancías, ofrecemos estrategias sin límites para tus envíos.',
+};
 
 const featuresNew = [
     {
@@ -38,46 +40,6 @@ const featuresNew = [
       aiHint: "customer support",
     },
   ];
-
-function PostsWrapper() {
-  const [posts, setPosts] = useState<Publicacion[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      setIsLoading(true);
-      const allPosts = await getPublicaciones();
-      const recentPosts = allPosts.slice(0, 3);
-      setPosts(recentPosts);
-      setIsLoading(false);
-    };
-
-    fetchPosts();
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center py-10">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="ml-3 font-body">Cargando noticias...</p>
-      </div>
-    );
-  }
-  
-  return (
-    <>
-      {posts.length > 0 ? (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
-          ))}
-        </div>
-      ) : (
-        <p className="text-muted-foreground font-body mb-12">No hay noticias recientes.</p>
-      )}
-    </>
-  )
-}
 
 const services = [
   {

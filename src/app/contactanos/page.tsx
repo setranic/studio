@@ -1,6 +1,13 @@
 
+
 import ContactForm from '@/components/forms/contact-form';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contáctanos | Setranic',
+  description: '¿Listo para empezar? Envíanos un mensaje a través de nuestro formulario de contacto o utiliza nuestra información de email y teléfono para comunicarte con nosotros. Estamos en Managua, Nicaragua.',
+};
 
 export default function ContactanosPage() {
   return (
