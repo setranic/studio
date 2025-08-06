@@ -1,4 +1,5 @@
 
+"use client";
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -6,10 +7,10 @@ import Link from 'next/link';
 import { useRef, useEffect } from 'react';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'Nuestros Servicios | Setranic',
-  description: 'Descubre nuestra gama completa de soluciones de logística y transporte: transporte de carga, distribución de mercancías, rastreo en tiempo real y seguro de mercancías.',
-};
+// export const metadata: Metadata = {
+//   title: 'Nuestros Servicios | Setranic',
+//   description: 'Descubre nuestra gama completa de soluciones de logística y transporte: transporte de carga, distribución de mercancías, rastreo en tiempo real y seguro de mercancías.',
+// };
 
 const servicesData = [
   {
@@ -58,6 +59,19 @@ const VideoComponent = ({ src }: { src: string }) => {
 
 
 export default function ServiciosPage() {
+    useEffect(() => {
+        document.title = 'Nuestros Servicios | Setranic';
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+        metaDesc.setAttribute('content', 'Descubre nuestra gama completa de soluciones de logística y transporte: transporte de carga, distribución de mercancías, rastreo en tiempo real y seguro de mercancías.');
+        } else {
+        const newMeta = document.createElement('meta');
+        newMeta.name = 'description';
+        newMeta.content = 'Descubre nuestra gama completa de soluciones de logística y transporte: transporte de carga, distribución de mercancías, rastreo en tiempo real y seguro de mercancías.';
+        document.head.appendChild(newMeta);
+        }
+    }, []);
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="space-y-16">
