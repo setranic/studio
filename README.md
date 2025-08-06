@@ -68,8 +68,8 @@ Ahora que las imágenes están subidas y el slug está registrado, puedes crear 
     *   **Subtítulo**: Un subtítulo o descripción corta.
     *   **Slug (Opcional)**: **MUY IMPORTANTE**. Escribe aquí el **mismo slug exacto** que registraste en el archivo `static-paths.ts` en el Paso 2. Si lo dejas en blanco, se generará uno a partir del título, pero es **altamente recomendable** que lo introduzcas manualmente para asegurar que coincida.
     *   **Contenido**: El cuerpo completo de tu artículo.
-    *   **URL Imagen de Portada**: Escribe la ruta a la imagen de portada que subiste. La ruta debe empezar con `/studio/publicaciones/`. Ejemplo: `/studio/publicaciones/mi-nueva-publicacion-portada.jpg`.
-    *   **URL Imagen para Carrusel/Miniatura**: Escribe la ruta a la imagen de miniatura. Ejemplo: `/studio/publicaciones/mi-nueva-publicacion-miniatura.jpg`.
+    *   **URL Imagen de Portada**: Escribe la ruta a la imagen de portada que subiste. La ruta debe empezar con `/publicaciones/`. Ejemplo: `/publicaciones/mi-nueva-publicacion-portada.jpg`.
+    *   **URL Imagen para Carrusel/Miniatura**: Escribe la ruta a la imagen de miniatura. Ejemplo: `/publicaciones/mi-nueva-publicacion-miniatura.jpg`.
 
 4.  **Haz clic en "Crear Publicación"**. La publicación se guardará en la base de datos de Firestore.
 

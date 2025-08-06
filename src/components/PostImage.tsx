@@ -8,8 +8,11 @@ interface PostImageProps {
 }
 
 export default function PostImage({ src, alt }: PostImageProps) {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-  const imageUrl = src.startsWith('http') ? src : `${basePath}${src}`;
+  // basePath is no longer needed with a custom domain
+  // const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  // const imageUrl = src.startsWith('http') ? src : `${basePath}${src}`;
+  const imageUrl = src;
+
 
   return (
     <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden my-6 shadow-md">

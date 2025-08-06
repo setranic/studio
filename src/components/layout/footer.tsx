@@ -12,7 +12,7 @@ export default function Footer() {
             {/* Logo and Contact Info Section */}
             <div className="md:col-span-1 space-y-4">
               <Image 
-                src="/studio/logostnblanconuew.svg" 
+                src="/logostnblanconuew.svg" 
                 alt="Setranic Logo" 
                 width={150} 
                 height={50} 

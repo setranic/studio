@@ -10,28 +10,28 @@ const servicesData = [
   {
     title: "TRANSPORTE DE CARGA",
     description: "SETRANIC NICARAGUA, ofrecemos el servicio de transporte de carga nacional e internacional. Contamos con una flota equipada para todas tus operaciones.",
-    media: { type: 'image', src: '/studio/servicios/transportedecarga.png' },
+    media: { type: 'image', src: '/servicios/transportedecarga.png' },
     aiHint: "cargo truck logistics",
     align: "left"
   },
   {
     title: "DISTRIBUCION DE MERCANCIAS",
     description: "En SETRANIC contamos con equipos y personal, con la experiencia en el sector para realizar todas las maniobras que sean requeridas por nuestros clientes.",
-    media: { type: 'image', src: '/studio/servicios/distribuciondemercancias.png' },
+    media: { type: 'image', src: '/servicios/distribuciondemercancias.png' },
     aiHint: "warehouse distribution",
     align: "right"
   },
   {
     title: "RASTREO DE MEDIOS EN TIEMPO REAL",
     description: "Ofrecemos en nuestros Servicios de valor agregado, el rastreo en tiempo real de la mercancía para mantenerte al tanto.",
-    media: { type: 'video', src: '/studio/servicios/rastreodemedios.mp4' },
+    media: { type: 'video', src: '/servicios/rastreodemedios.mp4' },
     aiHint: "satellite tracking map",
     align: "left"
   },
   {
     title: "SEGURO DE MERCANCÍAS",
     description: "Contamos con el Servicio Adicional para el Seguro de las Mercancías en transito.",
-    media: { type: 'image', src: '/studio/servicios/seguro.png' },
+    media: { type: 'image', src: '/servicios/seguro.png' },
     aiHint: "insurance document protection",
     align: "right"
   }
