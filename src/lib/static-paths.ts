@@ -17,7 +17,7 @@ export async function getPostSlugs(): Promise<string[]> {
   const staticSlugs = [
     'regulaciones-permisos-aduaneros',
     'recomendaciones-carga-internacional-nicaragua',
-    'rutas-aduaneras-terrestres-nicaragua'
+    'rutas-aduaneras-terrestres-nicaragua',
     'comunicacion-eficaz-logistica'
   ];
 
