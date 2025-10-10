@@ -18,6 +18,7 @@ export async function getPostSlugs(): Promise<string[]> {
     'regulaciones-permisos-aduaneros',
     'recomendaciones-carga-internacional-nicaragua',
     'rutas-aduaneras-terrestres-nicaragua'
+    'comunicacion-eficaz-logistica'
   ];
 
   return staticSlugs;
