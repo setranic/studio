@@ -19,6 +19,7 @@ export async function getPostSlugs(): Promise<string[]> {
     'recomendaciones-carga-internacional-nicaragua',
     'rutas-aduaneras-terrestres-nicaragua',
     'IA-transporte-carga-nicaragua',
+    'Distribucion-de-mercancias-nicaragua-transporte',
     'comunicacion-eficaz-logistica'
   ];
 
