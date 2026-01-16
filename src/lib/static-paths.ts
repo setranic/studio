@@ -20,6 +20,7 @@ export async function getPostSlugs(): Promise<string[]> {
     'rutas-aduaneras-terrestres-nicaragua',
     'IA-transporte-carga-nicaragua',
     'Distribucion-de-mercancias-nicaragua-transporte',
+    'por-que-elegir-a-setranic-distribucion-nicaragua',
     'comunicacion-eficaz-logistica'
   ];
 
