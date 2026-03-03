@@ -22,6 +22,7 @@ export async function getPostSlugs(): Promise<string[]> {
     'Distribucion-de-mercancias-nicaragua-transporte',
     'Importancia-distribucion-nicaragua-2026',
     'por-que-elegir-a-setranic-distribucion-nicaragua',
+    'Distribución-Local-en-Nicaragua',
     'comunicacion-eficaz-logistica'
   ];
 
