@@ -26,7 +26,7 @@ export async function getPostSlugs(): Promise<string[]> {
     'Rentabilidad%20Distribucion%20Nicaragua%20Setranic',
     'Setranic%20como%20evitar%20errores%20de%20distribucion',
     'Distribucion-ventajas-mercado-nicaragüense',
-    'Optimización-de-Entregas-en-Nicaragua',
+    'Optimizacion-de-Entregas-en-Nicaragua',
     'Gestion-de-Entregas-en-Nicaragua',
     'Cobertura-de-Distribucion-en-Nicaragua',
     'comunicacion-eficaz-logistica'
