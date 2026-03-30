@@ -23,6 +23,9 @@ export async function getPostSlugs(): Promise<string[]> {
     'Importancia-distribucion-nicaragua-2026',
     'por-que-elegir-a-setranic-distribucion-nicaragua',
     'Distribucion-Local-en-Nicaragua',
+    'Rentabilidad%20Distribucion%20Nicaragua%20Setranic',
+    'Setranic%20como%20evitar%20errores%20de%20distribucion',
+    'Distribucion-ventajas-mercado-nicaragüense',
     'comunicacion-eficaz-logistica'
   ];
 
